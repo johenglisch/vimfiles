@@ -1,13 +1,12 @@
 " APPEARANCE {{{
 
 " indentation and tabs
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set linebreak
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal expandtab
+setlocal linebreak
 
 " make vim slightly more wysiwyg
-" TODO: disable concealing of sub-/superscripts
 if has("gui") && has("conceal")
   setlocal conceallevel=2
 endif
