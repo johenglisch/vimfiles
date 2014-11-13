@@ -384,9 +384,11 @@ set wildignore+=*.blg
 set wildignore+=*.bst
 set wildignore+=*.dvi
 set wildignore+=*.log  " Note: .log might be used by other programmes too
+set wildignore+=*.nav
 set wildignore+=*.out
-set wildignore+=*.ps
 set wildignore+=*.pdf
+set wildignore+=*.ps
+set wildignore+=*.snm
 set wildignore+=*.toc
 
 " wysiwyg documents I probably won't try and open in vim
