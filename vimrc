@@ -39,15 +39,14 @@ let has_vundle = 0
 if isdirectory(vundle_dir.'Vundle.vim')
     let has_vundle = 1
 elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
-    " create vundle dir if necessary
     if !isdirectory(vundle_dir)
         call mkdir(vundle_dir, 'p')
     endif
 
-    " install vundle from github
+    " install vundle by cloning its github repo
     let msg = system('git clone https://github.com/gmarik/Vundle.vim.git ' . shellescape(vundle_dir.'Vundle.vim'))
 
-    " error checking
+    " check if git quit successfully
     if v:shell_error == 0
         echomsg "Vundle installation successful"
         let has_vundle = 1
@@ -57,7 +56,7 @@ elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
     endif
 endif
 
-" init vundle
+" set up vundle
 if has_vundle == 1
     exec "set runtimepath+=".vundle_dir."Vundle.vim"
     call vundle#begin(vundle_dir)
@@ -95,7 +94,7 @@ if has('win32')
     set encoding=utf-8
 endif
 
-" tab settings (not on reload because that might override ftplugins)
+" set tab and indent width (not on reload)
 if !exists("loaded_vimrc")
     set tabstop=8
     set softtabstop=4
@@ -103,10 +102,10 @@ if !exists("loaded_vimrc")
     set expandtab
 endif
 
-" backspace settings
+" prevent backspace from stopping on newlines
 set backspace=indent,eol,start
 
-" disable folding by default
+" disable syntax folding by default
 if !exists("loaded_vimrc")
     set nofoldenable
 endif
@@ -147,9 +146,11 @@ cnoremap <C-g> <C-c>
 let mapleader = ','
 let maplocalleader = '_'
 
-" shortcuts for writing buffers
+" save buffer
 nnoremap ZU :w!<CR>
-exec "nnoremap ZM :mksession! ".cache_dir."0.vim<cr>"
+
+" save current session to [cache_dir]/session.vim
+exec "nnoremap ZM :mksession! ".cache_dir."session.vim<cr>"
 
 " make the movement keys move across _screen_ lines
 nnoremap j gj
@@ -173,7 +174,7 @@ vnoremap Q gq
 nnoremap QQ gqq
 vnoremap QQ gqq
 
-" faster way of switching split windows
+" faster way of switching between split windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -182,10 +183,10 @@ nnoremap <C-l> <C-w>l
 " fill that gap near my right pinkie on German keyboards
 nnoremap ö /
 vnoremap ö /
-noremap ä }
-noremap Ä <C-d>
-noremap ü {
-noremap Ü <C-u>
+noremap  ä }
+noremap  Ä <C-d>
+noremap  ü {
+noremap  Ü <C-u>
 nnoremap ´ @
 vnoremap ´ @
 
@@ -207,9 +208,9 @@ inoremap <S-tab> <esc>==a
 
 " toggle folding
 nnoremap <space> za
-" note: fold everything = zM
 " unfold everything
 nnoremap <backspace> zn
+" Note: fold everything = zM
 
 " LEADER BINDINGS
 
@@ -227,10 +228,10 @@ endif
 " start ctrlp
 nnoremap <leader>f :CtrlP<cr>
 
-" bind nohlsearch to a key
+" hide highlighted search results
 nnoremap <leader>h :nohlsearch<cr>
 
-" bind nerdtree to key
+" toggle nerd tree
 nnoremap <leader>n :NERDTreeToggle<cr>
 
 " make a copy of a line and replace everything with one character
@@ -274,7 +275,7 @@ endfor
 let g:loaded_matchparen=1
 set showmatch
 
-" status line
+" set status line
 set laststatus=2
 set statusline=%<%f\ [%Y%H%M%R%W]%=%-14.((%l,%c%V)%)\ %P
 
