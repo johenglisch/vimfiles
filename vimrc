@@ -224,6 +224,9 @@ if exists("*strftime")
     nnoremap <leader>d :echomsg strftime("%a %d %b %R")<cr>
 endif
 
+" start ctrlp
+nnoremap <leader>f :CtrlP<cr>
+
 " bind nohlsearch to a key
 nnoremap <leader>h :nohlsearch<cr>
 
