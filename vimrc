@@ -73,6 +73,7 @@ if has_vundle == 1
     Plugin 'TaskList.vim'
     Plugin 'kien/ctrlp.vim'
     Plugin 'scrooloose/nerdtree'
+    Plugin 'bitc/vim-bad-whitespace'
 
     " filetype plugins
     Plugin 'motemen/git-vim'
@@ -236,8 +237,8 @@ nnoremap <leader>r yypVr
 nnoremap <leader>R yyPVr
 
 " remove trailing white space
-nnoremap <silent> <leader>s :RmTrailingWS<cr>
-vnoremap <silent> <leader>s :RmTrailingWS<cr>
+nnoremap <silent> <leader>s :EraseBadWhitespace<cr>
+vnoremap <silent> <leader>s :EraseBadWhitespace<cr>
 
 " show taglist
 nnoremap <leader>T :TlistToggle<cr>
@@ -340,14 +341,6 @@ set autoindent
 set smartindent
 filetype plugin indent on
 syntax on
-
-" mark trailing white space
-augroup TrailingWhitespace
-    autocmd!
-    autocmd BufReadPost *
-                \ highlight ExtraWhitespace ctermbg=red guibg=red |
-                \ match ExtraWhitespace /\s\+$/
-augroup END
 
 " set colour of the 80 char mark depending on bg
 augroup HighlightColourColumn
