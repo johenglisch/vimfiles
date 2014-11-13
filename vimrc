@@ -72,6 +72,7 @@ if has_vundle == 1
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'scrooloose/nerdtree'
 
     " filetype plugins
     Plugin 'motemen/git-vim'
@@ -222,8 +223,11 @@ if exists("*strftime")
     nnoremap <leader>d :echomsg strftime("%a %d %b %R")<cr>
 endif
 
-" bind nohlsearch to a keybinding
+" bind nohlsearch to a key
 nnoremap <leader>h :nohlsearch<cr>
+
+" bind nerdtree to key
+nnoremap <leader>n :NERDTreeToggle<cr>
 
 " make a copy of a line and replace everything with one character
 "   (useful for block comments, separators, etc)
