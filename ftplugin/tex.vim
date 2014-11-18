@@ -7,7 +7,7 @@ setlocal expandtab
 setlocal linebreak
 
 " make vim slightly more wysiwyg
-if has("gui") && has("conceal")
+if has("gui_running") && has("conceal")
   setlocal conceallevel=2
 endif
 
