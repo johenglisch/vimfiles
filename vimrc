@@ -293,7 +293,7 @@ if has("gui_running")
     set mousehide
 
     " set font and colour theme
-    colorscheme pablo
+    colorscheme industry
     if has("gui_gtk2")
         set guifont=DejaVu\ Sans\ Mono\ 10
     elseif has("x11")
