@@ -1,11 +1,9 @@
 " Toggle font colours
 function! g:ToggleBackground()
-    if &background ==# 'dark'
-        set background=light
-    elseif &background ==# 'light'
-        set background=
-    else
+    if &background ==# 'light'
         set background=dark
+    else
+        set background=light
     endif
     echo 'set bg=' &background
 endfunction
