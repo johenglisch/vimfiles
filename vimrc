@@ -225,6 +225,10 @@ if exists("*strftime")
     nnoremap <leader>d :echomsg strftime("%a %d %b %R")<cr>
 endif
 
+" switch to strange dos codepage
+" TODO: restore cursor position
+nnoremap <silent> <leader>D :e ++enc=cp437<cr>
+
 " start ctrlp
 nnoremap <leader>f :CtrlP<cr>
 
