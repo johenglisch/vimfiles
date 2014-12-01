@@ -6,10 +6,10 @@ setlocal softtabstop=2
 setlocal expandtab
 setlocal linebreak
 
-" make vim slightly more wysiwyg
-if has("gui_running") && has("conceal")
-  setlocal conceallevel=2
-endif
+" " make vim slightly more wysiwyg
+" if has("gui_running") && has("conceal")
+"   setlocal conceallevel=2
+" endif
 
 " disable auto completion of quotation marks
 let g:Tex_SmartKeyQuote = 0
@@ -28,14 +28,14 @@ let g:Tex_FoldedMisc="preamble,<<<"
 
 let g:Tex_IgnoreLevel = 8
 let g:Tex_IgnoredWarnings =
-            \"Underfull\n".
-            \"Overfull\n".
-            \"specifier changed to\n".
-            \"You have requested\n".
-            \"Missing number, treated as zero.\n".
-            \"There were undefined references\n".
-            \"Citation %.%# undefined\n".
-            \"LaTeX Font Warning: %.%#\n"
+            \'Underfull'."\n".
+            \'Overfull'."\n".
+            \'specifier changed to'."\n".
+            \'You have requested'."\n".
+            \'Missing number, treated as zero.'."\n".
+            \'There were undefined references'."\n".
+            \'Citation %.%# undefined'."\n".
+            \'LaTeX Font Warning: %.%#'
 
 
 " }}}
@@ -89,17 +89,17 @@ let g:Tex_MultipleCompileFormats = "dvi,ps"
 let g:Tex_DefaultTargetFormat = "pdf"
 let g:Tex_FormatDependency_ps = "dvi,ps"
 let g:Tex_FormatDependency_pdf = "dvi,ps,pdf"
-let g:Tex_CompileRule_dvi = "/usr/bin/latex --interaction=nonstopmode $*"
-let g:Tex_CompileRule_ps = "/usr/bin/dvips -Ppdf -o $*.ps $*.dvi"
-let g:Tex_CompileRule_pdf = "/usr/bin/ps2pdf $*.ps"
+let g:Tex_CompileRule_dvi = "latex --interaction=nonstopmode $*"
+let g:Tex_CompileRule_ps = "dvips -Ppdf -o $*.ps $*.dvi"
+let g:Tex_CompileRule_pdf = "ps2pdf $*.ps"
 
 " set dvi and pdf viewer depending on os
 if has('win32')
     let g:Tex_ViewRule_dvi = "C:/Program Files/MiKTeX 2.9/miktex/bin/x64/yap.exe $*.pdf"
     let g:Tex_ViewRule_pdf = "C:/Program Files (x86)/SumatraPDF/SumatraPDF.exe $*.pdf"
 else
-    let g:Tex_ViewRule_dvi = "/usr/bin/evince $*.dvi 2>/dev/null >/dev/null"
-    let g:Tex_ViewRule_pdf = "/usr/bin/evince $*.pdf 2>/dev/null >/dev/null"
+    let g:Tex_ViewRule_dvi = "okular $*.dvi 2>/dev/null >/dev/null"
+    let g:Tex_ViewRule_pdf = "okular $*.pdf 2>/dev/null >/dev/null"
 endif
 
 " }}}

@@ -15,10 +15,12 @@ if !exists(g:tex_conceal) || g:tex_conceal =~ 'a'
         syn match texAccent    '<<'            conceal cchar=«
         syn match texAccent    '``'            conceal cchar=“
         syn match texAccent    "''"            conceal cchar=”
-        syn match texStatement '\\dots\>'      conceal cchar=…
-        syn match texStatement '\\ldots\>'     conceal cchar=…
+        syn match texStatement '\\dots\>\s*'   conceal cchar=…
+        syn match texStatement '\\ldots\>\s*'  conceal cchar=…
+        syn match texStatement '\\lbrack\>\s*' conceal cchar=[
+        syn match texStatement '\\rbrack\>\s*' conceal cchar=]
 
         " ipa
-        syn match texStatement '\\textschwa\>' conceal cchar=ə
+        syn match texStatement '\\textschwa\>\s*' conceal cchar=ə
     endif
 endif
