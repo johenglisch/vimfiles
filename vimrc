@@ -220,6 +220,9 @@ nnoremap <leader>b :call ToggleBackground()<cr>
 " toggle unecessarily over-the-top cursor-finder
 nnoremap <silent> <leader>c :set invcursorline invcursorcolumn<cr>
 
+" change working directory to location of the current file
+nnoremap <leader>d :CdToBuffer<cr>
+
 " show current time
 if exists("*strftime")
     nnoremap <leader>D :echomsg strftime("%a %d %b %R")<cr>
