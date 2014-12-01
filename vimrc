@@ -230,7 +230,7 @@ endif
 
 " switch to strange dos codepage
 " TODO: restore cursor position
-nnoremap <silent> <leader>D :e ++enc=cp437<cr>
+nnoremap <silent> <leader>e :e ++enc=cp437<cr>
 
 " start ctrlp
 nnoremap <leader>f :CtrlP<cr>
