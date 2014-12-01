@@ -222,7 +222,7 @@ nnoremap <silent> <leader>c :set invcursorline invcursorcolumn<cr>
 
 " show current time
 if exists("*strftime")
-    nnoremap <leader>d :echomsg strftime("%a %d %b %R")<cr>
+    nnoremap <leader>D :echomsg strftime("%a %d %b %R")<cr>
 endif
 
 " start ctrlp
