@@ -66,6 +66,9 @@ if has_vundle == 1
 
     " colour schemes
     Plugin 'seoul'
+    Plugin 'Wombat'
+    Plugin 'molok/vim-vombato-colorscheme'
+    Plugin 'adobe.vim'
 
     " general plugins
     Plugin 'taglist.vim'
@@ -300,7 +303,7 @@ if has("gui_running")
     set mousehide
 
     " set font and colour theme
-    colorscheme desert
+    colorscheme vombato
     if has("gui_gtk2")
         set guifont=DejaVu\ Sans\ Mono\ 10
     elseif has("x11")
