@@ -313,6 +313,7 @@ if has("gui_running")
     endif
 else
     " default to dark terminals
+    " TODO: find out why colour theme looks crap on gnome-terminal
     set background=dark
     colorscheme seoul
 endif
