@@ -6,7 +6,8 @@ set modeline
 if has('unix')
     let cache_dir = expand('~/.cache/vim/')
 else
-    let cache_dir = expand('~/_vimcache/')
+    let cache_dir = expand('~/_cache/vim/')
+    let g:ctrlp_cache_dir = expand('~/_cache/ctrlp/')
 endif
 
 " create cache dir if necessary
@@ -335,6 +336,15 @@ if has("win32")
     let g:Tlist_Ctags_Cmd = "C:/Users/Johannes/Documents/src/ctags58/ctags.exe"
 endif
 
+" ctrlp config
+if exists('g:ctrlp_custom_ignore')
+    unlet g:ctrlp_custom_ignore
+endif
+let g:ctrlp_custom_ignore = '\v\.('.
+            \ '[oa]|so|dll|lib|py[co]|class|hi|exe|'.
+            \ 'aux|bbl|blg|bst|dvi|log|nav|out|pdf|ps|snm|toc|'.
+            \ 'odt|doc|docx)$'
+
 " vim-latex config
 if has("win32")
     set shellslash
@@ -371,45 +381,6 @@ augroup END
 " disable distracting highlighting of concealed stuff
 highlight clear Conceal
 
-
-" }}}
-
-" WILDCARDS {{{
-
-" reset wildignore when reloading
-set wildignore=
-
-" various object/library files
-set wildignore+=*.[oa]
-set wildignore+=*.so
-set wildignore+=*.dll
-set wildignore+=*.lib
-set wildignore+=*.py[co]
-set wildignore+=*.class
-set wildignore+=*.hi
-set wildignore+=*.exe
-
-" all that crap latex leaves behind...
-set wildignore+=*.aux
-set wildignore+=*.bbl
-set wildignore+=*.blg
-set wildignore+=*.bst
-set wildignore+=*.dvi
-set wildignore+=*.log  " Note: .log might be used by other programmes too
-set wildignore+=*.nav
-set wildignore+=*.out
-set wildignore+=*.pdf
-set wildignore+=*.ps
-set wildignore+=*.snm
-set wildignore+=*.toc
-
-" wysiwyg documents I probably won't try and open in vim
-set wildignore+=*.odt
-set wildignore+=*.doc
-set wildignore+=*.docx
-
-
-" }}}
 
 " RANDOM IDEAS
 
