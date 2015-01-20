@@ -187,8 +187,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " fill that gap near my right pinkie on German keyboards
-nnoremap ö /
-vnoremap ö /
+nnoremap ö :
+vnoremap ö :
+nnoremap Ö /
+vnoremap Ö /
 noremap  ä }
 noremap  Ä <C-d>
 noremap  ü {
