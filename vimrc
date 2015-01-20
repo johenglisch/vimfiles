@@ -55,6 +55,7 @@ elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
         echoerr "Vundle installation failed:"
         echoerr msg
     endif
+    unlet msg
 endif
 
 " set up vundle
@@ -387,6 +388,11 @@ highlight clear Conceal
 
 " " use X to clear a line
 " nnoremap X 0D
+
+" Unlet temporary vars
+unlet cache_dir
+unlet has_vundle
+unlet vundle_dir
 
 let loaded_vimrc=1
 
