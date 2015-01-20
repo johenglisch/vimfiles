@@ -263,7 +263,7 @@ nnoremap <leader>T :TlistToggle<cr>
 " fast access to vimrc
 nnoremap <leader>vh :split $MYVIMRC<cr>
 nnoremap <leader>vv :vsplit $MYVIMRC<cr>
-nnoremap <leader>vs :call ReloadVimrc()<cr>
+nnoremap <leader>vs :SourceVimrc<cr>
 
 " unbind cursor keys
 for prefix in ['i', 'n', 'v']
