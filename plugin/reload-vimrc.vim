@@ -1,6 +1,8 @@
 " reload the vimrc and restore window view
-function! g:ReloadVimrc()
+function! s:SourceVimrc()
     let l:win = winsaveview()
     source $MYVIMRC
     call winrestview(l:win)
 endfunction
+
+command! SourceVimrc call s:SourceVimrc()

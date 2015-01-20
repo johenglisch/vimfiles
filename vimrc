@@ -20,7 +20,7 @@ exec 'set directory='.cache_dir.'/'
 " while editing .vimrc, reload the file on every save
 augroup ReloadVimrcOnWrite
     autocmd!
-    autocmd BufWritePost $MYVIMRC call ReloadVimrc()
+    autocmd BufWritePost $MYVIMRC SourceVimrc
 augroup END
 
 
@@ -79,6 +79,7 @@ if has_vundle == 1
     Plugin 'bitc/vim-bad-whitespace'
 
     " filetype plugins
+    Plugin 'wting/rust.vim'
     Plugin 'motemen/git-vim'
     Plugin 'klen/python-mode'
     if has('unix')
