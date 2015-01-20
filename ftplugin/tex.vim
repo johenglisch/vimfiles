@@ -56,7 +56,7 @@ nnoremap <buffer> <localleader>M :call Tex_ViewLaTeX()<cr>
 
 "}}}
 
-" COMPILE/VIEW OPTIONS {{{ 
+" COMPILE/VIEW OPTIONS {{{
 
 let g:Tex_AuxFileExtensions = ['aux', 'bbl', 'blg', 'dbj', 'dvi', 'log',
                               \'nav', 'out', 'ps', 'snm', 'toc']
@@ -65,7 +65,7 @@ let g:Tex_AuxFileExtensions = ['aux', 'bbl', 'blg', 'dbj', 'dvi', 'log',
 function! s:Tex_CleanLaTeX()
 
   " expand file name and strip extension
-  let l:filebase = expand('%:p:r')
+  let l:filebase = expand('%:r')
 
   for l:ext in g:Tex_AuxFileExtensions
     " compose file name
