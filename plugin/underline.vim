@@ -17,6 +17,11 @@ endfunction
 
 " Function:  Underline the current line by repeating the `filler_string'.
 function! s:Underline(filler_string)
+    " abort on <esc>
+    if char2nr(a:filler_string) == 27
+        return
+    endif
+
     let l:underlining = s:FillString(strlen(getline('.')), a:filler_string)
     if !empty(l:underlining)
         call append('.', l:underlining)
@@ -25,6 +30,11 @@ endfunction
 
 " Function:  Overline the current line by repeating the `filler_string'.
 function! s:Overline(filler_string)
+    " abort on <esc>
+    if char2nr(a:filler_string) == 27
+        return
+    endif
+
     let l:underlining = s:FillString(strlen(getline('.')), a:filler_string)
     if !empty(l:underlining)
         call append(line('.') - 1, l:underlining)
