@@ -250,10 +250,9 @@ nnoremap <leader>h :nohlsearch<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 
 " make a copy of a line and replace everything with one character
-"   (useful for block comments, separators, etc)
-" TODO: Implement as a function
-nnoremap <leader>r yypVr
-nnoremap <leader>R yyPVr
+"   (for block comments, separators, etc)
+nnoremap <silent> <leader>r :Underline nr2char(getchar())<cr>
+nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
 
 " remove trailing white space
 nnoremap <silent> <leader>s :EraseBadWhitespace<cr>
