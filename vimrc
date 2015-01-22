@@ -229,7 +229,7 @@ nnoremap <leader>b :call ToggleBackground()<cr>
 nnoremap <silent> <leader>c :set invcursorline invcursorcolumn<cr>
 
 " change working directory to location of the current file
-nnoremap <leader>d :CdToBuffer<cr>
+nnoremap <leader>d :cd %:h<cr>
 
 " show current time
 if exists("*strftime")
