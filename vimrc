@@ -80,6 +80,7 @@ if has_vundle == 1
     Plugin 'bitc/vim-bad-whitespace'
 
     " filetype plugins
+    Plugin 'PotatoesMaster/i3-vim-syntax'
     Plugin 'wting/rust.vim'
     Plugin 'motemen/git-vim'
     Plugin 'klen/python-mode'
