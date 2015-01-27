@@ -1,4 +1,26 @@
-" Source current vim plugin.
-command! -buffer SourceThis exec "source ".bufname("%") |
-            \echomsg "sourced" bufname("%")
-nnoremap <buffer> <cr> :SourceThis<cr>
+function! s:Strip(string)
+    return substitute(a:string, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
+function! s:SourceCurrentLine()
+    let l:line = s:Strip(getline('.'))
+    echo ':' . l:line
+    exec l:line
+endfunction
+
+function! s:SourceCurrentFile()
+    let l:filename = bufname('%')
+    exec 'source ' . l:filename
+    echo 'Sourced' l:filename
+endfunction
+
+
+command! -buffer SourceCurrentFile call s:SourceCurrentFile()
+command! -buffer SourceCurrentLine call s:SourceCurrentLine()
+
+
+nnoremap <silent> <buffer> <cr>   :SourceCurrentFile<cr>
+nnoremap <silent> <buffer> <S-cr> :SourceCurrentLine<cr>
+
+" TODO check for set or (
+nnoremap <silent> <buffer> K      :exec 'help ' . expand('<cword>')<cr>

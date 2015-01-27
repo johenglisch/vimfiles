@@ -20,11 +20,6 @@ endif
 exec 'set backupdir='.cache_dir.'/'
 exec 'set directory='.cache_dir.'/'
 
-augroup ReloadVimrcOnWrite
-    autocmd!
-    autocmd BufWritePost $MYVIMRC SourceVimrc
-augroup END
-
 
 " PACKAGE MANAGEMENT
 
