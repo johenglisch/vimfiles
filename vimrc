@@ -141,15 +141,10 @@ vnoremap Q gq
 nnoremap QQ gqq
 vnoremap QQ gqq
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap ö <C-w>
+nnoremap Ö :
+vnoremap Ö :
 
-nnoremap ö :
-vnoremap ö :
-nnoremap Ö :!
-vnoremap Ö :!
 noremap  ä }
 noremap  Ä <C-d>
 noremap  ü {
@@ -188,10 +183,9 @@ if exists("*strftime")
 endif
 
 " TODO: restore cursor position after switching the code page
-nnoremap <silent> <leader>e :e ++enc=cp437<cr>
+nnoremap <silent> <leader>e :edit ++enc=cp437<cr>
 
-nnoremap <leader>f :e 
-nnoremap <silent> <leader>F :CtrlP<cr>
+nnoremap <silent> <leader>f :CtrlP<cr>
 
 nnoremap <leader>h :nohlsearch<cr>
 
@@ -205,6 +199,7 @@ vnoremap <leader>s :EraseBadWhitespace<cr>
 
 nnoremap <silent> <leader>T :TlistToggle<cr>
 
+nnoremap <silent> <leader>ve :edit $MYVIMRC<cr>
 nnoremap <silent> <leader>vh :split $MYVIMRC<cr>
 nnoremap <silent> <leader>vv :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>vs :SourceVimrc<cr>
