@@ -1,9 +1,5 @@
-function! s:Strip(string)
-    return substitute(a:string, '^\s*\(.\{-}\)\s*$', '\1', '')
-endfunction
-
 function! s:SourceCurrentLine()
-    let l:line = s:Strip(getline('.'))
+    let l:line = Strip(getline('.'))
     echo ':' . l:line
     exec l:line
 endfunction
