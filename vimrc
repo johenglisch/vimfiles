@@ -153,8 +153,8 @@ nnoremap <C-l> <C-w>l
 
 nnoremap ö :
 vnoremap ö :
-nnoremap Ö /
-vnoremap Ö /
+nnoremap Ö :!
+vnoremap Ö :!
 noremap  ä }
 noremap  Ä <C-d>
 noremap  ü {
@@ -195,7 +195,8 @@ endif
 " TODO: restore cursor position after switching the code page
 nnoremap <silent> <leader>e :e ++enc=cp437<cr>
 
-nnoremap <silent> <leader>f :CtrlP<cr>
+nnoremap <leader>f :e 
+nnoremap <silent> <leader>F :CtrlP<cr>
 
 nnoremap <leader>h :nohlsearch<cr>
 
@@ -244,9 +245,9 @@ if has("gui_running")
     set guioptions=ci
     set mousehide
 
-    colorscheme vombato
+    colorscheme koehler
     if has("gui_gtk2")
-        set guifont=DejaVu\ Sans\ Mono\ 10
+        set guifont=Liberation\ Mono\ 10
     elseif has("x11")
         set guifont=-*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-*
     elseif has("gui_win32")
