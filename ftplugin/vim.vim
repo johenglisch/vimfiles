@@ -1,7 +1,9 @@
 function! s:SourceCurrentLine()
     let l:line = Strip(getline('.'))
-    echo ':' . l:line
-    exec l:line
+    if !empty(l:line)
+        echo ':' . l:line
+        exec l:line
+    endif
 endfunction
 
 function! s:SourceCurrentFile()
