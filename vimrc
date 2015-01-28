@@ -50,6 +50,8 @@ elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
 endif
 
 if has_vundle == 1
+    filetype off
+
     exec "set runtimepath+=".vundle_dir."Vundle.vim"
     call vundle#begin(vundle_dir)
 
