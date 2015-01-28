@@ -55,20 +55,23 @@ if has_vundle == 1
 
     Plugin 'gmarik/Vundle.vim'
 
-    Plugin 'seoul'
-    Plugin 'Wombat'
-    Plugin 'molok/vim-vombato-colorscheme'
     Plugin 'adobe.vim'
+    Plugin 'candy.vim'
+    Plugin 'nanotech/jellybeans.vim'
+    Plugin 'seoul'
+    Plugin 'twilight'
+    Plugin 'molok/vim-vombato-colorscheme'
+    Plugin 'Wombat'
 
-    Plugin 'taglist.vim'
-    Plugin 'TaskList.vim'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'scrooloose/nerdtree'
     Plugin 'bitc/vim-bad-whitespace'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'TaskList.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'taglist.vim'
 
+    Plugin 'motemen/git-vim'
     Plugin 'PotatoesMaster/i3-vim-syntax'
     Plugin 'wting/rust.vim'
-    Plugin 'motemen/git-vim'
     Plugin 'klen/python-mode'
     if has('unix')
         Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
@@ -235,7 +238,7 @@ if has("gui_running")
     set guioptions=ci
     set mousehide
 
-    colorscheme koehler
+    colorscheme twilight
     if has("gui_gtk2")
         set guifont=Liberation\ Mono\ 10
     elseif has("x11")
