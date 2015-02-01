@@ -126,7 +126,6 @@ inoremap <C-g> <Esc>
 cnoremap <C-g> <C-c>
 
 nnoremap ZU :w!<CR>
-exec "nnoremap ZM :mksession! ".cache_dir."session.vim<cr>"
 
 nnoremap j gj
 vnoremap j gj
@@ -199,8 +198,8 @@ nnoremap <silent> <leader>n :NERDTreeToggle<cr>
 nnoremap <silent> <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
 
-nnoremap <leader>s :EraseBadWhitespace<cr>
-vnoremap <leader>s :EraseBadWhitespace<cr>
+exec "nnoremap <leader>s :mksession! ".cache_dir."saved_session.vim<cr>"
+exec "nnoremap <leader>S :source ".cache_dir."saved_sesion.vim<cr>"
 
 nnoremap <silent> <leader>T :TlistToggle<cr>
 
@@ -208,6 +207,9 @@ nnoremap <silent> <leader>ve :edit $MYVIMRC<cr>
 nnoremap <silent> <leader>vh :split $MYVIMRC<cr>
 nnoremap <silent> <leader>vv :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>vs :SourceVimrc<cr>
+
+nnoremap <leader>w :EraseBadWhitespace<cr>
+vnoremap <leader>w :EraseBadWhitespace<cr>
 
 " Muscle Memory Training Facilities
 
