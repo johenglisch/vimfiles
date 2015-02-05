@@ -164,8 +164,7 @@ vnoremap # '
 nnoremap Y y$
 vnoremap Y y$
 
-nnoremap <tab> >>
-nnoremap <S-tab> <<
+nnoremap <S-tab> ==
 " TODO: see if I can do this without dropping out of insert mode
 inoremap <S-tab> <esc>==a
 
