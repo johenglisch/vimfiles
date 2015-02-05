@@ -24,4 +24,5 @@ endfunction
 
 command! -buffer DlangCompile call s:DlangCompile()
 
+nnoremap <silent> <buffer> <localleader>M :exec "!rdmd -main -unittest " . expand("%")<cr>
 nnoremap <silent> <buffer> <cr> :DlangCompile<cr>
