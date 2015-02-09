@@ -67,6 +67,7 @@ if has_vundle == 1
 
     Plugin 'bitc/vim-bad-whitespace'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'mileszs/ack.vim'
     Plugin 'TaskList.vim'
     Plugin 'taglist.vim'
 
@@ -277,6 +278,10 @@ let g:ctrlp_custom_ignore = '\v\.('.
             \ '[oa]|so|dll|lib|py[co]|class|hi|exe|'.
             \ 'aux|bbl|blg|bst|dvi|log|nav|out|pdf|ps|snm|toc|'.
             \ 'odt|doc|docx)$'
+
+" Ack.vim
+
+let g:ackprg='ag --vimgrep'
 
 " Vim LaTeX Suite
 
