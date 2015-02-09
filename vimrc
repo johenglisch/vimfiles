@@ -68,7 +68,6 @@ if has_vundle == 1
     Plugin 'bitc/vim-bad-whitespace'
     Plugin 'kien/ctrlp.vim'
     Plugin 'TaskList.vim'
-    Plugin 'scrooloose/nerdtree'
     Plugin 'taglist.vim'
 
     Plugin 'motemen/git-vim'
@@ -188,11 +187,11 @@ endif
 " TODO: restore cursor position after switching the code page
 nnoremap <silent> <leader>e :edit ++enc=cp437<cr>
 
-nnoremap <silent> <leader>f :CtrlP<cr>
+nnoremap <silent> <leader>f :<c-u>CtrlP<cr>
 
 nnoremap <leader>h :nohlsearch<cr>
 
-nnoremap <silent> <leader>n :NERDTreeToggle<cr>
+nnoremap <silent> <leader>n :<c-u>CtrlPBuffer<cr>
 
 nnoremap <silent> <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
@@ -274,7 +273,6 @@ endif
 if exists('g:ctrlp_custom_ignore')
     unlet g:ctrlp_custom_ignore
 endif
-
 let g:ctrlp_custom_ignore = '\v\.('.
             \ '[oa]|so|dll|lib|py[co]|class|hi|exe|'.
             \ 'aux|bbl|blg|bst|dvi|log|nav|out|pdf|ps|snm|toc|'.
