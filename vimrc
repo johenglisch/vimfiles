@@ -63,21 +63,17 @@ if has_vundle == 1
     Plugin 'seoul'
     Plugin 'twilight'
     Plugin 'molok/vim-vombato-colorscheme'
-    Plugin 'Wombat'
 
+    Plugin 'mileszs/ack.vim'
     Plugin 'bitc/vim-bad-whitespace'
     Plugin 'kien/ctrlp.vim'
-    Plugin 'mileszs/ack.vim'
-    Plugin 'TaskList.vim'
     Plugin 'taglist.vim'
+    Plugin 'TaskList.vim'
 
     Plugin 'motemen/git-vim'
     Plugin 'PotatoesMaster/i3-vim-syntax'
-    Plugin 'wting/rust.vim'
     Plugin 'klen/python-mode'
-    if has('unix')
-        Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-    endif
+    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
     call vundle#end()
 endif
