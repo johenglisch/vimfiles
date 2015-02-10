@@ -1,24 +1,43 @@
-function! s:SourceCurrentLine()
-    let l:line = Strip(getline('.'))
-    if !empty(l:line)
-        echo ':' . l:line
-        exec l:line
+function! s:VimLExecuteLine()
+    let line = Strip(getline('.'))
+    if !empty(line)
+        echo ':' . line
+        exec line
     endif
 endfunction
 
-function! s:SourceCurrentFile()
-    let l:filename = bufname('%')
-    exec 'source ' . l:filename
-    echo 'Sourced' l:filename
+function! s:VimLSourceFile()
+    let filename = bufname('%')
+    exec 'source ' . filename
+    echo 'Sourced' filename
+endfunction
+
+function! s:VimLContextHelp()
+    for syntax_id in synstack(line('.'), col('.'))
+        let syntax_item = synIDattr(syntax_id, 'name')
+
+        " TODO: Detect variables or commands
+        if syntax_item ==# 'vimFunc'
+            exec 'help ' . expand('<cword>') . '()'
+            return
+        endif
+
+        if syntax_item ==# 'vimOption'
+            exec "help '" . expand('<cword>') . "'"
+            return
+        endif
+    endfor
+
+    exec 'help ' . expand('<cword>')
 endfunction
 
 
-command! -buffer SourceCurrentFile call s:SourceCurrentFile()
-command! -buffer SourceCurrentLine call s:SourceCurrentLine()
+command! -buffer VimLSourceFile  call s:VimLSourceFile()
+command! -buffer VimLExecuteLine call s:VimLExecuteLine()
+command! -buffer VimLContextHelp call s:VimLContextHelp()
 
 
-nnoremap <silent> <buffer> <cr>   :SourceCurrentFile<cr>
-nnoremap <silent> <buffer> <S-cr> :SourceCurrentLine<cr>
-
-" TODO check for set or (
-nnoremap <silent> <buffer> K      :exec 'help ' . expand('<cword>')<cr>
+nnoremap <silent> <buffer> K      :VimLContextHelp<cr>
+nnoremap <silent> <buffer> <cr>   :VimLSourceFile<cr>
+nnoremap <silent> <buffer> <S-cr> :VimLExecuteLine<cr>
+" TODO: execute visual selection
