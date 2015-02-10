@@ -13,16 +13,14 @@ function! s:DlangCompile()
         echo 'Running make'
         make!
     else
-        let l:command = s:dlang_compiler . ' ' . shellescape(expand('%'))
-        echo 'Running' l:command
-
-        let l:output = system(l:command)
-        echo substitute(l:output, '\n\r?', '\r', 'g')
+        echo 'Running' s:dlang_compiler
+        echo system(s:dlang_compiler.' '.shellescape(expand('%')))
     endif
 endfunction
 
 
 command! -buffer DlangCompile call s:DlangCompile()
 
-nnoremap <silent> <buffer> <localleader>M :exec "!rdmd -main -unittest " . expand("%")<cr>
+
 nnoremap <silent> <buffer> <cr> :DlangCompile<cr>
+nnoremap <silent> <buffer> <localleader>M :exec "!rdmd -main -unittest " . expand("%")<cr>
