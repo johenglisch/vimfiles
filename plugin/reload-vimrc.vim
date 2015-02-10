@@ -1,4 +1,3 @@
-" reload the vimrc and restore window view
 function! s:SourceVimrc()
     let l:win = winsaveview()
     source $MYVIMRC

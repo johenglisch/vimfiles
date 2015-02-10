@@ -1,4 +1,3 @@
-" Function: Strip white space off the edges of a string.
 function! Strip(string)
     return substitute(a:string, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
@@ -10,10 +9,10 @@ function! FilledString(length, filler)
         return ''
     endif
 
-    let l:new_string = repeat(a:filler, a:length / strlen(a:filler))
-    if strlen(l:new_string) < a:length
-        let l:new_string .= a:filler[:a:length - strlen(l:new_string) - 1]
+    let new_string = repeat(a:filler, a:length / strlen(a:filler))
+    if strlen(new_string) < a:length
+        let new_string .= a:filler[:a:length - strlen(new_string) - 1]
     endif
 
-    return l:new_string
+    return new_string
 endfunction
