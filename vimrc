@@ -6,17 +6,17 @@ endif
 " FOLDERS
 
 if has('unix')
-    let cache_dir = expand('~/.cache/vim/')
-    let vundle_dir = expand('~/.vundle/')
+    let s:cache_dir = expand('~/.cache/vim/')
+    let s:vundle_dir = expand('~/.vundle/')
 else
-    let cache_dir = expand('~/_cache/vim/')
-    let vundle_dir = expand('~/_vundle/')
+    let s:cache_dir = expand('~/_cache/vim/')
+    let s:vundle_dir = expand('~/_vundle/')
 endif
 
-exec 'set backupdir='.cache_dir.'backup//'
-exec 'set directory='.cache_dir.'swap//'
-exec 'set undodir='.cache_dir.'undo//'
-let g:ctrlp_cache_dir = cache_dir.'ctrlp/'
+exec 'set backupdir='.s:cache_dir.'backup//'
+exec 'set directory='.s:cache_dir.'swap//'
+exec 'set undodir='.s:cache_dir.'undo//'
+let g:ctrlp_cache_dir = s:cache_dir.'ctrlp/'
 
 if !isdirectory(expand(&backupdir))
     call mkdir(expand(&backupdir), 'p')
@@ -32,30 +32,28 @@ endif
 " PACKAGE MANAGEMENT
 
 let has_vundle = 0
-if isdirectory(vundle_dir.'Vundle.vim')
+if isdirectory(s:vundle_dir.'Vundle.vim')
     let has_vundle = 1
 elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
-    if !isdirectory(vundle_dir)
-        call mkdir(vundle_dir, 'p')
+    if !isdirectory(s:vundle_dir)
+        call mkdir(s:vundle_dir, 'p')
     endif
 
-    let msg = system('git clone https://github.com/gmarik/Vundle.vim.git ' . shellescape(vundle_dir.'Vundle.vim'))
+    let s:msg = system('git clone https://github.com/gmarik/Vundle.vim.git ' . shellescape(s:vundle_dir.'Vundle.vim'))
     if v:shell_error == 0
         echomsg "Vundle installation successful"
         let has_vundle = 1
     else
         echoerr "Vundle installation failed:"
-        echoerr msg
+        echoerr s:msg
     endif
-
-    unlet msg
 endif
 
 if has_vundle == 1
     filetype off
 
-    exec "set runtimepath+=".vundle_dir."Vundle.vim"
-    call vundle#begin(vundle_dir)
+    exec "set runtimepath+=".s:vundle_dir."Vundle.vim"
+    call vundle#begin(s:vundle_dir)
 
     Plugin 'gmarik/Vundle.vim'
 
@@ -210,8 +208,8 @@ nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
 
 nnoremap <leader>s :%s/\v
 
-exec "nnoremap <leader>SS :source ".cache_dir."saved_sesion.vim<cr>"
-exec "nnoremap <leader>SW :mksession! ".cache_dir."saved_session.vim<cr>"
+exec "nnoremap <leader>SS :source ".s:cache_dir."saved_sesion.vim<cr>"
+exec "nnoremap <leader>SW :mksession! ".s:cache_dir."saved_session.vim<cr>"
 
 nnoremap <silent> <leader>T :TlistToggle<cr>
 
@@ -355,9 +353,5 @@ syntax on
 
 highlight clear Conceal
 
-
-unlet cache_dir
-unlet has_vundle
-unlet vundle_dir
 
 let loaded_vimrc=1
