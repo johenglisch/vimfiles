@@ -3,31 +3,33 @@ if &compatible
 endif
 
 
-" GENERAL OPTIONS
-
-set modeline
+" FOLDERS
 
 if has('unix')
     let cache_dir = expand('~/.cache/vim/')
+    let vundle_dir = expand('~/.vundle/')
 else
     let cache_dir = expand('~/_cache/vim/')
-    let g:ctrlp_cache_dir = expand('~/_cache/ctrlp/')
+    let vundle_dir = expand('~/_vundle/')
 endif
 
-if !isdirectory(cache_dir)
-    call mkdir(cache_dir, 'p')
+exec 'set backupdir='.cache_dir.'backup//'
+exec 'set directory='.cache_dir.'swap//'
+exec 'set undodir='.cache_dir.'undo//'
+let g:ctrlp_cache_dir = cache_dir.'ctrlp/'
+
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), 'p')
 endif
-exec 'set backupdir='.cache_dir.'/'
-exec 'set directory='.cache_dir.'/'
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), 'p')
+endif
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), 'p')
+endif
 
 
 " PACKAGE MANAGEMENT
-
-if has('unix')
-    let vundle_dir = expand('~/.vundle/')
-else
-    let vundle_dir = expand('~/_vundle/')
-endif
 
 let has_vundle = 0
 if isdirectory(vundle_dir.'Vundle.vim')
@@ -91,8 +93,12 @@ if !exists("loaded_vimrc")
     set shiftwidth=4
     set expandtab
 
+    set textwidth=80
+
     set nofoldenable
 endif
+
+set undofile
 
 set ignorecase
 set smartcase
@@ -100,7 +106,11 @@ set incsearch
 set hlsearch
 
 set showcmd
+set notimeout
+set nottimeout
+
 set mouse=a
+set splitright
 set virtualedit=all
 set backspace=indent,eol,start
 
@@ -108,7 +118,7 @@ augroup CursorToLastKnownPosition
     autocmd!
     autocmd BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exe "normal g'\"" |
+                \   exec "normal g'\"zvzz" |
                 \ endif
 augroup END
 
@@ -157,6 +167,9 @@ vnoremap ' #
 nnoremap # '
 vnoremap # '
 
+nnoremap / /\v
+nnoremap ? ?\v
+
 nnoremap Y y$
 vnoremap Y y$
 
@@ -171,6 +184,8 @@ nnoremap <backspace> zn
 
 let mapleader = ','
 let maplocalleader = '_'
+
+nnoremap <silent> <leader>/ :exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 nnoremap <silent> <leader>b :call ToggleBackground()<cr>
 nnoremap <silent> <leader>c :set invcursorline invcursorcolumn<cr>
@@ -193,8 +208,10 @@ nnoremap <silent> <leader>n :<c-u>CtrlPBuffer<cr>
 nnoremap <silent> <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
 
-exec "nnoremap <leader>s :mksession! ".cache_dir."saved_session.vim<cr>"
-exec "nnoremap <leader>S :source ".cache_dir."saved_sesion.vim<cr>"
+nnoremap <leader>s :%s/\v
+
+exec "nnoremap <leader>SS :source ".cache_dir."saved_sesion.vim<cr>"
+exec "nnoremap <leader>SW :mksession! ".cache_dir."saved_session.vim<cr>"
 
 nnoremap <silent> <leader>T :TlistToggle<cr>
 
@@ -205,6 +222,8 @@ nnoremap <silent> <leader>vs :SourceVimrc<cr>
 
 nnoremap <leader>w :EraseBadWhitespace<cr>
 vnoremap <leader>w :EraseBadWhitespace<cr>
+
+nnoremap <leader>z zMzvzz
 
 " Muscle Memory Training Facilities
 
@@ -223,11 +242,36 @@ endfor
 
 " APPEARANCE
 
+set lazyredraw
+
+set visualbell t_vb=
+augroup DisableVisualBellInGVim
+    autocmd!
+    autocmd GUIEnter * set visualbell t_vb=
+augroup END
+
 let g:loaded_matchparen=1
 set showmatch
 
+set scrolloff=1
+
+set list
+set listchars=tab:»\ ,eol:\ ,extends:›,precedes:‹
+let &showbreak = '\'
+
 set laststatus=2
 set statusline=%<%f\ [%Y%H%M%R%W]%=%-14.((%l,%c%V)%)\ %P
+
+augroup ShowCursorLineInNormalMode
+    autocmd!
+    autocmd WinLeave,InsertEnter * set nocursorline
+    autocmd WinEnter,InsertLeave * set cursorline
+augroup END
+
+augroup KeepSplitsEqualOnResize
+    autocmd!
+    autocmd VimResized * exec "normal! \<C-w>="
+augroup END
 
 if has("gui_running")
     if !exists("loaded_vimrc")
@@ -237,7 +281,7 @@ if has("gui_running")
     set guioptions=ci
     set mousehide
 
-    colorscheme twilight
+    colorscheme jellybeans
     if has("gui_gtk2")
         set guifont=Liberation\ Mono\ 10
     elseif has("x11")
@@ -252,7 +296,13 @@ endif
 
 augroup ColourColumnInInsertMode
     autocmd!
-    autocmd InsertEnter * set colorcolumn=80
+    autocmd InsertEnter *
+                \ if &background ==# 'light' |
+                \   highlight ColorColumn ctermbg=LightBlue guibg=LightGrey |
+                \ else |
+                \   highlight ColorColumn ctermbg=DarkBlue guibg=#1A1A1A |
+                \ endif |
+                \ exec 'set colorcolumn='.&textwidth
     autocmd InsertLeave * set colorcolumn=0
 augroup END
 
@@ -297,22 +347,13 @@ vmap <C-a> <Plug>IMAP_JumpForward
 
 " General Plugin Settings
 
+set modeline
 set autoindent
 set smartindent
 filetype plugin indent on
 syntax on
 
 highlight clear Conceal
-
-augroup SetColourColumnHighlighting
-    autocmd!
-    autocmd BufReadPost *
-                \ if &background ==# 'light' |
-                \   highlight ColorColumn ctermbg=LightBlue guibg=LightGrey |
-                \ else |
-                \   highlight ColorColumn ctermbg=DarkBlue guibg=#1A1A1A |
-                \ endif
-augroup END
 
 
 unlet cache_dir
