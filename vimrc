@@ -91,8 +91,6 @@ if !exists("loaded_vimrc")
     set shiftwidth=4
     set expandtab
 
-    set textwidth=80
-
     set nofoldenable
 endif
 
@@ -194,8 +192,11 @@ if exists("*strftime")
     nnoremap <silent> <leader>D :echomsg strftime("%a %d %b %R")<cr>
 endif
 
+nnoremap <silent> <leader>ec :edit ~/.when/calendar<cr>
+nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
+
 " TODO: restore cursor position after switching the code page
-nnoremap <silent> <leader>e :edit ++enc=cp437<cr>
+nnoremap <silent> <leader>ee :edit ++enc=cp437<cr>
 
 nnoremap <silent> <leader>f :<c-u>CtrlP<cr>
 
@@ -208,7 +209,7 @@ nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
 
 nnoremap <leader>s :%s/\v
 
-exec "nnoremap <leader>SS :source ".s:cache_dir."saved_sesion.vim<cr>"
+exec "nnoremap <leader>SS :source ".s:cache_dir."saved_session.vim<cr>"
 exec "nnoremap <leader>SW :mksession! ".s:cache_dir."saved_session.vim<cr>"
 
 nnoremap <silent> <leader>T :TlistToggle<cr>
@@ -255,7 +256,13 @@ set scrolloff=1
 
 set list
 set listchars=tab:»\ ,eol:\ ,extends:›,precedes:‹
-let &showbreak = '\'
+
+if has('gui_running')
+    let &showbreak = '↳'
+else
+    " Terminus doesn't approve cool arrows...
+    let &showbreak = '> '
+endif
 
 set laststatus=2
 set statusline=%<%f\ [%Y%H%M%R%W]%=%-14.((%l,%c%V)%)\ %P
