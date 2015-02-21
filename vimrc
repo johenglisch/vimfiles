@@ -107,6 +107,7 @@ set nottimeout
 
 set mouse=a
 set splitright
+set splitbelow
 set virtualedit=all
 set backspace=indent,eol,start
 
