@@ -255,8 +255,8 @@ set showmatch
 
 set scrolloff=1
 
+let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u203A,precedes:\u2039,trail:\uB7"
 set list
-set listchars=tab:»\ ,eol:\ ,extends:›,precedes:‹
 
 if has('gui_running')
     let &showbreak = '↳'
