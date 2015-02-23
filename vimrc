@@ -31,16 +31,11 @@ endif
 
 " PACKAGE MANAGEMENT
 
-" gui dialogues do weird things on windows so we have to turn
-" them off before all calls to confirm()
-if has("gui_running")
-    set guioptions=ci
-endif
-
 let has_vundle = 0
 if isdirectory(s:vundle_dir.'Vundle.vim')
     let has_vundle = 1
 elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
+    " ^^^ FIXME this confirm() isn't working on windows...
     if !isdirectory(s:vundle_dir)
         call mkdir(s:vundle_dir, 'p')
     endif
@@ -287,6 +282,8 @@ if has("gui_running")
     endif
 
     set mousehide
+
+    set guioptions=ci
 
     colorscheme jellybeans
     if has("gui_gtk2")
