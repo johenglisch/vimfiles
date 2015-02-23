@@ -176,10 +176,6 @@ nnoremap ? ?\v
 nnoremap Y y$
 vnoremap Y y$
 
-nnoremap <S-tab> ==
-" TODO: see if I can do this without dropping out of insert mode
-inoremap <S-tab> <esc>==a
-
 nnoremap <space> za
 nnoremap <backspace> zn
 
