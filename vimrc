@@ -31,6 +31,12 @@ endif
 
 " PACKAGE MANAGEMENT
 
+" gui dialogues do weird things on windows so we have to turn
+" them off before all calls to confirm()
+if has("gui_running")
+    set guioptions=ci
+endif
+
 let has_vundle = 0
 if isdirectory(s:vundle_dir.'Vundle.vim')
     let has_vundle = 1
@@ -284,7 +290,6 @@ if has("gui_running")
         set lines=35 columns=85
     endif
 
-    set guioptions=ci
     set mousehide
 
     colorscheme jellybeans
