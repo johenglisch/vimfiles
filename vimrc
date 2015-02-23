@@ -265,7 +265,7 @@ let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u203A,precedes:\u2039,trail:\u
 set list
 
 if has('gui_running')
-    let &showbreak = '↳'
+    let &showbreak = "\u21B3"
 else
     " Terminus doesn't approve cool arrows...
     let &showbreak = '> '
