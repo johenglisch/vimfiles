@@ -365,10 +365,6 @@ endif
 let g:tex_flavor = 'latex'
 let g:tex_conceal = 'abdmg'
 
-imap <C-a> <Plug>IMAP_JumpForward
-nmap <C-a> <Plug>IMAP_JumpForward
-vmap <C-a> <Plug>IMAP_JumpForward
-
 " General Plugin Settings
 
 set modeline
