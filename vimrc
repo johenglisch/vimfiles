@@ -207,6 +207,8 @@ nnoremap <silent> <leader>f :<c-u>CtrlP<cr>
 
 nnoremap <leader>h :nohlsearch<cr>
 
+nnoremap <leader>H :ToggleHighlighting<cr>
+
 nnoremap <silent> <leader>n :<c-u>CtrlPBuffer<cr>
 
 nnoremap <silent> <leader>r :Underline nr2char(getchar())<cr>
