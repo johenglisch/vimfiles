@@ -375,7 +375,13 @@ set modeline
 set autoindent
 set smartindent
 filetype plugin indent on
-syntax on
+
+syntax manual
+augroup SyntaxOnlyForCertainFiletypes
+    autocmd!
+    autocmd Filetype markdown setlocal syntax=ON
+    autocmd Filetype git-diff setlocal syntax=ON
+augroup END
 
 highlight clear Conceal
 
