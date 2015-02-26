@@ -385,6 +385,7 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd!
     autocmd Filetype markdown            setlocal syntax=ON
     autocmd Filetype git-diff,git-status setlocal syntax=ON
+    autocmd Filetype help                setlocal syntax=ON
 augroup END
 
 highlight clear Conceal
