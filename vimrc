@@ -72,6 +72,10 @@ if has_vundle == 1
     Plugin 'TaskList.vim'
 
     Plugin 'motemen/git-vim'
+    Plugin 'tpope/vim-leiningen'
+    Plugin 'tpope/vim-projectionist'
+    Plugin 'tpope/vim-dispatch'
+    Plugin 'tpope/vim-fireplace'
     Plugin 'PotatoesMaster/i3-vim-syntax'
     Plugin 'klen/python-mode'
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
