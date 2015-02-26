@@ -381,8 +381,8 @@ filetype plugin indent on
 syntax manual
 augroup SyntaxOnlyForCertainFiletypes
     autocmd!
-    autocmd Filetype markdown setlocal syntax=ON
-    autocmd Filetype git-diff setlocal syntax=ON
+    autocmd Filetype markdown            setlocal syntax=ON
+    autocmd Filetype git-diff,git-status setlocal syntax=ON
 augroup END
 
 highlight clear Conceal
