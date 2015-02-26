@@ -66,7 +66,7 @@ if has_vundle == 1
     Plugin 'molok/vim-vombato-colorscheme'
 
     Plugin 'mileszs/ack.vim'
-    Plugin 'bitc/vim-bad-whitespace'
+    Plugin 'DeleteTrailingWhitespace'
     Plugin 'kien/ctrlp.vim'
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
@@ -217,8 +217,8 @@ nnoremap <silent> <leader>vh :split $MYVIMRC<cr>
 nnoremap <silent> <leader>vv :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>vs :SourceVimrc<cr>
 
-nnoremap <leader>w :EraseBadWhitespace<cr>
-vnoremap <leader>w :EraseBadWhitespace<cr>
+nnoremap <leader>w :DeleteTrailingWhitespace<cr>
+vnoremap <leader>w :DeleteTrailingWhitespace<cr>
 
 nnoremap <leader>z zMzvzz
 
@@ -252,8 +252,13 @@ set showmatch
 
 set scrolloff=1
 
-let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u203A,precedes:\u2039,trail:\uB7"
+let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u203A,precedes:\u2039,trail:\u2592"
 set list
+augroup DontShowListCharsInInsertMode
+    autocmd!
+    autocmd InsertEnter * set nolist
+    autocmd InsertLeave * set list
+augroup END
 
 if has('gui_running')
     let &showbreak = "\u21B3"
