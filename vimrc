@@ -62,6 +62,7 @@ if has_vundle == 1
     Plugin 'candy.vim'
     Plugin 'nanotech/jellybeans.vim'
     Plugin 'seoul'
+    Plugin 'altercation/vim-colors-solarized'
     Plugin 'twilight'
     Plugin 'molok/vim-vombato-colorscheme'
 
@@ -294,7 +295,8 @@ if has("gui_running")
 
     set guioptions=ci
 
-    colorscheme jellybeans
+    set background=dark
+    colorscheme solarized
     if has("gui_gtk2")
         set guifont=Liberation\ Mono\ 10
     elseif has("x11")
