@@ -58,14 +58,18 @@ if has_vundle == 1
 
     Plugin 'gmarik/Vundle.vim'
 
+    "  88 colours
+    Plugin 'seoul'
+    " 256 colours
+    Plugin 'Lokaltog/vim-distinguished'
+    Plugin 'nanotech/jellybeans.vim'
+    Plugin 'xoria256.vim'
+    " gui colours
     Plugin 'adobe.vim'
     Plugin 'candy.vim'
-    Plugin 'nanotech/jellybeans.vim'
-    Plugin 'seoul'
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'twilight'
     Plugin 'molok/vim-vombato-colorscheme'
-    Plugin 'xoria256.vim'
 
     Plugin 'mileszs/ack.vim'
     Plugin 'DeleteTrailingWhitespace'
@@ -319,7 +323,7 @@ elseif &t_Co == 88
     colorscheme seoul
 elseif &t_Co == 256
     set background=dark
-    colorscheme xoria256
+    colorscheme jellybeans
 endif
 
 augroup ColourColumnInInsertMode
