@@ -1,22 +1,8 @@
-" Function: Move the current line downwards by (line2-line1) lines.
-function! s:MoveLineDownwards(line1, line2)
-    let destination = (a:line1 < a:line2) ? a:line2 : a:line1
-
-    let register = @@
-    exec 'normal! dd' . destination . 'Gp'
-    let @@ = register
+function! s:MoveLine(distance)
+    let dest = line('.') + a:distance 
+    let dest = (dest >= 0) ? dest : 0
+    let dest = (dest <= line('$')) ? dest : line('$')
+    exec 'move ' . dest
 endfunction
 
-" Function: Move the current line upwards by (line2-line1) lines.
-function! s:MoveLineUpwards(line1, line2)
-    let offset = (a:line1 < a:line2) ? (a:line2 - a:line1) : 0
-    let destination = (offset < a:line1 - 1) ? (a:line1 - 1 - offset) : 1
-
-    let register = @@
-    exec 'normal! dd' . destination . 'GP'
-    let @@ = register
-endfunction
-
-
-command! -count=1 MoveLineUpwards call s:MoveLineUpwards(<line1>, <line2>)
-command! -count=1 MoveLineDownwards call s:MoveLineDownwards(<line1>, <line2>)
+command! -nargs=1 MoveLine call s:MoveLine(<args>)

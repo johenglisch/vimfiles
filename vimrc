@@ -148,8 +148,8 @@ vnoremap H ^
 nnoremap L $
 vnoremap L $
 
-nnoremap <silent> - :MoveLineUpwards<cr>
-nnoremap <silent> + :MoveLineDownwards<cr>
+nnoremap <silent> - :<C-u>MoveLine (-(v:count1 + 1))<cr>
+nnoremap <silent> + :<C-u>MoveLine v:count1<cr>
 
 nnoremap Q gq
 vnoremap Q gq
