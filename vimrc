@@ -172,6 +172,11 @@ vnoremap ' #
 nnoremap # '
 vnoremap # '
 
+nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 nnoremap / /\v
 nnoremap ? ?\v
 
