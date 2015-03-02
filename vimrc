@@ -65,6 +65,7 @@ if has_vundle == 1
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'twilight'
     Plugin 'molok/vim-vombato-colorscheme'
+    Plugin 'xoria256.vim'
 
     Plugin 'mileszs/ack.vim'
     Plugin 'DeleteTrailingWhitespace'
@@ -313,9 +314,12 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h10:cANSI
     endif
-else
+elseif &t_Co == 88
     set background=dark
     colorscheme seoul
+elseif &t_Co == 256
+    set background=dark
+    colorscheme xoria256
 endif
 
 augroup ColourColumnInInsertMode
