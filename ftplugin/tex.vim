@@ -82,4 +82,4 @@ function! s:Tex_RemoveAuxiliaryFiles()
     endfor
 endfunction
 
-command! TexRemoveAuxiliaryFiles call s:Tex_RemoveAuxiliaryFiles()
+command! -buffer TexRemoveAuxiliaryFiles call s:Tex_RemoveAuxiliaryFiles()
