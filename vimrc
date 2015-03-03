@@ -162,8 +162,9 @@ nnoremap QQ gqq
 vnoremap QQ gqq
 
 nnoremap ö <C-w>
-nnoremap Ö :
-vnoremap Ö :
+
+nnoremap , :
+vnoremap , :
 
 noremap  ä }
 noremap  Ä <C-d>
@@ -188,12 +189,13 @@ nnoremap ? ?\v
 nnoremap Y y$
 vnoremap Y y$
 
-nnoremap <space> za
+" TODO: find out what to do about folding bindings...
+" nnoremap <space> za
 nnoremap <backspace> zn
 
 " Leader Key Bindings
 
-let mapleader = ','
+let mapleader = ' '
 let maplocalleader = '_'
 
 nnoremap <silent> <leader>/ :exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
