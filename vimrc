@@ -63,7 +63,6 @@ if has_vundle == 1
     " 256 colours
     Plugin 'Lokaltog/vim-distinguished'
     Plugin 'nanotech/jellybeans.vim'
-    Plugin 'xoria256.vim'
     " gui colours
     Plugin 'adobe.vim'
     Plugin 'candy.vim'
