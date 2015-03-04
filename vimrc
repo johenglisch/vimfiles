@@ -58,10 +58,14 @@ if has_vundle == 1
 
     Plugin 'gmarik/Vundle.vim'
 
+    "  88 colours
+    Plugin 'seoul'
+    " 256 colours
+    Plugin 'Lokaltog/vim-distinguished'
+    Plugin 'nanotech/jellybeans.vim'
+    " gui colours
     Plugin 'adobe.vim'
     Plugin 'candy.vim'
-    Plugin 'nanotech/jellybeans.vim'
-    Plugin 'seoul'
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'twilight'
     Plugin 'molok/vim-vombato-colorscheme'
@@ -96,6 +100,8 @@ if !exists("loaded_vimrc")
     set softtabstop=4
     set shiftwidth=4
     set expandtab
+
+    set nowrap
 
     set nofoldenable
 endif
@@ -134,8 +140,6 @@ onoremap <C-g> <Esc>
 inoremap <C-g> <Esc>
 cnoremap <C-g> <C-c>
 
-nnoremap ZU :w!<CR>
-
 nnoremap j gj
 vnoremap j gj
 nnoremap k gk
@@ -146,8 +150,8 @@ vnoremap H ^
 nnoremap L $
 vnoremap L $
 
-nnoremap <silent> - :MoveLineUpwards<cr>
-nnoremap <silent> + :MoveLineDownwards<cr>
+nnoremap <silent> - :<C-u>MoveLine (-(v:count1 + 1))<cr>
+nnoremap <silent> + :<C-u>MoveLine v:count1<cr>
 
 nnoremap Q gq
 vnoremap Q gq
@@ -155,8 +159,9 @@ nnoremap QQ gqq
 vnoremap QQ gqq
 
 nnoremap ö <C-w>
-nnoremap Ö :
-vnoremap Ö :
+
+nnoremap , :
+vnoremap , :
 
 noremap  ä }
 noremap  Ä <C-d>
@@ -170,62 +175,57 @@ vnoremap ' #
 nnoremap # '
 vnoremap # '
 
+nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 nnoremap / /\v
+vnoremap / /\v
 nnoremap ? ?\v
+vnoremap ? ?\v
 
 nnoremap Y y$
 vnoremap Y y$
 
-nnoremap <space> za
-nnoremap <backspace> zn
-
 " Leader Key Bindings
 
-let mapleader = ','
+let mapleader = ' '
 let maplocalleader = '_'
-
-nnoremap <silent> <leader>/ :exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-
-nnoremap <silent> <leader>b :call ToggleBackground()<cr>
-nnoremap <silent> <leader>c :set invcursorline invcursorcolumn<cr>
 
 nnoremap <leader>d :cd %:h<cr>
 
-if exists("*strftime")
-    nnoremap <silent> <leader>D :echomsg strftime("%a %d %b %R")<cr>
-endif
-
+nnoremap <silent> <leader>ee :Vexec 'edit'<cr>
+" TODO: restore cursor position after switching the code page
+nnoremap <silent> <leader>ed :Vexec 'edit ++enc=cp437'<cr>
 nnoremap <silent> <leader>ec :edit ~/.when/calendar<cr>
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 
-" TODO: restore cursor position after switching the code page
-nnoremap <silent> <leader>ee :edit ++enc=cp437<cr>
-
-nnoremap <silent> <leader>f :<c-u>CtrlP<cr>
-
-nnoremap <leader>h :nohlsearch<cr>
-
-nnoremap <silent> <leader>n :<c-u>CtrlPBuffer<cr>
-
-nnoremap <silent> <leader>r :Underline nr2char(getchar())<cr>
-nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
+nnoremap <leader>ve :edit $MYVIMRC<cr>
+nnoremap <leader>vh :split $MYVIMRC<cr>
+nnoremap <leader>vv :vsplit $MYVIMRC<cr>
+nnoremap <leader>vs :Vexec "source $MYVIMRC"<cr>
 
 nnoremap <leader>s :%s/\v
-
-exec "nnoremap <leader>SS :source ".s:cache_dir."saved_session.vim<cr>"
-exec "nnoremap <leader>SW :mksession! ".s:cache_dir."saved_session.vim<cr>"
-
-nnoremap <silent> <leader>T :TlistToggle<cr>
-
-nnoremap <silent> <leader>ve :edit $MYVIMRC<cr>
-nnoremap <silent> <leader>vh :split $MYVIMRC<cr>
-nnoremap <silent> <leader>vv :vsplit $MYVIMRC<cr>
-nnoremap <silent> <leader>vs :SourceVimrc<cr>
-
-nnoremap <leader>w :DeleteTrailingWhitespace<cr>
-vnoremap <leader>w :DeleteTrailingWhitespace<cr>
+vnoremap <leader>s :s/\v
+nnoremap <leader>/ :exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>h :nohlsearch<cr>
 
 nnoremap <leader>z zMzvzz
+
+nnoremap <leader>B :ToggleBackground<cr>
+nnoremap <leader>H :ToggleHighlighting<cr>
+
+nnoremap <leader>r :Underline nr2char(getchar())<cr>
+nnoremap <leader>R :Overline nr2char(getchar())<cr>
+
+nnoremap <leader>S :DeleteTrailingWhitespace<cr>
+vnoremap <leader>S :DeleteTrailingWhitespace<cr>
+
+nnoremap <leader>T :TlistToggle<cr>
+
+nnoremap <leader>f :<c-u>CtrlP<cr>
+nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
 " Muscle Memory Training Facilities
 
@@ -304,9 +304,12 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h10:cANSI
     endif
-else
+elseif &t_Co == 88
     set background=dark
     colorscheme seoul
+elseif &t_Co == 256
+    set background=dark
+    colorscheme jellybeans
 endif
 
 augroup ColourColumnInInsertMode
@@ -375,7 +378,14 @@ set modeline
 set autoindent
 set smartindent
 filetype plugin indent on
-syntax on
+
+syntax manual
+augroup SyntaxOnlyForCertainFiletypes
+    autocmd!
+    autocmd Filetype markdown            setlocal syntax=ON
+    autocmd Filetype git-diff,git-status setlocal syntax=ON
+    autocmd Filetype help                setlocal syntax=help
+augroup END
 
 highlight clear Conceal
 
