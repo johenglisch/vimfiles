@@ -140,8 +140,6 @@ onoremap <C-g> <Esc>
 inoremap <C-g> <Esc>
 cnoremap <C-g> <C-c>
 
-nnoremap ZU :w!<CR>
-
 nnoremap j gj
 vnoremap j gj
 nnoremap k gk
@@ -183,64 +181,52 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 nnoremap / /\v
+vnoremap / /\v
 nnoremap ? ?\v
+vnoremap ? ?\v
 
 nnoremap Y y$
 vnoremap Y y$
-
-" TODO: find out what to do about folding bindings...
-" nnoremap <space> za
-nnoremap <backspace> zn
 
 " Leader Key Bindings
 
 let mapleader = ' '
 let maplocalleader = '_'
 
-nnoremap <silent> <leader>/ :exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-
-nnoremap <silent> <leader>b :call ToggleBackground()<cr>
-nnoremap <silent> <leader>c :set invcursorline invcursorcolumn<cr>
-
 nnoremap <leader>d :cd %:h<cr>
 
-if exists("*strftime")
-    nnoremap <silent> <leader>D :echomsg strftime("%a %d %b %R")<cr>
-endif
-
+nnoremap <silent> <leader>ee :edit<cr>
+" TODO: restore cursor position after switching the code page
+nnoremap <silent> <leader>ed :edit ++enc=cp437<cr>
 nnoremap <silent> <leader>ec :edit ~/.when/calendar<cr>
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 
-" TODO: restore cursor position after switching the code page
-nnoremap <silent> <leader>ee :edit ++enc=cp437<cr>
-
-nnoremap <silent> <leader>f :<c-u>CtrlP<cr>
-
-nnoremap <leader>h :nohlsearch<cr>
-
-nnoremap <leader>H :ToggleHighlighting<cr>
-
-nnoremap <silent> <leader>n :<c-u>CtrlPBuffer<cr>
-
-nnoremap <silent> <leader>r :Underline nr2char(getchar())<cr>
-nnoremap <silent> <leader>R :Overline nr2char(getchar())<cr>
+nnoremap <leader>ve :edit $MYVIMRC<cr>
+nnoremap <leader>vh :split $MYVIMRC<cr>
+nnoremap <leader>vv :vsplit $MYVIMRC<cr>
+nnoremap <leader>vs :SourceVimrc<cr>
 
 nnoremap <leader>s :%s/\v
-
-exec "nnoremap <leader>SS :source ".s:cache_dir."saved_session.vim<cr>"
-exec "nnoremap <leader>SW :mksession! ".s:cache_dir."saved_session.vim<cr>"
-
-nnoremap <silent> <leader>T :TlistToggle<cr>
-
-nnoremap <silent> <leader>ve :edit $MYVIMRC<cr>
-nnoremap <silent> <leader>vh :split $MYVIMRC<cr>
-nnoremap <silent> <leader>vv :vsplit $MYVIMRC<cr>
-nnoremap <silent> <leader>vs :SourceVimrc<cr>
-
-nnoremap <leader>w :DeleteTrailingWhitespace<cr>
-vnoremap <leader>w :DeleteTrailingWhitespace<cr>
+vnoremap <leader>s :s/\v
+nnoremap <leader>/ :exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>h :nohlsearch<cr>
 
 nnoremap <leader>z zMzvzz
+
+" TODO Create :ToggleBackground command.
+nnoremap <leader>B :call ToggleBackground()<cr>
+nnoremap <leader>H :ToggleHighlighting<cr>
+
+nnoremap <leader>r :Underline nr2char(getchar())<cr>
+nnoremap <leader>R :Overline nr2char(getchar())<cr>
+
+nnoremap <leader>S :DeleteTrailingWhitespace<cr>
+vnoremap <leader>S :DeleteTrailingWhitespace<cr>
+
+nnoremap <leader>T :TlistToggle<cr>
+
+nnoremap <leader>f :<c-u>CtrlP<cr>
+nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
 " Muscle Memory Training Facilities
 
