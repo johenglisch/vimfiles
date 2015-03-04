@@ -1,4 +1,4 @@
-function! g:ToggleBackground()
+function! s:ToggleBackground()
     if &background ==# 'light'
         set background=dark
     else
@@ -6,3 +6,5 @@ function! g:ToggleBackground()
     endif
     echo 'set background=' &background
 endfunction
+
+command! ToggleBackground call s:ToggleBackground()

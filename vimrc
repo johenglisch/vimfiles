@@ -213,8 +213,7 @@ nnoremap <leader>h :nohlsearch<cr>
 
 nnoremap <leader>z zMzvzz
 
-" TODO Create :ToggleBackground command.
-nnoremap <leader>B :call ToggleBackground()<cr>
+nnoremap <leader>B :ToggleBackground<cr>
 nnoremap <leader>H :ToggleHighlighting<cr>
 
 nnoremap <leader>r :Underline nr2char(getchar())<cr>
