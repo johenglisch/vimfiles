@@ -195,16 +195,16 @@ let maplocalleader = '_'
 
 nnoremap <leader>d :cd %:h<cr>
 
-nnoremap <silent> <leader>ee :edit<cr>
+nnoremap <silent> <leader>ee :Vexec 'edit'<cr>
 " TODO: restore cursor position after switching the code page
-nnoremap <silent> <leader>ed :edit ++enc=cp437<cr>
+nnoremap <silent> <leader>ed :Vexec 'edit ++enc=cp437'<cr>
 nnoremap <silent> <leader>ec :edit ~/.when/calendar<cr>
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 
 nnoremap <leader>ve :edit $MYVIMRC<cr>
 nnoremap <leader>vh :split $MYVIMRC<cr>
 nnoremap <leader>vv :vsplit $MYVIMRC<cr>
-nnoremap <leader>vs :SourceVimrc<cr>
+nnoremap <leader>vs :Vexec "source $MYVIMRC"<cr>
 
 nnoremap <leader>s :%s/\v
 vnoremap <leader>s :s/\v
