@@ -12,6 +12,24 @@ function! s:ToggleCheckbox()
     endif
 endfunction
 
-command! -buffer MarkdownToggleCheckbox call s:ToggleCheckbox()
+function! s:ToggleHeading()
+    let line = getline('.')
+    if line =~ "^###"
+        substitute/\v^###\s*(.{-})(\s*###)?$/\1/
+    elseif line =~ "^##"
+        substitute/\v^##\s*(.{-})(\s*##)?$/### \1 ###/e
+    elseif line =~ "^#"
+        substitute/\v^#\s*(.{-})(\s*#)?$/## \1 ##/e
+    else
+        substitute/\v^(.*)$/# \1 #/
+    endif
+endfunction
 
+
+command! -buffer MarkdownToggleCheckbox call s:ToggleCheckbox()
+command! -buffer MarkdownToggleHeading  call s:ToggleHeading()
+
+
+" TODO nicer keybindings?
 nnoremap <buffer> <silent> <localleader>: :MarkdownToggleCheckbox<cr>
+nnoremap <buffer> <silent> <localleader>; :MarkdownToggleHeading<cr>
