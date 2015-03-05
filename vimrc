@@ -75,6 +75,7 @@ if has_vundle == 1
     Plugin 'kien/ctrlp.vim'
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
+    Plugin 'scrooloose/syntastic'
 
     Plugin 'motemen/git-vim'
     Plugin 'tpope/vim-leiningen'
@@ -188,10 +189,12 @@ vnoremap ? ?\v
 nnoremap Y y$
 vnoremap Y y$
 
+nnoremap <backspace> :SyntasticCheck<cr>
+
 " Leader Key Bindings
 
 let mapleader = ' '
-let maplocalleader = '_'
+let maplocalleader = 'Ö'
 
 nnoremap <leader>d :cd %:h<cr>
 
@@ -371,6 +374,16 @@ endif
 let g:tex_flavor = 'latex'
 let g:tex_conceal = 'abdmg'
 
+" syntastic
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_mode_map = {
+            \ "mode":              "passive",
+            \ "active_filetypes":  [],
+            \ "passive_filetypes": [] }
+
+set statusline+=\ %{SyntasticStatuslineFlag()}
+
 " General Plugin Settings
 
 set modeline
@@ -384,6 +397,7 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd Filetype markdown            setlocal syntax=ON
     autocmd Filetype git-diff,git-status setlocal syntax=ON
     autocmd Filetype help                setlocal syntax=help
+    autocmd Filetype tex                 setlocal syntax=ON
 augroup END
 
 highlight clear Conceal
