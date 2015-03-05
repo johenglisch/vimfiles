@@ -36,6 +36,7 @@ nnoremap <buffer> <cr> :call Tex_RunLaTeX()<cr>
 nnoremap <buffer> <localleader>K :TexRemoveAuxiliaryFiles<cr>
 nnoremap <buffer> <localleader>L :call Tex_RunLaTeX()<cr>
 nnoremap <buffer> <localleader>M :call Tex_ViewLaTeX()<cr>
+nnoremap <buffer> <localleader>N A% TODO<space>
 
 
 " COMPILATION OPTIONS
