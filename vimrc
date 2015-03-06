@@ -5,42 +5,45 @@ endif
 
 " FOLDERS
 
+function! s:MkDir(dirname)
+    if !isdirectory(a:dirname)
+        call mkdir(a:dirname, 'p')
+    endif
+endfunction
+
 if has('unix')
-    let s:cache_dir = escape(expand('~/.cache/vim/'), " \\")
-    let s:vundle_dir = escape(expand('~/.vundle/'), " \\")
+    let s:cache_dir  = expand('~/.cache/vim/')
+    let s:vundle_dir = expand('~/.vundle/')
 else
-    let s:cache_dir = escape(expand('~/_cache/vim/'), " \\")
-    let s:vundle_dir = escape(expand('~/_vundle/'), " \\")
+    let s:cache_dir  = expand('~/_cache/vim/')
+    let s:vundle_dir = expand('~/_vundle/')
 endif
 
-exec 'set backupdir='.s:cache_dir.'backup//'
-exec 'set directory='.s:cache_dir.'swap//'
-exec 'set undodir='.s:cache_dir.'undo//'
-let g:ctrlp_cache_dir = s:cache_dir.'ctrlp/'
+let s:backup_dir      = s:cache_dir . 'backup/'
+let s:swap_dir        = s:cache_dir . 'swap/'
+let s:undo_dir        = s:cache_dir . 'undo/'
+let s:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
 
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), 'p')
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), 'p')
-endif
-if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), 'p')
-endif
+call s:MkDir(s:backup_dir)
+call s:MkDir(s:swap_dir)
+call s:MkDir(s:undo_dir)
+
+exec 'set backupdir=' . fnameescape(s:backup_dir) . '/'
+exec 'set directory=' . fnameescape(s:swap_dir)   . '/'
+exec 'set undodir='   . fnameescape(s:undo_dir)   . '/'
 
 
 " PACKAGE MANAGEMENT
 
 let has_vundle = 0
-if isdirectory(s:vundle_dir.'Vundle.vim')
+if isdirectory(s:vundle_dir . 'Vundle.vim')
     let has_vundle = 1
 elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
     " ^^^ FIXME this confirm() isn't working on windows...
-    if !isdirectory(s:vundle_dir)
-        call mkdir(s:vundle_dir, 'p')
-    endif
+    call s:MkDir(s:vundle_dir)
 
-    let s:msg = system('git clone https://github.com/gmarik/Vundle.vim.git ' . shellescape(s:vundle_dir.'Vundle.vim'))
+    let s:msg = system('git clone https://github.com/gmarik/Vundle.vim.git '
+                \ . '"' . s:vundle_dir . 'Vundle.vim"')
     if v:shell_error == 0
         echomsg "Vundle installation successful"
         let has_vundle = 1
@@ -53,7 +56,7 @@ endif
 if has_vundle == 1
     filetype off
 
-    exec "set runtimepath+=".s:vundle_dir."Vundle.vim"
+    exec "set runtimepath+=" . fnameescape(s:vundle_dir . "Vundle.vim")
     call vundle#begin(s:vundle_dir)
 
     Plugin 'gmarik/Vundle.vim'
