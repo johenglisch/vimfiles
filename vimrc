@@ -6,11 +6,11 @@ endif
 " FOLDERS
 
 if has('unix')
-    let s:cache_dir = expand('~/.cache/vim/')
-    let s:vundle_dir = expand('~/.vundle/')
+    let s:cache_dir = escape(expand('~/.cache/vim/'), " \\")
+    let s:vundle_dir = escape(expand('~/.vundle/'), " \\")
 else
-    let s:cache_dir = expand('~/_cache/vim/')
-    let s:vundle_dir = expand('~/_vundle/')
+    let s:cache_dir = escape(expand('~/_cache/vim/'), " \\")
+    let s:vundle_dir = escape(expand('~/_vundle/'), " \\")
 endif
 
 exec 'set backupdir='.s:cache_dir.'backup//'
