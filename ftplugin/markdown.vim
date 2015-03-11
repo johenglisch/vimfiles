@@ -31,5 +31,5 @@ command! -buffer MarkdownToggleHeading  call s:ToggleHeading()
 
 
 " TODO nicer keybindings?
-nnoremap <buffer> <silent> <localleader>: :MarkdownToggleCheckbox<cr>
-nnoremap <buffer> <silent> <localleader>; :MarkdownToggleHeading<cr>
+nnoremap <buffer> <silent> <localleader>O :MarkdownToggleCheckbox<cr>
+nnoremap <buffer> <silent> <localleader>H :MarkdownToggleHeading<cr>
