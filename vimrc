@@ -226,8 +226,8 @@ nnoremap <leader>H :ToggleHighlighting<cr>
 nnoremap <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <leader>R :Overline nr2char(getchar())<cr>
 
-nnoremap <leader>S :DeleteTrailingWhitespace<cr>
-vnoremap <leader>S :DeleteTrailingWhitespace<cr>
+nnoremap <leader>w :DeleteTrailingWhitespace<cr>
+vnoremap <leader>w :DeleteTrailingWhitespace<cr>
 
 nnoremap <leader>T :TlistToggle<cr>
 
