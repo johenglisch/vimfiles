@@ -316,7 +316,7 @@ elseif &t_Co == 88
     colorscheme seoul
 elseif &t_Co == 256
     set background=dark
-    colorscheme jellybeans
+    colorscheme apprentice
 endif
 
 augroup ColourColumnInInsertMode
