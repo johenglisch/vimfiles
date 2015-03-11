@@ -80,6 +80,7 @@ if has_vundle == 1
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
     Plugin 'scrooloose/syntastic'
+    Plugin 'SirVer/ultisnips'
 
     Plugin 'motemen/git-vim'
     Plugin 'tpope/vim-leiningen'
@@ -387,6 +388,12 @@ let g:syntastic_mode_map = {
             \ "passive_filetypes": [] }
 
 set statusline+=\ %{SyntasticStatuslineFlag()}
+
+" ultisnips
+
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
 
 " General Plugin Settings
 
