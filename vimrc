@@ -22,7 +22,8 @@ endif
 let s:backup_dir      = s:cache_dir . 'backup/'
 let s:swap_dir        = s:cache_dir . 'swap/'
 let s:undo_dir        = s:cache_dir . 'undo/'
-let s:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
+let g:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
+let g:classpath_cache = s:cache_dir . 'classpath/'
 
 call s:MkDir(s:backup_dir)
 call s:MkDir(s:swap_dir)
