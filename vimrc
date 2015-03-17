@@ -82,6 +82,7 @@ if has_vundle == 1
     Plugin 'TaskList.vim'
     Plugin 'scrooloose/syntastic'
     Plugin 'SirVer/ultisnips'
+    Plugin 'Align'
 
     Plugin 'motemen/git-vim'
     Plugin 'tpope/vim-leiningen'
