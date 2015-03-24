@@ -65,18 +65,12 @@ if has_vundle == 1
     "  88 colours
     Plugin 'seoul'
     " 256 colours
-    Plugin 'Lokaltog/vim-distinguished'
-    Plugin 'nanotech/jellybeans.vim'
     Plugin 'romainl/Apprentice'
     " gui colours
-    Plugin 'adobe.vim'
-    Plugin 'candy.vim'
     Plugin 'altercation/vim-colors-solarized'
-    Plugin 'twilight'
     Plugin 'molok/vim-vombato-colorscheme'
 
     Plugin 'mileszs/ack.vim'
-    Plugin 'DeleteTrailingWhitespace'
     Plugin 'kien/ctrlp.vim'
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
@@ -85,11 +79,6 @@ if has_vundle == 1
     Plugin 'Align'
 
     Plugin 'motemen/git-vim'
-    Plugin 'tpope/vim-leiningen'
-    Plugin 'tpope/vim-projectionist'
-    Plugin 'tpope/vim-dispatch'
-    Plugin 'tpope/vim-fireplace'
-    Plugin 'PotatoesMaster/i3-vim-syntax'
     Plugin 'klen/python-mode'
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
@@ -124,8 +113,6 @@ set incsearch
 set hlsearch
 
 set showcmd
-set notimeout
-set nottimeout
 
 set mouse=a
 set splitright
@@ -233,8 +220,8 @@ nnoremap <leader>H :ToggleHighlighting<cr>
 nnoremap <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <leader>R :Overline nr2char(getchar())<cr>
 
-nnoremap <leader>w :DeleteTrailingWhitespace<cr>
-vnoremap <leader>w :DeleteTrailingWhitespace<cr>
+nnoremap <leader>w :%s/\s\+$//e<cr><C-o>
+vnoremap <leader>w :s/\s\+$//e<cr>
 
 nnoremap <leader>T :TlistToggle<cr>
 
