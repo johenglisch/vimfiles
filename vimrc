@@ -172,7 +172,8 @@ vnoremap ' #
 nnoremap # '
 vnoremap # '
 
-nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+nnoremap <silent> * :let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
+nnoremap <silent> * :let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -220,7 +221,7 @@ nnoremap <leader>H :ToggleHighlighting<cr>
 nnoremap <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <leader>R :Overline nr2char(getchar())<cr>
 
-nnoremap <leader>w :%s/\s\+$//e<cr><C-o>
+nnoremap <leader>w :let b:saved_view = winsaveview()<cr>:%s/\s\+$//e<cr>:call winrestview(b:saved_view)<cr>
 vnoremap <leader>w :s/\s\+$//e<cr>
 
 nnoremap <leader>T :TlistToggle<cr>
