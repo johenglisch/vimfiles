@@ -109,6 +109,8 @@ if !exists("loaded_vimrc")
     set shiftwidth=4
     set expandtab
 
+    set textwidth=80
+    set formatoptions=q
     set nowrap
 
     set nofoldenable
