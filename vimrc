@@ -99,8 +99,14 @@ if !exists("loaded_vimrc")
     set expandtab
 
     set textwidth=80
-    set formatoptions=q
     set nowrap
+
+    " For some reason filetype plugins love to override 'formatoptions',
+    " so I have to apply some force here...
+    augroup ForceFormatOptions
+        autocmd!
+        autocmd BufReadPost * set formatoptions=rqnl1
+    augroup END
 
     set nofoldenable
 endif
