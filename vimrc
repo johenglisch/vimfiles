@@ -322,13 +322,7 @@ endif
 
 augroup ColourColumnInInsertMode
     autocmd!
-    autocmd InsertEnter *
-                \ if &background ==# 'light' |
-                \   highlight ColorColumn ctermbg=LightBlue guibg=LightGrey |
-                \ else |
-                \   highlight ColorColumn ctermbg=DarkBlue guibg=#1A1A1A |
-                \ endif |
-                \ exec 'set colorcolumn='.&textwidth
+    autocmd InsertEnter * exec 'set colorcolumn='.&textwidth
     autocmd InsertLeave * set colorcolumn=0
 augroup END
 
