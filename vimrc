@@ -102,10 +102,10 @@ if !exists("loaded_vimrc")
     set nowrap
 
     " For some reason filetype plugins love to override 'formatoptions',
-    " so I have to apply some force here...
+    " so I have to apply brute force here... (-_-)"
     augroup ForceFormatOptions
         autocmd!
-        autocmd BufReadPost * set formatoptions=rqnl1
+        autocmd BufEnter * set formatoptions=rqnl1
     augroup END
 
     set nofoldenable
