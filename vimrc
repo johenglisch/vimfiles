@@ -306,7 +306,7 @@ if has("gui_running")
     set guioptions=ci
 
     set background=dark
-    colorscheme solarized
+    silent! colorscheme solarized
     if has("gui_gtk2")
         set guifont=Liberation\ Mono\ 10
     elseif has("x11")
@@ -316,10 +316,10 @@ if has("gui_running")
     endif
 elseif &t_Co == 88
     set background=dark
-    colorscheme seoul
+    silent! colorscheme seoul
 elseif &t_Co == 256
     set background=dark
-    colorscheme apprentice
+    silent! colorscheme apprentice
 endif
 
 augroup ColourColumnInInsertMode
@@ -384,7 +384,9 @@ let g:syntastic_mode_map = {
             \ "active_filetypes":  [],
             \ "passive_filetypes": [] }
 
-set statusline+=\ %{SyntasticStatuslineFlag()}
+if exists('*SyntasticStatuslineFlag')
+    set statusline+=\ %{SyntasticStatuslineFlag()}
+endif
 
 " General Plugin Settings
 
