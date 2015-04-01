@@ -386,12 +386,6 @@ let g:syntastic_mode_map = {
 
 set statusline+=\ %{SyntasticStatuslineFlag()}
 
-" ultisnips
-
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
-
 " General Plugin Settings
 
 set modeline
