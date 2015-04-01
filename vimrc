@@ -75,7 +75,9 @@ if has_vundle == 1
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
     Plugin 'scrooloose/syntastic'
-    Plugin 'SirVer/ultisnips'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'marcweber/vim-addon-mw-utils'
+    Plugin 'garbas/vim-snipmate'
     Plugin 'Align'
 
     Plugin 'motemen/git-vim'
