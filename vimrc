@@ -78,7 +78,6 @@ if has_vundle == 1
     Plugin 'tomtom/tlib_vim'
     Plugin 'marcweber/vim-addon-mw-utils'
     Plugin 'garbas/vim-snipmate'
-    Plugin 'Align'
 
     Plugin 'motemen/git-vim'
     Plugin 'klen/python-mode'
