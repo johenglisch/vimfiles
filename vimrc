@@ -384,9 +384,7 @@ let g:syntastic_mode_map = {
             \ "active_filetypes":  [],
             \ "passive_filetypes": [] }
 
-if exists('*SyntasticStatuslineFlag')
-    set statusline+=\ %{SyntasticStatuslineFlag()}
-endif
+set statusline+=\ %{SyntasticStatuslineFlag()}
 
 " General Plugin Settings
 
