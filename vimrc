@@ -13,10 +13,8 @@ endfunction
 
 if has('unix')
     let s:cache_dir  = expand('~/.cache/vim/')
-    let s:vundle_dir = expand('~/.vundle/')
 else
     let s:cache_dir  = expand('~/_cache/vim/')
-    let s:vundle_dir = expand('~/_vundle/')
 endif
 
 let s:backup_dir      = s:cache_dir . 'backup/'
@@ -24,6 +22,7 @@ let s:swap_dir        = s:cache_dir . 'swap/'
 let s:undo_dir        = s:cache_dir . 'undo/'
 let g:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
 let g:classpath_cache = s:cache_dir . 'classpath/'
+let s:vundle_dir      = s:cache_dir . 'vundle/'
 
 call s:MkDir(s:backup_dir)
 call s:MkDir(s:swap_dir)
