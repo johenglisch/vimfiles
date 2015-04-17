@@ -304,7 +304,6 @@ if has("gui_running")
 
     set guioptions=ci
 
-    set background=dark
     silent! colorscheme solarized
     if has("gui_gtk2")
         set guifont=Liberation\ Mono\ 10
@@ -317,7 +316,6 @@ elseif &t_Co == 88
     set background=dark
     silent! colorscheme seoul
 elseif &t_Co == 256
-    set background=dark
     silent! colorscheme solarized
 endif
 
