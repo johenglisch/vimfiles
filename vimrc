@@ -319,7 +319,7 @@ elseif &t_Co == 88
     silent! colorscheme seoul
 elseif &t_Co == 256
     set background=dark
-    silent! colorscheme apprentice
+    silent! colorscheme solarized
 endif
 
 augroup ColourColumnInInsertMode
