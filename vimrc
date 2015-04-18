@@ -13,10 +13,8 @@ endfunction
 
 if has('unix')
     let s:cache_dir  = expand('~/.cache/vim/')
-    let s:vundle_dir = expand('~/.vundle/')
 else
     let s:cache_dir  = expand('~/_cache/vim/')
-    let s:vundle_dir = expand('~/_vundle/')
 endif
 
 let s:backup_dir      = s:cache_dir . 'backup/'
@@ -24,6 +22,7 @@ let s:swap_dir        = s:cache_dir . 'swap/'
 let s:undo_dir        = s:cache_dir . 'undo/'
 let g:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
 let g:classpath_cache = s:cache_dir . 'classpath/'
+let s:vundle_dir      = s:cache_dir . 'vundle/'
 
 call s:MkDir(s:backup_dir)
 call s:MkDir(s:swap_dir)
@@ -308,7 +307,6 @@ if has("gui_running")
 
     set guioptions=ci
 
-    set background=dark
     silent! colorscheme solarized
     if has("gui_gtk2")
         set guifont=Liberation\ Mono\ 10
@@ -321,8 +319,7 @@ elseif &t_Co == 88
     set background=dark
     silent! colorscheme seoul
 elseif &t_Co == 256
-    set background=dark
-    silent! colorscheme apprentice
+    silent! colorscheme solarized
 endif
 
 augroup ColourColumnInInsertMode
@@ -357,6 +354,7 @@ let g:ackprg='ag --vimgrep'
 " Python-mode
 
 let g:pymode_options = 0
+let g:pymode_trim_whitespaces = 0
 
 let g:pymode_syntax = 0
 let python_no_number_highlight = 1
@@ -387,9 +385,7 @@ let g:syntastic_mode_map = {
             \ "active_filetypes":  [],
             \ "passive_filetypes": [] }
 
-if exists('*SyntasticStatuslineFlag')
-    set statusline+=\ %{SyntasticStatuslineFlag()}
-endif
+set statusline+=\ %{SyntasticStatuslineFlag()}
 
 " General Plugin Settings
 

@@ -53,8 +53,8 @@ if has('win32')
     let g:Tex_ViewRule_dvi = "C:/Program Files/MiKTeX 2.9/miktex/bin/x64/yap.exe $*.pdf"
     let g:Tex_ViewRule_pdf = "C:/Program Files (x86)/SumatraPDF/SumatraPDF.exe $*.pdf"
 else
-    let g:Tex_ViewRule_dvi = "okular $*.dvi 2>/dev/null >/dev/null"
-    let g:Tex_ViewRule_pdf = "okular $*.pdf 2>/dev/null >/dev/null"
+    let g:Tex_ViewRule_dvi = $PDFVIEWER . " $*.dvi 2>/dev/null >/dev/null"
+    let g:Tex_ViewRule_pdf = $PDFVIEWER . " $*.pdf 2>/dev/null >/dev/null"
 endif
 
 
