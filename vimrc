@@ -147,23 +147,17 @@ onoremap <C-g> <Esc>
 inoremap <C-g> <Esc>
 cnoremap <C-g> <C-c>
 
-nnoremap j gj
-vnoremap j gj
-nnoremap k gk
-vnoremap k gk
+noremap j gj
+noremap k gk
 
-nnoremap H ^
-vnoremap H ^
-nnoremap L $
-vnoremap L $
+noremap H ^
+noremap L $
 
 nnoremap <silent> - :<C-u>MoveLine (-(v:count1 + 1))<cr>
 nnoremap <silent> + :<C-u>MoveLine v:count1<cr>
 
-nnoremap Q gq
-vnoremap Q gq
-nnoremap QQ gqq
-vnoremap QQ gqq
+noremap Q gq
+noremap QQ gqq
 
 nnoremap ö <C-w>
 
@@ -174,27 +168,21 @@ noremap  ä }
 noremap  Ä <C-d>
 noremap  ü {
 noremap  Ü <C-u>
-nnoremap ´ @
-vnoremap ´ @
+noremap ´ @
 
-nnoremap ' #
-vnoremap ' #
-nnoremap # '
-vnoremap # '
+noremap ' #
+noremap # '
 
 nnoremap <silent> * :let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 nnoremap <silent> * :let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 
-nnoremap n nzzzv
-nnoremap N Nzzzv
+noremap n nzzzv
+noremap N Nzzzv
 
-nnoremap / /\v
-vnoremap / /\v
-nnoremap ? ?\v
-vnoremap ? ?\v
+noremap / /\v
+noremap ? ?\v
 
-nnoremap Y y$
-vnoremap Y y$
+noremap Y y$
 
 nnoremap <backspace> :SyntasticCheck<cr>
 
