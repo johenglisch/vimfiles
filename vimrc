@@ -70,6 +70,7 @@ if has_vundle == 1
     Plugin 'molok/vim-vombato-colorscheme'
 
     Plugin 'mileszs/ack.vim'
+    Plugin 'Align'
     Plugin 'kien/ctrlp.vim'
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
