@@ -79,7 +79,7 @@ if has_vundle == 1
     Plugin 'marcweber/vim-addon-mw-utils'
     Plugin 'garbas/vim-snipmate'
 
-    Plugin 'motemen/git-vim'
+    Plugin 'tpope/vim-fugitive'
     Plugin 'klen/python-mode'
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
