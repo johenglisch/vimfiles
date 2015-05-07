@@ -214,6 +214,7 @@ nnoremap <leader>z zMzvzz
 nnoremap <leader>c "+
 vnoremap <leader>c "+
 
+nnoremap <leader>n :set invrelativenumber<cr>
 nnoremap <leader>B :ToggleBackground<cr>
 nnoremap <leader>H :ToggleHighlighting<cr>
 
