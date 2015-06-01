@@ -312,11 +312,11 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h10:cANSI
     endif
-elseif &t_Co == 88
+elseif $TERM =~? '.*256color.*'
+    silent! colorscheme solarized
+elseif $TERM =~? '.*rxvt.*'
     set background=dark
     silent! colorscheme seoul
-elseif &t_Co == 256
-    silent! colorscheme solarized
 endif
 
 augroup ColourColumnInInsertMode
