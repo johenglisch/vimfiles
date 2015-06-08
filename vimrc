@@ -218,7 +218,7 @@ nnoremap <leader>n :set invrelativenumber<cr>
 nnoremap <leader>B :ToggleBackground<cr>
 nnoremap <leader>H :ToggleHighlighting<cr>
 
-nnoremap <leader>r :Underline nr2char(getchar())<cr>
+nnoremap <leader>r :Underline nr2char(getchar())<cr>j
 nnoremap <leader>R :Overline nr2char(getchar())<cr>
 
 nnoremap <leader>w :let b:saved_view = winsaveview()<cr>:%s/\s\+$//e<cr>:call winrestview(b:saved_view)<cr>
