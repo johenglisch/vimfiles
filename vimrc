@@ -350,6 +350,8 @@ let g:ackprg='ag --vimgrep'
 
 " Python-mode
 
+let g:pymode_python = 'python3'
+
 let g:pymode_options = 0
 let g:pymode_trim_whitespaces = 0
 
