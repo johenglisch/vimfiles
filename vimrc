@@ -266,20 +266,15 @@ set showmatch
 
 set scrolloff=1
 
-let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u203A,precedes:\u2039,trail:\u2592"
+let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u2026,precedes:\u2026,trail:\u2592"
+let &showbreak = "\u25b6"
+
 set list
 augroup DontShowListCharsInInsertMode
     autocmd!
     autocmd InsertEnter * set nolist
     autocmd InsertLeave * set list
 augroup END
-
-if has('gui_running')
-    let &showbreak = "\u21B3"
-else
-    " Terminus doesn't approve cool arrows...
-    let &showbreak = '> '
-endif
 
 set laststatus=2
 set statusline=%<%f\ [%Y%H%M%R%W]%=%-14.((%l,%c%V)%)\ %P
