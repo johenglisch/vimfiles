@@ -267,7 +267,7 @@ set showmatch
 set scrolloff=1
 
 let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u2026,precedes:\u2026,trail:\u2592"
-let &showbreak = "\u25b6"
+let &showbreak = "\u25b8 "
 
 set list
 augroup DontShowListCharsInInsertMode
