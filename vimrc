@@ -65,6 +65,10 @@ if has_vundle == 1
     Plugin 'tomtom/tlib_vim'
     Plugin 'marcweber/vim-addon-mw-utils'
 
+    " dependencies for vim-orgmode
+    Plugin 'tpope/vim-speeddating'
+    Plugin 'utl.vim'
+
     "  88 colours
     Plugin 'seoul'
     " 256 colours
@@ -82,6 +86,7 @@ if has_vundle == 1
     Plugin 'garbas/vim-snipmate'
 
     Plugin 'tpope/vim-fugitive'
+    Plugin 'jceb/vim-orgmode'
     Plugin 'klen/python-mode'
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
@@ -396,6 +401,7 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd Filetype markdown  setlocal syntax=markdown
     autocmd Filetype gitcommit setlocal syntax=gitcommit
     autocmd Filetype help      setlocal syntax=help
+    autocmd Filetype org       setlocal syntax=org
     autocmd Filetype tex       setlocal syntax=tex
 augroup END
 
