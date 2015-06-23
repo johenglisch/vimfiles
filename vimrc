@@ -194,6 +194,11 @@ noremap Y y$
 
 nnoremap <backspace> :SyntasticCheck<cr>
 
+if has('nvim')
+    tnoremap <C-c><C-c> <C-c>
+    tnoremap <C-c><C-g> <C-\><C-n>
+endif
+
 " Leader Key Bindings
 
 let mapleader = ' '
