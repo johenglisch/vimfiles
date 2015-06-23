@@ -61,6 +61,10 @@ if has_vundle == 1
 
     Plugin 'gmarik/Vundle.vim'
 
+    " dependencies for snipmate
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'marcweber/vim-addon-mw-utils'
+
     "  88 colours
     Plugin 'seoul'
     " 256 colours
@@ -75,8 +79,6 @@ if has_vundle == 1
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
     Plugin 'scrooloose/syntastic'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'marcweber/vim-addon-mw-utils'
     Plugin 'garbas/vim-snipmate'
 
     Plugin 'tpope/vim-fugitive'
