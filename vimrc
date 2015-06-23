@@ -155,6 +155,11 @@ onoremap <C-g> <Esc>
 inoremap <C-g> <Esc>
 cnoremap <C-g> <C-c>
 
+if has('nvim')
+    tnoremap <C-c><C-g> <C-\><C-n>
+    tnoremap <C-c><C-c> <C-c>
+endif
+
 noremap j gj
 noremap k gk
 
@@ -193,11 +198,6 @@ noremap ? ?\v
 noremap Y y$
 
 nnoremap <backspace> :SyntasticCheck<cr>
-
-if has('nvim')
-    tnoremap <C-c><C-c> <C-c>
-    tnoremap <C-c><C-g> <C-\><C-n>
-endif
 
 " Leader Key Bindings
 
