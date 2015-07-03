@@ -248,6 +248,11 @@ nnoremap <leader>gd :<c-u>Gdiff<cr>
 nnoremap <leader>gg :<c-u>Git<space>
 nnoremap <leader>gs :<c-u>Gstatus<cr>
 
+nnoremap <leader>mj :!mpc toggle<cr><cr>
+nnoremap <leader>mk :!mpc stop<cr><cr>
+nnoremap <leader>ml :!mpc next<cr><cr>
+nnoremap <leader>mh :!mpc prev<cr><cr>
+
 
 " Muscle Memory Training Facilities
 
