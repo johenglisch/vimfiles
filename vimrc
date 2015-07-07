@@ -33,6 +33,14 @@ exec 'set backupdir=' . fnameescape(s:backup_dir) . '/'
 exec 'set directory=' . fnameescape(s:swap_dir)   . '/'
 exec 'set undodir='   . fnameescape(s:undo_dir)   . '/'
 
+if has('nvim')
+    let g:vimfiles_dir = expand('~/.nvim/')
+elseif has('win32')
+    let g:vimfiles_dir = expand('~/vimfiles/')
+elseif has('unix')
+    let g:vimfiles_dir = expand('~/.vim')
+endif
+
 
 " PACKAGE MANAGEMENT
 
@@ -396,8 +404,8 @@ let g:syntastic_mode_map = {
             \ "mode":              "passive",
             \ "active_filetypes":  [],
             \ "passive_filetypes": [] }
-
 set statusline+=\ %{SyntasticStatuslineFlag()}
+
 
 " General Plugin Settings
 
