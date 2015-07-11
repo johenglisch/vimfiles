@@ -247,6 +247,8 @@ nnoremap <leader>R :Overline nr2char(getchar())<cr>
 nnoremap <leader>w :let b:saved_view = winsaveview()<cr>:%s/\s\+$//e<cr>:call winrestview(b:saved_view)<cr>
 vnoremap <leader>w :s/\s\+$//e<cr>
 
+nnoremap <leader>a :Align<cr>
+
 nnoremap <leader>T :TlistToggle<cr>
 
 nnoremap <leader>f :<c-u>CtrlP<cr>
