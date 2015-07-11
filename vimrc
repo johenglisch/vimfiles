@@ -218,7 +218,8 @@ nnoremap <leader>d :cd %:h<cr>
 nnoremap <silent> <leader>ee :Vexec 'edit'<cr>
 nnoremap <silent> <leader>ed :Vexec 'edit ++enc=cp437'<cr>
 nnoremap <silent> <leader>ec :edit ~/.when/calendar<cr>
-nnoremap <silent> <leader>es :exec 'edit ' . fnameescape(g:vimfiles_dir . '/snippets/' . &filetype . '.snippets')<cr>
+nnoremap <silent> <leader>es :exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
+nnoremap <silent> <leader>ef :exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 
 nnoremap <leader>ve :edit $MYVIMRC<cr>
