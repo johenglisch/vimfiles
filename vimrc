@@ -87,6 +87,7 @@ if has_vundle == 1
     Plugin 'molok/vim-vombato-colorscheme'
 
     Plugin 'mileszs/ack.vim'
+    Plugin 'bling/vim-airline'
     Plugin 'Align'
     Plugin 'kien/ctrlp.vim'
     Plugin 'taglist.vim'
@@ -306,9 +307,6 @@ augroup DontShowListCharsInInsertMode
     autocmd InsertLeave * set list
 augroup END
 
-set laststatus=2
-set statusline=%<%f\ [%Y%H%M%R%W]%=%-14.((%l,%c%V)%)\ %P
-
 augroup ShowCursorLineInNormalMode
     autocmd!
     autocmd WinLeave,InsertEnter * set nocursorline
@@ -352,6 +350,15 @@ augroup END
 
 
 " PLUGIN STUFF
+
+" Airline
+
+set laststatus=2
+
+let g:airline_left_sep="\u2592"
+let g:airline_right_sep="\u2592"
+
+let g:airline_extensions = ['branch', 'ctrlp', 'netrw', 'quickfix', 'syntastic']
 
 " Tag List
 
@@ -408,7 +415,6 @@ let g:syntastic_mode_map = {
             \ "mode":              "passive",
             \ "active_filetypes":  [],
             \ "passive_filetypes": [] }
-set statusline+=\ %{SyntasticStatuslineFlag()}
 
 
 " General Plugin Settings
