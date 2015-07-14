@@ -135,6 +135,8 @@ endif
 
 set undofile
 
+set complete+=kspell
+
 set ignorecase
 set smartcase
 set incsearch
