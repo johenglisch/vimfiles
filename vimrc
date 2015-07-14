@@ -241,6 +241,7 @@ vnoremap <leader>c "+
 nnoremap <leader>n :set invrelativenumber<cr>
 nnoremap <leader>B :ToggleBackground<cr>
 nnoremap <leader>H :ToggleHighlighting<cr>
+nnoremap <leader>S :SyntasticReset<cr>
 
 nnoremap <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <leader>R :Overline nr2char(getchar())<cr>
