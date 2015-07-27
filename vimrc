@@ -98,6 +98,7 @@ if has_vundle == 1
     Plugin 'tpope/vim-fugitive'
     Plugin 'jceb/vim-orgmode'
     Plugin 'klen/python-mode'
+    Plugin 'rust-lang/rust.vim'
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
     call vundle#end()
