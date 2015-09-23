@@ -436,6 +436,7 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd Filetype help      setlocal syntax=help
     autocmd Filetype org       setlocal syntax=org
     autocmd Filetype tex       setlocal syntax=tex
+    autocmd Filetype rst       setlocal syntax=rst
 augroup END
 
 highlight clear Conceal
