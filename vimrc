@@ -49,64 +49,59 @@ endif
 " PACKAGE MANAGEMENT
 
 let has_pluginmgr = 0
-if isdirectory(s:plugin_dir . 'Vundle.vim')
+if filereadable(g:vimfiles_dir . 'autoload/plug.vim')
     let has_pluginmgr = 1
-elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
+elseif confirm("Plugin manager not found.  Install it?", "&yes\n&no") == 1
     " ^^^ FIXME this confirm() isn't working on windows...
-    call s:MkDir(s:plugin_dir)
 
-    let s:msg = system('git clone https://github.com/gmarik/Vundle.vim.git '
-                \ . '"' . s:plugin_dir . 'Vundle.vim"')
+    " XXX Make Vim-plug auto-installation less platform-specific.
+    let s:msg = system('curl -fLo ' . fnameescape(g:vimfiles_dir . 'autoload/plug.vim') . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+
     if v:shell_error == 0
-        echomsg "Vundle installation successful"
+        echomsg "Plugin manager was installed successfully"
         let has_pluginmgr = 1
     else
-        echoerr "Vundle installation failed:"
+        echoerr "Plugin manager could not be installed:"
         echoerr s:msg
     endif
 endif
 
 if has_pluginmgr == 1
-    filetype off
-
-    exec "set runtimepath+=" . fnameescape(s:plugin_dir . "Vundle.vim")
-    call vundle#begin(s:plugin_dir)
-
-    Plugin 'gmarik/Vundle.vim'
+    call plug#begin(s:plugin_dir)
 
     " dependencies for snipmate
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'marcweber/vim-addon-mw-utils'
+    Plug 'tomtom/tlib_vim'
+    Plug 'marcweber/vim-addon-mw-utils'
 
     " dependencies for vim-orgmode
-    Plugin 'tpope/vim-speeddating'
-    Plugin 'utl.vim'
+    Plug 'tpope/vim-speeddating'
+    Plug 'utl.vim'
 
     "  88 colours
-    Plugin 'seoul'
+    Plug 'seoul'
     " 256 colours
-    Plugin 'romainl/Apprentice'
+    Plug 'romainl/Apprentice'
     " gui colours
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'molok/vim-vombato-colorscheme'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'molok/vim-vombato-colorscheme'
 
-    Plugin 'mileszs/ack.vim'
-    Plugin 'bling/vim-airline'
-    Plugin '907th/vim-auto-save'
-    Plugin 'Align'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'benekastah/neomake'
-    Plugin 'taglist.vim'
-    Plugin 'TaskList.vim'
-    Plugin 'garbas/vim-snipmate'
+    Plug 'mileszs/ack.vim'
+    Plug 'bling/vim-airline'
+    Plug '907th/vim-auto-save'
+    Plug 'Align'
+    Plug 'kien/ctrlp.vim'
+    Plug 'benekastah/neomake'
+    Plug 'taglist.vim'
+    Plug 'TaskList.vim'
+    Plug 'garbas/vim-snipmate'
 
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'jceb/vim-orgmode'
-    Plugin 'klen/python-mode'
-    Plugin 'rust-lang/rust.vim'
-    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+    Plug 'tpope/vim-fugitive'
+    Plug 'jceb/vim-orgmode'
+    Plug 'klen/python-mode'
+    Plug 'rust-lang/rust.vim'
+    Plug 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
-    call vundle#end()
+    call plug#end()
 endif
 
 
