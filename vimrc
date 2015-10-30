@@ -95,9 +95,9 @@ if has_vundle == 1
     Plugin '907th/vim-auto-save'
     Plugin 'Align'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'benekastah/neomake'
     Plugin 'taglist.vim'
     Plugin 'TaskList.vim'
-    Plugin 'scrooloose/syntastic'
     Plugin 'garbas/vim-snipmate'
 
     Plugin 'tpope/vim-fugitive'
