@@ -22,7 +22,7 @@ let s:swap_dir        = s:cache_dir . 'swap/'
 let s:undo_dir        = s:cache_dir . 'undo/'
 let g:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
 let g:classpath_cache = s:cache_dir . 'classpath/'
-let s:vundle_dir      = s:cache_dir . 'vundle/'
+let s:plugin_dir      = s:cache_dir . 'plugged/'
 let g:netrw_home      = s:cache_dir
 
 call s:MkDir(s:backup_dir)
@@ -48,29 +48,29 @@ endif
 
 " PACKAGE MANAGEMENT
 
-let has_vundle = 0
-if isdirectory(s:vundle_dir . 'Vundle.vim')
-    let has_vundle = 1
+let has_pluginmgr = 0
+if isdirectory(s:plugin_dir . 'Vundle.vim')
+    let has_pluginmgr = 1
 elseif confirm("Vundle not found.  Install it?", "&yes\n&no") == 1
     " ^^^ FIXME this confirm() isn't working on windows...
-    call s:MkDir(s:vundle_dir)
+    call s:MkDir(s:plugin_dir)
 
     let s:msg = system('git clone https://github.com/gmarik/Vundle.vim.git '
-                \ . '"' . s:vundle_dir . 'Vundle.vim"')
+                \ . '"' . s:plugin_dir . 'Vundle.vim"')
     if v:shell_error == 0
         echomsg "Vundle installation successful"
-        let has_vundle = 1
+        let has_pluginmgr = 1
     else
         echoerr "Vundle installation failed:"
         echoerr s:msg
     endif
 endif
 
-if has_vundle == 1
+if has_pluginmgr == 1
     filetype off
 
-    exec "set runtimepath+=" . fnameescape(s:vundle_dir . "Vundle.vim")
-    call vundle#begin(s:vundle_dir)
+    exec "set runtimepath+=" . fnameescape(s:plugin_dir . "Vundle.vim")
+    call vundle#begin(s:plugin_dir)
 
     Plugin 'gmarik/Vundle.vim'
 
