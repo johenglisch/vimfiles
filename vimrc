@@ -92,6 +92,7 @@ if has_vundle == 1
 
     Plugin 'mileszs/ack.vim'
     Plugin 'bling/vim-airline'
+    Plugin '907th/vim-auto-save'
     Plugin 'Align'
     Plugin 'kien/ctrlp.vim'
     Plugin 'taglist.vim'
