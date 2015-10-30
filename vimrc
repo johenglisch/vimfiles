@@ -215,7 +215,7 @@ noremap ? ?\v
 
 noremap Y y$
 
-nnoremap <backspace> :SyntasticCheck<cr>
+nnoremap <backspace> :Neomake<cr>
 
 " Leader Key Bindings
 
@@ -249,7 +249,6 @@ vnoremap <leader>c "+
 nnoremap <leader>n :set invrelativenumber<cr>
 nnoremap <leader>B :ToggleBackground<cr>
 nnoremap <leader>H :ToggleHighlighting<cr>
-nnoremap <leader>S :SyntasticReset<cr>
 
 nnoremap <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <leader>R :Overline nr2char(getchar())<cr>
@@ -367,7 +366,7 @@ set laststatus=2
 let g:airline_left_sep="\u2592"
 let g:airline_right_sep="\u2592"
 
-let g:airline_extensions = ['branch', 'ctrlp', 'netrw', 'quickfix', 'syntastic']
+let g:airline_extensions = ['branch', 'ctrlp', 'netrw', 'quickfix']
 
 " Tag List
 
@@ -416,14 +415,6 @@ endif
 
 let g:tex_flavor = 'latex'
 let g:tex_conceal = 'abdmg'
-
-" syntastic
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = {
-            \ "mode":              "passive",
-            \ "active_filetypes":  [],
-            \ "passive_filetypes": [] }
 
 
 " General Plugin Settings
