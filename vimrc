@@ -69,14 +69,6 @@ endif
 if has_pluginmgr == 1
     call plug#begin(s:plugin_dir)
 
-    " dependencies for snipmate
-    Plug 'tomtom/tlib_vim'
-    Plug 'marcweber/vim-addon-mw-utils'
-
-    " dependencies for vim-orgmode
-    Plug 'tpope/vim-speeddating'
-    Plug 'utl.vim'
-
     "  88 colours
     Plug 'seoul'
     " 256 colours
@@ -91,12 +83,14 @@ if has_pluginmgr == 1
     Plug 'Align'
     Plug 'kien/ctrlp.vim'
     Plug 'benekastah/neomake'
+    Plug 'tomtom/tlib_vim' | Plug 'marcweber/vim-addon-mw-utils'
+                \ | Plug 'garbas/vim-snipmate'
     Plug 'taglist.vim'
     Plug 'TaskList.vim'
-    Plug 'garbas/vim-snipmate'
 
     Plug 'tpope/vim-fugitive'
-    Plug 'jceb/vim-orgmode'
+    Plug 'tpope/vim-speeddating' | Plug 'utl.vim'
+                \ | Plug 'jceb/vim-orgmode'
     Plug 'klen/python-mode'
     Plug 'rust-lang/rust.vim'
     Plug 'git://git.code.sf.net/p/vim-latex/vim-latex'
