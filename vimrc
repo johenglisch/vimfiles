@@ -45,6 +45,11 @@ elseif has('unix')
     let g:vimfiles_dir = expand('~/.vim/')
 endif
 
+if has('nvim') && has('unix')
+    let g:python_host_prog = '/usr/bin/python2'
+    let g:python3_host_prog = '/usr/bin/python3'
+endif
+
 
 " PACKAGE MANAGEMENT
 
