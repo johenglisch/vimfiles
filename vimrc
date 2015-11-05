@@ -396,10 +396,10 @@ let python_space_error_highlight = 1
 
 let g:python_doc = 0
 let g:pymode_rope_complete_on_dot = 0
-
 let g:pymode_lint_on_write = 0
 
 let g:pymode_run_bind = '<cr>'
+let g:pymode_rope_goto_definition_bind = 'gd'
 
 " Vim LaTeX Suite
 
