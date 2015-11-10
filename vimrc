@@ -395,6 +395,7 @@ let python_no_number_highlight = 1
 let python_space_error_highlight = 1
 
 let g:python_doc = 0
+let g:pymode_breakpoint = 0
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_lint_on_write = 0
 
