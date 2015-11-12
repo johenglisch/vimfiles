@@ -18,5 +18,5 @@ function! s:FilterLocationList(bang, pattern)
 endfunction
 
 
-command! -bang -nargs=1 Cfilter call s:FilterQuickfixList(<bang>0, <q-args>)
-command! -bang -nargs=1 Lfilter call s:FilterLocationList(<bang>0, <q-args>)
+command! -bang -nargs=1 Cgrep call s:FilterQuickfixList(<bang>0, <q-args>)
+command! -bang -nargs=1 Lgrep call s:FilterLocationList(<bang>0, <q-args>)
