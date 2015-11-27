@@ -2,6 +2,9 @@ set linebreak
 set noautoindent
 set nosmartindent
 
+setlocal tabstop=8
+setlocal softtabstop=4
+setlocal shiftwidth=4
 
 function! s:ToggleCheckbox()
     let line = getline('.')
