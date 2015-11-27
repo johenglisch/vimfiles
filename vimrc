@@ -93,6 +93,8 @@ if has_pluginmgr == 1
     Plug 'taglist.vim'
     Plug 'TaskList.vim'
 
+    Plug 'tpope/vim-repeat'
+                \ | Plug 'guns/vim-sexp'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-speeddating' | Plug 'utl.vim'
