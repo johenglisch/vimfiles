@@ -86,7 +86,7 @@ if has_pluginmgr == 1
     Plug 'bling/vim-airline'
     Plug '907th/vim-auto-save'
     Plug 'Align'
-    Plug 'kien/ctrlp.vim'
+    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'benekastah/neomake'
     Plug 'tomtom/tlib_vim' | Plug 'marcweber/vim-addon-mw-utils'
                 \ | Plug 'garbas/vim-snipmate'
