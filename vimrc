@@ -386,6 +386,10 @@ let g:ctrlp_custom_ignore = '\v\.('.
 
 let g:ackprg='ag --vimgrep'
 
+" Fireplace
+
+let g:fireplace_no_maps = 1
+
 " Python-mode
 
 let g:pymode_python = 'python3'
