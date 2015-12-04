@@ -389,6 +389,7 @@ let g:ackprg='ag --vimgrep'
 " Fireplace
 
 let g:fireplace_no_maps = 1
+let g:clojure_align_multiline_strings = 1
 
 " Python-mode
 
