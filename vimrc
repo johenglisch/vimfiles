@@ -346,6 +346,7 @@ elseif $TERM =~? '.*256color.*'
 elseif $TERM =~? '.*rxvt.*'
     set background=dark
     silent! colorscheme seoul
+    let g:airline_theme = 'base16'
 endif
 
 augroup ColourColumnInInsertMode
