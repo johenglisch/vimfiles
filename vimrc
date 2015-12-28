@@ -153,6 +153,8 @@ set splitbelow
 set virtualedit=all
 set backspace=indent,eol,start
 
+set hidden
+
 augroup CursorToLastKnownPosition
     autocmd!
     autocmd BufReadPost *
