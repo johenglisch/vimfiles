@@ -292,6 +292,13 @@ endfor
 
 " APPEARANCE
 
+function! s:AwesomeListChars()
+    let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u2026,precedes:\u2026,trail:\u2592"
+    let &showbreak = "\u25b8 "
+endfunction
+
+call s:AwesomeListChars()
+
 set lazyredraw
 
 set visualbell t_vb=
@@ -304,9 +311,6 @@ let g:loaded_matchparen=1
 set showmatch
 
 set scrolloff=1
-
-let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u2026,precedes:\u2026,trail:\u2592"
-let &showbreak = "\u25b8 "
 
 set list
 augroup DontShowListCharsInInsertMode
