@@ -251,8 +251,8 @@ nnoremap <leader>S :sign unplace *<cr>
 nnoremap <leader>r :Underline nr2char(getchar())<cr>
 nnoremap <leader>R :Overline nr2char(getchar())<cr>
 
-nnoremap <leader>w :let b:saved_view = winsaveview()<cr>:%s/\s\+$//e<cr>:call winrestview(b:saved_view)<cr>
-vnoremap <leader>w :s/\s\+$//e<cr>
+nnoremap <leader>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
+vnoremap <leader>w :CleanWhiteSpace<cr>
 
 nnoremap <leader>a :Ack!<space>
 
