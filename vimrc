@@ -297,6 +297,11 @@ function! s:AwesomeListChars()
     let &showbreak = "\u25b8 "
 endfunction
 
+function! s:BoringListChars()
+    let &listchars = "tab:> ,nbsp:~,eol: ,extends:-,precedes:-,trail:_"
+    let &showbreak = "-"
+endfunction
+
 call s:AwesomeListChars()
 
 set lazyredraw
