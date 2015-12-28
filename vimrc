@@ -436,6 +436,7 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd!
     autocmd Filetype gitcommit setlocal syntax=gitcommit
     autocmd Filetype help      setlocal syntax=help
+    autocmd Filetype mail      setlocal syntax=mail
     autocmd Filetype markdown  setlocal syntax=markdown
     autocmd Filetype org       setlocal syntax=org
     autocmd Filetype rst       setlocal syntax=rst
