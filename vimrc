@@ -324,12 +324,12 @@ augroup KeepSplitsEqualOnResize
 augroup END
 
 function! s:AwesomeListChars()
-    let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u2026,precedes:\u2026,trail:\u2592"
-    let &showbreak = "\u25b8 "
+    let &listchars = "tab:\u25b8 ,nbsp:~,eol: ,precedes:\u2190,extends:\u2192,trail:\u2592"
+    let &showbreak = "\u2190"
 endfunction
 
 function! s:BoringListChars()
-    let &listchars = "tab:> ,nbsp:~,eol: ,extends:-,precedes:-,trail:_"
+    let &listchars = "tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_"
     let &showbreak = "-"
 endfunction
 
