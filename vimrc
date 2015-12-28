@@ -292,18 +292,6 @@ endfor
 
 " APPEARANCE
 
-function! s:AwesomeListChars()
-    let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u2026,precedes:\u2026,trail:\u2592"
-    let &showbreak = "\u25b8 "
-endfunction
-
-function! s:BoringListChars()
-    let &listchars = "tab:> ,nbsp:~,eol: ,extends:-,precedes:-,trail:_"
-    let &showbreak = "-"
-endfunction
-
-call s:AwesomeListChars()
-
 set lazyredraw
 
 set visualbell t_vb=
@@ -334,6 +322,18 @@ augroup KeepSplitsEqualOnResize
     autocmd!
     autocmd VimResized * exec "normal! \<C-w>="
 augroup END
+
+function! s:AwesomeListChars()
+    let &listchars = "tab:\uBB ,nbsp:~,eol: ,extends:\u2026,precedes:\u2026,trail:\u2592"
+    let &showbreak = "\u25b8 "
+endfunction
+
+function! s:BoringListChars()
+    let &listchars = "tab:> ,nbsp:~,eol: ,extends:-,precedes:-,trail:_"
+    let &showbreak = "-"
+endfunction
+
+call s:AwesomeListChars()
 
 if has("gui_running")
     if !exists("loaded_vimrc")
