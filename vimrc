@@ -434,12 +434,12 @@ filetype plugin indent on
 syntax manual
 augroup SyntaxOnlyForCertainFiletypes
     autocmd!
-    autocmd Filetype markdown  setlocal syntax=markdown
     autocmd Filetype gitcommit setlocal syntax=gitcommit
     autocmd Filetype help      setlocal syntax=help
+    autocmd Filetype markdown  setlocal syntax=markdown
     autocmd Filetype org       setlocal syntax=org
-    autocmd Filetype tex       setlocal syntax=tex
     autocmd Filetype rst       setlocal syntax=rst
+    autocmd Filetype tex       setlocal syntax=tex
 augroup END
 
 highlight clear Conceal
