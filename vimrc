@@ -349,6 +349,7 @@ if has("gui_running")
         set guifont=Liberation\ Mono\ 10
     elseif has("x11")
         set guifont=-*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-*
+        call s:BoringListChars()
     elseif has("gui_win32")
         set guifont=Consolas:h10:cANSI
     endif
@@ -358,6 +359,8 @@ elseif $TERM =~? '.*rxvt.*'
     set background=dark
     silent! colorscheme seoul
     let g:airline_theme = 'base16'
+
+    call s:BoringListChars()
 endif
 
 augroup ColourColumnInInsertMode
