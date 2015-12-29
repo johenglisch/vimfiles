@@ -84,7 +84,6 @@ if has_pluginmgr == 1
 
     Plug 'mileszs/ack.vim'
     Plug 'bling/vim-airline'
-    Plug '907th/vim-auto-save'
     Plug 'Align'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'benekastah/neomake'
