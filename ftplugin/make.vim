@@ -1,1 +1,1 @@
-nnoremap <buffer> <cr> :make<cr>
+nnoremap <buffer> <cr> :<c-u>make<cr>
