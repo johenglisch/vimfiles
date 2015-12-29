@@ -63,8 +63,9 @@ endif
 if exists('g:Tex_AuxFileExtensions')
     let s:Tex_AuxFileExtensions = g:Tex_AuxFileExtensions
 else
-    let s:Tex_AuxFileExtensions = ['aux', 'bbl', 'blg', 'dbj', 'dvi', 'log',
-                                  \'nav', 'out', 'ps', 'snm', 'toc']
+    let s:Tex_AuxFileExtensions = [
+                \ 'aux', 'bbl', 'blg', 'dbj', 'dvi', 'log',
+                \ 'nav', 'out', 'ps', 'snm', 'toc']
 endif
 
 function! s:Tex_RemoveAuxiliaryFiles()
