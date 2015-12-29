@@ -226,6 +226,7 @@ nnoremap <silent> <leader>ec :<c-u>edit ~/.when/calendar<cr>
 nnoremap <silent> <leader>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
 nnoremap <silent> <leader>ef :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
 nnoremap <silent> <leader>ev :<c-u>edit $MYVIMRC<cr>
+nnoremap <leader>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
 
 nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
 nnoremap <leader>vh :<c-u>split $MYVIMRC<cr>
