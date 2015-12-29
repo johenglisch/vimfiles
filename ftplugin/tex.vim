@@ -31,11 +31,11 @@ let g:Tex_IgnoredWarnings =
 
 let g:Tex_Leader = "§"
 
-nnoremap <buffer> <cr> :call Tex_RunLaTeX()<cr>
+nnoremap <buffer> <cr> :<c-u>call Tex_RunLaTeX()<cr>
 
-nnoremap <buffer> <localleader>K :TexRemoveAuxiliaryFiles<cr>
-nnoremap <buffer> <localleader>L :call Tex_RunLaTeX()<cr>
-nnoremap <buffer> <localleader>M :call Tex_ViewLaTeX()<cr>
+nnoremap <buffer> <localleader>K :<c-u>TexRemoveAuxiliaryFiles<cr>
+nnoremap <buffer> <localleader>L :<c-u>call Tex_RunLaTeX()<cr>
+nnoremap <buffer> <localleader>M :<c-u>call Tex_ViewLaTeX()<cr>
 nnoremap <buffer> <localleader>N A% TODO<space>
 
 
