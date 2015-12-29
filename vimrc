@@ -200,8 +200,8 @@ noremap ´ @
 noremap ' #
 noremap # '
 
-nnoremap <silent> * :let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
-nnoremap <silent> * :let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
+nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
+nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 
 noremap n nzzzv
 noremap N Nzzzv
@@ -211,51 +211,51 @@ noremap ? ?\v
 
 noremap Y y$
 
-nnoremap <backspace> :Neomake<cr>
+nnoremap <backspace> :<c-u>Neomake<cr>
 
 " Leader Key Bindings
 
 let mapleader = ' '
 let maplocalleader = 'Ö'
 
-nnoremap <leader>d :cd %:h<cr>
+nnoremap <leader>d :<c-u>cd %:h<cr>
 
-nnoremap <silent> <leader>ee :Vexec 'edit'<cr>
-nnoremap <silent> <leader>ed :Vexec 'edit ++enc=cp437'<cr>
-nnoremap <silent> <leader>ec :edit ~/.when/calendar<cr>
-nnoremap <silent> <leader>es :exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
-nnoremap <silent> <leader>ef :exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
-nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
+nnoremap <silent> <leader>ee :<c-u>Vexec 'edit'<cr>
+nnoremap <silent> <leader>ed :<c-u>Vexec 'edit ++enc=cp437'<cr>
+nnoremap <silent> <leader>ec :<c-u>edit ~/.when/calendar<cr>
+nnoremap <silent> <leader>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
+nnoremap <silent> <leader>ef :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
+nnoremap <silent> <leader>ev :<c-u>edit $MYVIMRC<cr>
 
-nnoremap <leader>ve :edit $MYVIMRC<cr>
-nnoremap <leader>vh :split $MYVIMRC<cr>
-nnoremap <leader>vv :vsplit $MYVIMRC<cr>
-nnoremap <leader>vs :Vexec "source $MYVIMRC"<cr>
+nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
+nnoremap <leader>vh :<c-u>split $MYVIMRC<cr>
+nnoremap <leader>vv :<c-u>vsplit $MYVIMRC<cr>
+nnoremap <leader>vs :<c-u>Vexec "source $MYVIMRC"<cr>
 
 nnoremap <leader>s :%s/\v
 vnoremap <leader>s :s/\v
-nnoremap <leader>/ :exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-nnoremap <leader>h :nohlsearch<cr>
+nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>h :<c-u>nohlsearch<cr>
 
 nnoremap <leader>z zMzvzz
 
 nnoremap <leader>c "+
 vnoremap <leader>c "+
 
-nnoremap <leader>n :set invrelativenumber<cr>
-nnoremap <leader>B :ToggleBackground<cr>
-nnoremap <leader>H :ToggleHighlighting<cr>
-nnoremap <leader>S :sign unplace *<cr>
+nnoremap <leader>n :<c-u>set invrelativenumber<cr>
+nnoremap <leader>B :<c-u>ToggleBackground<cr>
+nnoremap <leader>H :<c-u>ToggleHighlighting<cr>
+nnoremap <leader>S :<c-u>sign unplace *<cr>
 
-nnoremap <leader>r :Underline nr2char(getchar())<cr>
-nnoremap <leader>R :Overline nr2char(getchar())<cr>
+nnoremap <leader>r :<c-u>Underline nr2char(getchar())<cr>
+nnoremap <leader>R :<c-u>Overline nr2char(getchar())<cr>
 
 nnoremap <leader>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
 vnoremap <leader>w :CleanWhiteSpace<cr>
 
-nnoremap <leader>a :Ack!<space>
+nnoremap <leader>a :<c-u>Ack!<space>
 
-nnoremap <leader>T :TlistToggle<cr>
+nnoremap <leader>T :<c-u>TlistToggle<cr>
 
 nnoremap <leader>f :<c-u>CtrlP<cr>
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
