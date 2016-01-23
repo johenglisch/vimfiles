@@ -15,7 +15,7 @@ let g:Tex_SmartKeyQuote = 0
 let g:Tex_FoldedEnvironments="abstract,titlepage"
 let g:Tex_FoldedMisc="preamble,<<<"
 
-let g:Tex_IgnoreLevel = 8
+let g:Tex_IgnoreLevel = 9
 let g:Tex_IgnoredWarnings =
             \'Underfull'."\n".
             \'Overfull'."\n".
@@ -24,7 +24,8 @@ let g:Tex_IgnoredWarnings =
             \'Missing number, treated as zero.'."\n".
             \'There were undefined references'."\n".
             \'Citation %.%# undefined'."\n".
-            \'LaTeX Font Warning: %.%#'
+            \'LaTeX Font Warning: %.%#'."\n".
+            \'Command \\@doendpe  has changed.'
 
 
 " KEY BINDINGS
