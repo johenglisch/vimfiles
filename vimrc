@@ -454,7 +454,7 @@ augroup END
 augroup OpenPDFsInBuffer
     autocmd!
     autocmd BufReadPre *.pdf silent set ro
-    autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" - | fmt -w78
+    autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" -
 augroup END
 
 highlight clear Conceal
