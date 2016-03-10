@@ -451,6 +451,12 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd Filetype tex       setlocal syntax=tex
 augroup END
 
+augroup OpenPDFsInBuffer
+    autocmd!
+    autocmd BufReadPre *.pdf silent set ro
+    autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" - | fmt -w78
+augroup END
+
 highlight clear Conceal
 
 
