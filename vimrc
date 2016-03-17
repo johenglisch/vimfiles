@@ -97,7 +97,7 @@ if has_pluginmgr == 1
                 \ | Plug 'guns/vim-sexp'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
-    Plug 'vim-latex/vim-latex'
+    Plug 'lervag/vimtex'
     Plug 'klen/python-mode'
     Plug 'rust-lang/rust.vim'
 
@@ -348,7 +348,7 @@ if has("gui_running")
         set guifont=Consolas:h10:cANSI
     endif
 elseif $TERM =~? '.*256color.*'
-    silent! colorscheme apprentice
+    silent! colorscheme solarized
 elseif $TERM =~? '.*rxvt.*'
     set background=dark
     silent! colorscheme seoul
@@ -419,7 +419,7 @@ let g:pymode_lint_on_write = 0
 let g:pymode_run_bind = '<cr>'
 let g:pymode_rope_goto_definition_bind = 'gd'
 
-" Vim LaTeX Suite
+" LaTeX
 
 if has("win32")
     set shellslash
@@ -430,6 +430,10 @@ endif
 
 let g:tex_flavor = 'latex'
 let g:tex_conceal = 'abdmg'
+
+let g:vimtex_imaps_enabled = 0
+let g:vimtex_latexmk_continuous = 0
+let g:vimtex_latexmk_options = '-pdfps'
 
 
 " General Plugin Settings
