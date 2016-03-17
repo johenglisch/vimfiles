@@ -10,8 +10,6 @@ setlocal linebreak
 
 set iskeyword+=:
 
-let g:Tex_Leader = "§"
-
 nnoremap <buffer> <cr> :<c-u>VimtexCompile<cr>
 
 nnoremap <buffer> <localleader>K :<c-u>TexRemoveAuxiliaryFiles<cr>
