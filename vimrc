@@ -400,7 +400,7 @@ let g:ackprg='ag --vimgrep'
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
 
-" Python-mode
+" Python
 
 let g:pymode_python = 'python3'
 
