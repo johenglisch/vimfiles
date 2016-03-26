@@ -97,6 +97,8 @@ if has_pluginmgr == 1
                 \ | Plug 'guns/vim-sexp'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
+    Plug 'neovimhaskell/haskell-vim'
+    Plug 'bitc/vim-hdevtools'
     Plug 'lervag/vimtex'
     Plug 'klen/python-mode'
     Plug 'rust-lang/rust.vim'
