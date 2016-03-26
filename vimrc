@@ -397,7 +397,7 @@ let g:ctrlp_custom_ignore = '\v\.('.
 
 let g:ackprg='ag --vimgrep'
 
-" Fireplace
+" Clojure
 
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
