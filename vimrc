@@ -402,6 +402,11 @@ let g:ackprg='ag --vimgrep'
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
 
+" Haskell
+
+let g:haskell_indent_in = 0
+let g:haskell_indent_if = 0
+
 " Python
 
 let g:pymode_python = 'python3'
