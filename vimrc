@@ -94,7 +94,9 @@ if has_pluginmgr == 1
     Plug 'TaskList.vim'
 
     Plug 'tpope/vim-repeat'
+                \ | Plug 'tpope/vim-surround'
                 \ | Plug 'guns/vim-sexp'
+                \ | Plug 'tpope/vim-sexp-mappings-for-regular-people'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
     Plug 'neovimhaskell/haskell-vim'
