@@ -79,6 +79,7 @@ if has_pluginmgr == 1
     " 256 colours
     Plug 'romainl/Apprentice'
     " gui colours
+    Plug 'pyte'
     Plug 'altercation/vim-colors-solarized'
     Plug 'molok/vim-vombato-colorscheme'
 
