@@ -346,7 +346,7 @@ if has("gui_running")
 
     silent! colorscheme apprentice
     if has("gui_gtk2")
-        set guifont=Liberation\ Mono\ 10
+        set guifont=Hack\ 10
     elseif has("x11")
         set guifont=-*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-*
         call s:BoringListChars()
