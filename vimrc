@@ -335,6 +335,20 @@ endfunction
 
 call s:AwesomeListChars()
 
+function! ColorschemeEnv(fallback_theme, fallback_airline)
+    if !empty($VIM_COLOURS)
+        exec 'silent! colorscheme ' . $VIM_COLOURS
+    elseif !empty(a:fallback_theme)
+        exec 'silent! colorscheme ' . a:fallback_theme
+    endif
+
+    if !empty($VIM_AIRLINE)
+        exec 'silent! AirlineTheme ' . $VIM_AIRLINE
+    elseif !empty(a:fallback_airline)
+        exec 'silent! AirlineTheme ' . a:fallback_airline
+    endif
+endfunction
+
 if has("gui_running")
     if !exists("loaded_vimrc")
         set lines=35 columns=85
@@ -344,7 +358,7 @@ if has("gui_running")
 
     set guioptions=ci
 
-    silent! colorscheme apprentice
+    call ColorschemeEnv('apprentice', '')
     if has("gui_gtk2")
         set guifont=Hack\ 10
     elseif has("x11")
@@ -354,7 +368,7 @@ if has("gui_running")
         set guifont=Consolas:h10:cANSI
     endif
 elseif $TERM =~? '.*256color.*'
-    silent! colorscheme apprentice
+    call ColorschemeEnv('apprentice', '')
 elseif $TERM =~? '.*rxvt.*'
     set background=dark
     silent! colorscheme seoul
