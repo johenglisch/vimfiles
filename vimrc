@@ -443,6 +443,8 @@ let g:tex_conceal = 'abdmg'
 
 let g:vimtex_imaps_enabled = 0
 let g:vimtex_indent_enabled = 0
+let g:vimtex_text_obj_enabled = 0
+
 let g:vimtex_latexmk_continuous = 0
 let g:vimtex_latexmk_options = '-pdfps'
 
