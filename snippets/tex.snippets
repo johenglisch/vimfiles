@@ -33,6 +33,31 @@ snippet fn
 	}
 snippet item
 	\\item $0
+# Specific
+snippet tabular
+	\\begin{tabular}${1:[t]}{$2}
+		\\toprule
+		$0
+		\\bottomrule
+	\\end{tabular}
+snippet cols
+	\\begin{columns}${1:[t]}
+
+		\\begin{column}{${2:.485\\linewidth}}
+			$0
+		\\end{column}
+
+		\\begin{column}{$2}
+
+		\\end{column}
+
+	\\end{columns}
+snippet frame
+	\\begin{frame}
+		\\frametitle{$1}
+
+		$0
+	\\end{frame}
 # References
 snippet cite
 	\\cite$1{$2}$0
