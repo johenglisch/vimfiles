@@ -336,16 +336,16 @@ endfunction
 call s:AwesomeListChars()
 
 function! ColorschemeEnv(fallback_theme, fallback_airline)
-    if !empty($VIM_COLOURS)
-        exec 'silent! colorscheme ' . $VIM_COLOURS
-    elseif !empty(a:fallback_theme)
-        exec 'silent! colorscheme ' . a:fallback_theme
+    let colorscheme = empty($VIM_COLOURS) ? a:fallback_theme : $VIM_COLOURS
+    let airline = empty($VIM_AIRLINE) ? a:fallback_airline : $VIM_AIRLINE
+
+    if !empty(colorscheme)
+        exec 'silent! colorscheme ' . colorscheme
     endif
 
-    if !empty($VIM_AIRLINE)
-        exec 'silent! AirlineTheme ' . $VIM_AIRLINE
-    elseif !empty(a:fallback_airline)
-        exec 'silent! AirlineTheme ' . a:fallback_airline
+    if !empty(airline)
+        let g:airline_theme = airline
+        exec 'silent! AirlineTheme ' . airline
     endif
 endfunction
 
