@@ -159,6 +159,9 @@ set backspace=indent,eol,start
 
 set hidden
 
+command! Deutsch set spell spelllang=de_de
+command! British set spell spelllang=en_gb
+
 augroup CursorToLastKnownPosition
     autocmd!
     autocmd BufReadPost *
