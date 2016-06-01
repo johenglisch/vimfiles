@@ -468,7 +468,8 @@ let g:vimtex_latexmk_options = '-pdfps'
 
 " SnipMate
 
-let g:snipMate = { "snippet_version": 1 }
+let g:snipMate = get(g:, 'snipMate', {})
+let g:snipMate.snippet_version = 1
 
 
 " General Plugin Settings
