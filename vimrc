@@ -88,6 +88,7 @@ if has_pluginmgr == 1
                 \ | Plug 'vim-airline/vim-airline-themes'
     Plug 'Align'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'easymotion/vim-easymotion'
     Plug 'benekastah/neomake'
     Plug 'tomtom/tlib_vim'
                 \ | Plug 'marcweber/vim-addon-mw-utils'
