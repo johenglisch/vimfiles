@@ -466,6 +466,10 @@ let g:vimtex_text_obj_enabled = 0
 let g:vimtex_latexmk_continuous = 0
 let g:vimtex_latexmk_options = '-pdfps'
 
+" SnipMate
+
+let g:snipMate = { "snippet_version": 1 }
+
 
 " General Plugin Settings
 
