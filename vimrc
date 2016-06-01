@@ -258,7 +258,10 @@ nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 nnoremap <leader>B :<c-u>ToggleBackground<cr>
 nnoremap <leader>H :<c-u>ToggleHighlighting<cr>
 nnoremap <leader>S :<c-u>sign unplace *<cr>
+
 nnoremap <leader>C :<c-u>cclose<cr>
+nnoremap <c-w>ä :<c-u>cclose<cr>
+nnoremap öä :<c-u>cclose<cr>
 
 nnoremap <leader>r :<c-u>Underline nr2char(getchar())<cr>
 nnoremap <leader>R :<c-u>Overline nr2char(getchar())<cr>
