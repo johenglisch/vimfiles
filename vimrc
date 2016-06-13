@@ -276,11 +276,7 @@ nnoremap <leader>T :<c-u>TlistToggle<cr>
 nnoremap <leader>f :<c-u>CtrlP<cr>
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
-nnoremap <leader>ga :<c-u>Gwrite<cr>
-nnoremap <leader>gc :<c-u>Gcommit<cr>
-nnoremap <leader>gd :<c-u>Gdiff<cr>
-nnoremap <leader>gg :<c-u>Git<space>
-nnoremap <leader>gs :<c-u>Gstatus<cr>
+nnoremap <leader>g :<c-u>Gstatus<cr>
 
 
 " Muscle Memory Training Facilities
