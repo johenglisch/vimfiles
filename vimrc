@@ -448,6 +448,8 @@ let g:pymode_lint_on_write = 0
 let g:pymode_run_bind = '<cr>'
 let g:pymode_rope_goto_definition_bind = 'gd'
 
+let g:neomake_python_enabled_makers = ['pyflakes3', 'pylint3']
+
 " LaTeX
 
 if has("win32")
