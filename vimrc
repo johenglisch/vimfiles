@@ -309,6 +309,10 @@ set showmatch
 
 set scrolloff=1
 
+if has('nvim')
+    set termguicolors
+endif
+
 set list
 augroup DontShowListCharsInInsertMode
     autocmd!
