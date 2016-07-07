@@ -495,7 +495,6 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd Filetype markdown  setlocal syntax=markdown
     autocmd Filetype org       setlocal syntax=org
     autocmd Filetype rst       setlocal syntax=rst
-    autocmd Filetype tex       setlocal syntax=tex
 augroup END
 
 augroup OpenPDFsInBuffer
