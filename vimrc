@@ -309,7 +309,7 @@ set showmatch
 
 set scrolloff=1
 
-if has('nvim')
+if has('termguicolors')
     set termguicolors
 endif
 
