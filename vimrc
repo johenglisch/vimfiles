@@ -393,13 +393,20 @@ augroup END
 set laststatus=2
 
 let g:lightline = {
-            \ 'active': {'left': [['mode', 'paste'], ['fugitive', 'filename']]},
+            \ 'active': {
+            \   'left': [['mode', 'paste'], ['fugitive', 'filename']],
+            \   'right': [
+            \     ['neomake', 'lineinfo'],
+            \     ['percent'],
+            \     ['fileformat', 'fileencoding', 'filetype']],
+            \ },
             \ 'component_function': {
             \   'mode': 'LightLineMode',
             \   'fugitive': 'LightLineFugitive',
             \   'fileformat': 'LightLineFileformat',
             \   'fileencoding': 'LightLineFileencoding',
             \   'filetype': 'LightLineFiletype',
+            \   'neomake': 'LightLineNeomake',
             \ },
             \ }
 

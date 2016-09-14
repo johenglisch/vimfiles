@@ -22,3 +22,10 @@ endfunction
 function! LightLineFiletype()
     return winwidth(0) > 70 ? &filetype : ''
 endfunction
+
+function! LightLineNeomake()
+    if winwidth(0) <= 70 || !exists("*neomake#statusline#LoclistStatus")
+        return ''
+    endif
+    return neomake#statusline#LoclistStatus()
+endfunction
