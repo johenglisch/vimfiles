@@ -342,17 +342,11 @@ endfunction
 
 call s:AwesomeListChars()
 
-function! ColorschemeEnv(fallback_theme, fallback_airline)
+function! ColorschemeEnv(fallback_theme)
     let colorscheme = empty($VIM_COLOURS) ? a:fallback_theme : $VIM_COLOURS
-    let airline = empty($VIM_AIRLINE) ? a:fallback_airline : $VIM_AIRLINE
 
     if !empty(colorscheme)
         exec 'silent! colorscheme ' . colorscheme
-    endif
-
-    if !empty(airline)
-        let g:airline_theme = airline
-        exec 'silent! AirlineTheme ' . airline
     endif
 endfunction
 
@@ -379,7 +373,6 @@ elseif $TERM =~? '.*256color.*'
 elseif $TERM =~? '.*rxvt.*'
     set background=dark
     silent! colorscheme seoul
-    let g:airline_theme = 'base16'
 
     call s:BoringListChars()
 endif
@@ -393,16 +386,9 @@ augroup END
 
 " PLUGIN STUFF
 
-" Airline
+" Lightline
 
 set laststatus=2
-
-let g:airline_left_sep="\u2592"
-let g:airline_right_sep="\u2592"
-
-let g:airline_extensions = ['branch', 'ctrlp', 'netrw', 'quickfix']
-
-" Lightline
 
 let g:lightline = {
             \ 'active': {'left': [['mode', 'paste'], ['fugitive', 'filename']]},
