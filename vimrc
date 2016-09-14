@@ -342,12 +342,14 @@ endfunction
 
 call s:AwesomeListChars()
 
-function! ColorschemeEnv(fallback_theme)
+function! ColorschemeEnv(fallback_theme, statusline_theme)
     let colorscheme = empty($VIM_COLOURS) ? a:fallback_theme : $VIM_COLOURS
 
     if !empty(colorscheme)
         exec 'silent! colorscheme ' . colorscheme
     endif
+
+    " TODO Somehow include lightline in this
 endfunction
 
 if has("gui_running")
