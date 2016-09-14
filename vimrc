@@ -201,10 +201,10 @@ nnoremap ö <C-w>
 nnoremap , :
 vnoremap , :
 
-noremap  ä }
-noremap  Ä <C-d>
-noremap  ü {
-noremap  Ü <C-u>
+noremap ä }
+noremap Ä <C-d>
+noremap ü {
+noremap Ü <C-u>
 noremap ´ @
 
 noremap ' #
