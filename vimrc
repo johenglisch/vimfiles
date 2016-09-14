@@ -410,6 +410,7 @@ let g:lightline = {
             \   'fugitive': 'LightLineFugitive',
             \   'fileformat': 'LightLineFileformat',
             \   'fileencoding': 'LightLineFileencoding',
+            \   'filetype': 'LightLineFiletype',
             \ },
             \ }
 

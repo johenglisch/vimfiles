@@ -13,3 +13,7 @@ endfunction
 function! LightLineFileencoding()
     return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
+
+function! LightLineFiletype()
+    return winwidth(0) > 70 ? &filetype : ''
+endfunction
