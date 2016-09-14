@@ -4,7 +4,7 @@ function! LightLineMode()
 endfunction
 
 function! LightLineFugitive()
-    if !exists("*fugitive#head")
+    if winwidth(0) <= 70 || !exists("*fugitive#head")
         return ''
     endif
     let branch = fugitive#head()
