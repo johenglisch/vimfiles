@@ -1,3 +1,8 @@
+function! LightLineMode()
+    let mode = lightline#mode()
+    return winwidth(0) > 70 ? mode : mode[0]
+endfunction
+
 function! LightLineFugitive()
     if !exists("*fugitive#head")
         return ''

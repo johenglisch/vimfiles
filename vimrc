@@ -407,6 +407,7 @@ let g:airline_extensions = ['branch', 'ctrlp', 'netrw', 'quickfix']
 let g:lightline = {
             \ 'active': {'left': [['mode', 'paste'], ['fugitive', 'filename']]},
             \ 'component_function': {
+            \   'mode': 'LightLineMode',
             \   'fugitive': 'LightLineFugitive',
             \   'fileformat': 'LightLineFileformat',
             \   'fileencoding': 'LightLineFileencoding',
