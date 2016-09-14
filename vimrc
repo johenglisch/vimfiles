@@ -221,7 +221,7 @@ noremap ? ?\v
 
 noremap Y y$
 
-nnoremap <backspace> :<c-u>Neomake<cr>
+nnoremap <silent> <backspace> :<c-u>Neomake<cr>:call lightline#update()<cr>
 
 " Leader Key Bindings
 
