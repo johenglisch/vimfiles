@@ -402,6 +402,17 @@ let g:airline_right_sep="\u2592"
 
 let g:airline_extensions = ['branch', 'ctrlp', 'netrw', 'quickfix']
 
+" Lightline
+
+let g:lightline = {
+            \ 'active': {'left': [['mode', 'paste'], ['fugitive', 'filename']]},
+            \ 'component_function': {
+            \   'fugitive': 'LightLineFugitive',
+            \   'fileformat': 'LightLineFileformat',
+            \   'fileencoding': 'LightLineFileencoding',
+            \ },
+            \ }
+
 " Tag List
 
 if has("win32")
