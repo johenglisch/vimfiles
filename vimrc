@@ -108,10 +108,6 @@ endif
 
 if has('win32')
     set encoding=utf-8
-
-    if !exists("loaded_vimrc")
-        let $PATH .= ';C:\cygwin64\bin'
-    endif
 endif
 
 if !exists("loaded_vimrc")
