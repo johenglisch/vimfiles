@@ -87,7 +87,6 @@ if has_pluginmgr == 1
     Plug 'Align'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
-    Plug 'itchyny/lightline.vim'
     Plug 'benekastah/neomake'
     Plug 'tomtom/tlib_vim'
                 \ | Plug 'marcweber/vim-addon-mw-utils'
