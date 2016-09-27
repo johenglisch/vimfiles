@@ -220,7 +220,7 @@ noremap ? ?\v
 
 noremap Y y$
 
-nnoremap <silent> <backspace> :<c-u>Neomake<cr>:call lightline#update()<cr>
+nnoremap <silent> <backspace> :<c-u>Neomake<cr>
 
 " Leader Key Bindings
 
@@ -347,8 +347,6 @@ function! ColorschemeEnv(fallback_theme, statusline_theme)
     if !empty(colorscheme)
         exec 'silent! colorscheme ' . colorscheme
     endif
-
-    " TODO Somehow include lightline in this
 endfunction
 
 if has("gui_running")
@@ -399,24 +397,6 @@ endfunction
 
 set laststatus=2
 set statusline=%t%M%R\ %y%=%{GitBranch()}%l:%c\ %P
-
-let g:lightline = {
-            \ 'active': {
-            \   'left': [['mode', 'paste'], ['fugitive', 'filename']],
-            \   'right': [
-            \     ['neomake', 'lineinfo'],
-            \     ['percent'],
-            \     ['fileformat', 'fileencoding', 'filetype']],
-            \ },
-            \ 'component_function': {
-            \   'mode': 'LightLineMode',
-            \   'fugitive': 'LightLineFugitive',
-            \   'fileformat': 'LightLineFileformat',
-            \   'fileencoding': 'LightLineFileencoding',
-            \   'filetype': 'LightLineFiletype',
-            \   'neomake': 'LightLineNeomake',
-            \ },
-            \ }
 
 " Tag List
 
