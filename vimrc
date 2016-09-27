@@ -307,10 +307,6 @@ set showmatch
 
 set scrolloff=1
 
-if has('termguicolors')
-    set termguicolors
-endif
-
 
 function! g:GitBranch()
     if !exists("*fugitive#head")
@@ -361,6 +357,10 @@ function! ColorschemeEnv(fallback_theme, statusline_theme)
         exec 'silent! colorscheme ' . colorscheme
     endif
 endfunction
+
+if has('termguicolors')
+    set termguicolors
+endif
 
 if has("gui_running")
     if !exists("loaded_vimrc")
