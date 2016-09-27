@@ -208,7 +208,7 @@ noremap Ü <C-u>
 noremap ´ @
 
 noremap ' #
-noremap # '
+noremap # `
 
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
