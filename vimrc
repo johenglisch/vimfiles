@@ -259,8 +259,6 @@ vnoremap <leader>w :CleanWhiteSpace<cr>
 
 nnoremap <leader>a :<c-u>Ack!<space>
 
-nnoremap <leader>T :<c-u>TlistToggle<cr>
-
 nnoremap <leader>f :<c-u>CtrlP<cr>
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
