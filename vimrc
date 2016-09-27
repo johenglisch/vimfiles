@@ -86,7 +86,6 @@ if has_pluginmgr == 1
     Plug 'tomtom/tlib_vim'
                 \ | Plug 'marcweber/vim-addon-mw-utils'
                 \ | Plug 'garbas/vim-snipmate'
-    Plug 'taglist.vim'
     Plug 'TaskList.vim'
 
     Plug 'tpope/vim-repeat'
@@ -394,12 +393,6 @@ augroup END
 
 
 " PLUGIN STUFF
-
-" Tag List
-
-if has("win32")
-    let g:Tlist_Ctags_Cmd = "C:/Users/Johannes/Documents/src/ctags58/ctags.exe"
-endif
 
 " CtrlP
 
