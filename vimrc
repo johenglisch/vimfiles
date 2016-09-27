@@ -387,7 +387,7 @@ augroup END
 
 " PLUGIN STUFF
 
-" Lightline
+" Status line
 
 set laststatus=2
 
