@@ -311,6 +311,19 @@ if has('termguicolors')
     set termguicolors
 endif
 
+
+function! g:GitBranch()
+    if !exists("*fugitive#head")
+        return ''
+    endif
+    let branch = fugitive#head()
+    return branch !=# '' ? '{'.branch.'} ' : ''
+endfunction
+
+set laststatus=2
+set statusline=%t%M%R\ %y%=%{GitBranch()}%l:%c\ %P
+
+
 set list
 augroup DontShowListCharsInInsertMode
     autocmd!
@@ -384,19 +397,6 @@ augroup END
 
 
 " PLUGIN STUFF
-
-" Status line
-
-function! g:GitBranch()
-    if !exists("*fugitive#head")
-        return ''
-    endif
-    let branch = fugitive#head()
-    return branch !=# '' ? '{'.branch.'} ' : ''
-endfunction
-
-set laststatus=2
-set statusline=%t%M%R\ %y%=%{GitBranch()}%l:%c\ %P
 
 " Tag List
 
