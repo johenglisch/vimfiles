@@ -1,8 +1,3 @@
-if &compatible
-    finish
-endif
-
-
 " FOLDERS
 
 function! s:MkDir(dirname)
