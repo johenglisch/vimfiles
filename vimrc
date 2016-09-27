@@ -327,17 +327,6 @@ augroup DontShowListCharsInInsertMode
     autocmd InsertLeave * set list
 augroup END
 
-augroup ShowCursorLineInNormalMode
-    autocmd!
-    autocmd WinLeave,InsertEnter * set nocursorline
-    autocmd WinEnter,InsertLeave * set cursorline
-augroup END
-
-augroup KeepSplitsEqualOnResize
-    autocmd!
-    autocmd VimResized * exec "normal! \<C-w>="
-augroup END
-
 function! s:AwesomeListChars()
     let &listchars = "tab:\u25b8 ,nbsp:~,eol: ,precedes:\u2190,extends:\u2192,trail:\u2592"
     let &showbreak = "\u2190"
@@ -349,6 +338,7 @@ function! s:BoringListChars()
 endfunction
 
 call s:AwesomeListChars()
+
 
 function! ColorschemeEnv(fallback_theme, statusline_theme)
     let colorscheme = empty($VIM_COLOURS) ? a:fallback_theme : $VIM_COLOURS
@@ -389,10 +379,22 @@ elseif $TERM =~? '.*rxvt.*'
     call s:BoringListChars()
 endif
 
+
+augroup KeepSplitsEqualOnResize
+    autocmd!
+    autocmd VimResized * exec "normal! \<C-w>="
+augroup END
+
 augroup ColourColumnInInsertMode
     autocmd!
     autocmd InsertEnter * exec 'set colorcolumn='.&textwidth
     autocmd InsertLeave * set colorcolumn=0
+augroup END
+
+augroup ShowCursorLineInNormalMode
+    autocmd!
+    autocmd WinLeave,InsertEnter * set nocursorline
+    autocmd WinEnter,InsertLeave * set cursorline
 augroup END
 
 
