@@ -296,6 +296,10 @@ set showmatch
 set scrolloff=1
 
 
+function! g:Modified()
+    return !&modifiable ? '-' : (&modified ? '*' : '')
+endfunction
+
 function! g:GitBranch()
     if !exists("*fugitive#head")
         return ''
@@ -305,7 +309,7 @@ function! g:GitBranch()
 endfunction
 
 set laststatus=2
-set statusline=%t%M%R\ %y%=%{GitBranch()}%l:%c\ %P
+set statusline=%{Modified()}%t%R\ %y%=%{GitBranch()}%l:%c\ %P
 
 
 set list
