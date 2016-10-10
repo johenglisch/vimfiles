@@ -293,6 +293,8 @@ augroup END
 let g:loaded_matchparen=1
 set showmatch
 
+set wildmenu
+
 set scrolloff=1
 
 
