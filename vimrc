@@ -264,6 +264,9 @@ nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
 nnoremap <leader>g :<c-u>Gstatus<cr>
 
+nnoremap <leader>ö <c-]>
+nnoremap <leader>Ö :!ctags -R .<cr>
+inoremap <c-x><c-t> <c-x><c-]>
 
 " Muscle Memory Training Facilities
 
