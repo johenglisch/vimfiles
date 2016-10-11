@@ -28,7 +28,9 @@ function! s:ToggleHeader()
     endif
 endfunction
 
+
 command! ToggleHeader call s:ToggleHeader()
+
 
 nnoremap <buffer> <cr> :<c-u>make!<cr>
 nnoremap <leader><tab> :<c-u>ToggleHeader<cr>
