@@ -94,7 +94,6 @@ if has_pluginmgr == 1
     Plug 'neovimhaskell/haskell-vim'
     Plug 'bitc/vim-hdevtools'
     Plug 'lervag/vimtex'
-    Plug 'klen/python-mode'
     Plug 'rust-lang/rust.vim'
 
     call plug#end()
