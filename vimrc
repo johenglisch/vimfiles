@@ -254,6 +254,7 @@ nnoremap <leader>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr
 vnoremap <leader>w :CleanWhiteSpace<cr>
 
 nnoremap <leader>a :<c-u>Ack!<space>
+nnoremap <leader>A :<c-u>Ack! <cword><cr>
 
 nnoremap <leader>f :<c-u>CtrlP<cr>
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
