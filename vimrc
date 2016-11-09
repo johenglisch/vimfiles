@@ -406,7 +406,7 @@ let g:ctrlp_custom_ignore = '\v\.('.
 
 " Ack.vim
 
-let g:ackprg='ag --vimgrep'
+let g:ackprg='ag --ignore tags --vimgrep'
 
 " Clojure
 
