@@ -134,6 +134,10 @@ set smartcase
 set incsearch
 set hlsearch
 
+if has('nvim-0.2.0')
+    set inccommand=nosplit
+endif
+
 set showcmd
 
 set mouse=a
