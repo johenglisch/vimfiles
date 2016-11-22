@@ -134,7 +134,7 @@ set smartcase
 set incsearch
 set hlsearch
 
-if has('nvim-0.2.0')
+if exists('&inccommand')
     set inccommand=nosplit
 endif
 
