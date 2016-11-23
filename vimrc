@@ -87,7 +87,6 @@ if has_pluginmgr == 1
                 \ | Plug 'marcweber/vim-addon-mw-utils'
                 \ | Plug 'garbas/vim-snipmate'
     Plug 'tpope/vim-surround'
-    Plug 'TaskList.vim'
 
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
