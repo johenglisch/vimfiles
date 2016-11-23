@@ -261,6 +261,7 @@ nnoremap <leader>A :<c-u>Ack! "<cword>"<cr>
 
 nnoremap <leader>f :<c-u>CtrlP<cr>
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
+nnoremap <leader>t :<c-u>CtrlPTag<cr>
 
 nnoremap <leader>g :<c-u>Gstatus<cr>
 
