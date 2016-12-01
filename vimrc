@@ -179,6 +179,7 @@ noremap Q gq
 noremap QQ gqq
 
 nnoremap ö <C-w>
+nnoremap öö <C-w><C-w>
 
 nnoremap , :
 vnoremap , :
