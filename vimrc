@@ -1,11 +1,5 @@
 " FOLDERS
 
-function! s:MkDir(dirname)
-    if !isdirectory(a:dirname)
-        call mkdir(a:dirname, 'p')
-    endif
-endfunction
-
 if has('unix')
     let s:cache_dir  = expand('~/.cache/vim/')
 else
@@ -20,9 +14,9 @@ let g:classpath_cache = s:cache_dir . 'classpath/'
 let s:plugin_dir      = s:cache_dir . 'plugged/'
 let g:netrw_home      = s:cache_dir
 
-call s:MkDir(s:backup_dir)
-call s:MkDir(s:swap_dir)
-call s:MkDir(s:undo_dir)
+silent! call mkdir(s:backup_dir, 'p')
+silent! call mkdir(s:swap_dir, 'p')
+silent! call mkdir(s:undo_dir, 'p')
 
 exec 'set backupdir=' . fnameescape(s:backup_dir) . '/'
 exec 'set directory=' . fnameescape(s:swap_dir)   . '/'
