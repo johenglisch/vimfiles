@@ -419,22 +419,8 @@ let g:haskell_indent_if = 0
 
 " Python
 
-let g:pymode_python = 'python3'
-
-let g:pymode_options = 0
-let g:pymode_trim_whitespaces = 0
-
-let g:pymode_syntax = 0
 let python_no_number_highlight = 1
 let python_space_error_highlight = 1
-
-let g:python_doc = 0
-let g:pymode_breakpoint = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_lint_on_write = 0
-
-let g:pymode_run_bind = '<cr>'
-let g:pymode_rope_goto_definition_bind = 'gd'
 
 let g:neomake_python_enabled_makers = ['pyflakes3', 'pylint3']
 
