@@ -4,7 +4,7 @@ function! s:Underline(filler_string)
         return
     endif
 
-    let underlining = FilledString(strwidth(getline('.')), a:filler_string)
+    let underlining = FilledString(strdisplaywidth(getline('.')), a:filler_string)
     if !empty(underlining)
         call append('.', underlining)
     endif
@@ -16,7 +16,7 @@ function! s:Overline(filler_string)
         return
     endif
 
-    let underlining = FilledString(strwidth(getline('.')), a:filler_string)
+    let underlining = FilledString(strdisplaywidth(getline('.')), a:filler_string)
     if !empty(underlining)
         call append(line('.') - 1, underlining)
     endif
