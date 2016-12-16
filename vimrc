@@ -74,6 +74,7 @@ if has_pluginmgr == 1
 
     Plug 'mileszs/ack.vim'
     Plug 'Align'
+    Plug 'tpope/vim-commentary'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'benekastah/neomake'
