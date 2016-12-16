@@ -2,7 +2,7 @@ function! DigraphMenu()
     let first_char = nr2char(getchar())
 
     let digraph_str = execute('digraphs')
-    let pattern = '\C\v(' . first_char . '\S).{-}(\d{1,5})'
+    let pattern = '\C\v(' . first_char . '\S) .\S*\s+(\d{1,5})'
 
     let digraph_list = []
     call substitute(digraph_str, pattern, '\=add(digraph_list, [submatch(1), str2nr(submatch(2))])', 'g')
