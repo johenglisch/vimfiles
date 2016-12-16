@@ -1,4 +1,4 @@
-function! s:ArchiveRange(filename) range
+function! s:ArchiveRange(filename) range abort
     exec a:firstline . ',' . a:lastline . 'write >> ' . expand(a:filename)
     exec a:firstline . ',' . a:lastline . 'delete'
 endfunction
