@@ -16,21 +16,16 @@ function! s:ToggleHeader()
     let ext = expand("%:e")
 
     if ext == 'c' || ext == 'cpp'
-        let fname = s:FindByExt(root, ['.h', '.hpp', '.H'])
-    else
-        let fname = s:FindByExt(root, ['.c', '.cpp'])
+        return s:FindByExt(root, ['.h', '.hpp', '.H'])
+    endif
+
+    if ext == 'h' || ext == 'hpp' || ext == 'H'
+        return s:FindByExt(root, ['.c', '.cpp'])
     end
 
-    if !empty(fname)
-        exec 'edit ' . fname
-    else
-        echo 'No header/source found.'
-    endif
+    return ''
 endfunction
 
 
-command! ToggleHeader call s:ToggleHeader()
-
-
 nnoremap <buffer> <cr> :<c-u>make!<cr>
-nnoremap <leader><tab> :<c-u>ToggleHeader<cr>
+nnoremap <leader><tab> :<c-u>exec 'edit ' . <sid>ToggleHeader()<cr>
