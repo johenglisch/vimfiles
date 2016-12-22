@@ -368,6 +368,7 @@ if has("gui_running")
         set guifont=Consolas:h10:cANSI
     endif
 elseif $TERM =~? '.*256color.*'
+    set t_ut=
     call ColorschemeEnv('apprentice', '')
 elseif $TERM =~? '.*rxvt.*'
     set background=dark
