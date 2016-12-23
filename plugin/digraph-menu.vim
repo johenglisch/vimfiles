@@ -1,3 +1,16 @@
+function! s:GetExactDigraph(digraph_table, char1, char2)
+    let digraph = a:char1 . a:char2
+
+    for mapping in a:digraph_table
+        if mapping[0] ==# digraph
+            return nr2char(mapping[1])
+        endif
+    endfor
+
+    return a:char2
+endfunction
+
+
 function! DigraphMenu()
     let first_char = nr2char(getchar())
 
@@ -25,12 +38,5 @@ function! DigraphMenu()
 
     let second_char = nr2char(getchar())
 
-    let digraph = first_char . second_char
-    for mapping in digraph_table
-        if mapping[0] ==# digraph
-            return nr2char(mapping[1])
-        endif
-    endfor
-
-    return second_char
+    return <sid>GetExactDigraph(digraph_table, first_char, second_char)
 endfunction
