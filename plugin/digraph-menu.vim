@@ -7,21 +7,21 @@ function! DigraphMenu()
     let digraph_table = []
     call substitute(digraph_str, pattern, '\=add(digraph_table, [submatch(1), str2nr(submatch(2))])', 'g')
 
-    let digraph_disp = ''
+    let digraph_display = ''
     let line_length = 0
     for mapping in digraph_table
         let item = mapping[0] . ' ' . nr2char(mapping[1]) . "\t"
 
         if line_length + strdisplaywidth(item) > &columns
             let line_length = 0
-            let digraph_disp .= "\n"
+            let digraph_display .= "\n"
         endif
 
         let line_length += strdisplaywidth(item)
-        let digraph_disp .= item
+        let digraph_display .= item
     endfor
 
-    echo digraph_disp
+    echo digraph_display
 
     let second_char = nr2char(getchar())
 
