@@ -38,5 +38,15 @@ function! DigraphMenu()
 
     let second_char = nr2char(getchar())
 
-    return <sid>GetExactDigraph(digraph_table, first_char, second_char)
+    let result = <sid>GetExactDigraph(digraph_table, first_char, second_char)
+    if result !=# second_char
+        return result
+    endif
+
+    let result = <sid>GetExactDigraph(digraph_table, second_char, first_char)
+    if result !=# first_char
+        return result
+    endif
+
+    return second_char
 endfunction
