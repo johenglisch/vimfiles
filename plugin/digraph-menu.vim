@@ -29,6 +29,11 @@ endfunction
 function! DigraphMenu()
     let char1 = nr2char(getchar())
 
+    " abort on <esc>
+    if char2nr(char1) == 27
+        return ''
+    endif
+
     let digraph_str = execute('digraphs')
     let pattern = '\C\V\(' . char1 . '\S\|\S' . char1 . '\) \.\S\*\s\+\(\d\{1,5\}\)'
 
@@ -52,6 +57,11 @@ function! DigraphMenu()
     echo digraph_display
 
     let char2 = nr2char(getchar())
+
+    " abort on <esc>
+    if char2nr(char2) == 27
+        return ''
+    endif
 
     return <sid>GetDigraph(digraph_table, char1, char2)
 endfunction
