@@ -11,6 +11,21 @@ function! s:GetExactDigraph(digraph_table, char1, char2)
 endfunction
 
 
+function! s:GetDigraph(digraph_table, char1, char2)
+    let result = <sid>GetExactDigraph(a:digraph_table, a:char1, a:char2)
+    if result !=# a:char2
+        return result
+    endif
+
+    let result = <sid>GetExactDigraph(a:digraph_table, a:char2, a:char1)
+    if result !=# a:char1
+        return result
+    endif
+
+    return a:char2
+endfunction
+
+
 function! DigraphMenu()
     let first_char = nr2char(getchar())
 
@@ -38,15 +53,5 @@ function! DigraphMenu()
 
     let second_char = nr2char(getchar())
 
-    let result = <sid>GetExactDigraph(digraph_table, first_char, second_char)
-    if result !=# second_char
-        return result
-    endif
-
-    let result = <sid>GetExactDigraph(digraph_table, second_char, first_char)
-    if result !=# first_char
-        return result
-    endif
-
-    return second_char
+    return <sid>GetDigraph(digraph_table, first_char, second_char)
 endfunction
