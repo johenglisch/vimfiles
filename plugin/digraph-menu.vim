@@ -27,10 +27,10 @@ endfunction
 
 
 function! DigraphMenu()
-    let first_char = nr2char(getchar())
+    let char1 = nr2char(getchar())
 
     let digraph_str = execute('digraphs')
-    let pattern = '\C\V\(' . first_char . '\S\|\S' . first_char . '\) \.\S\*\s\+\(\d\{1,5\}\)'
+    let pattern = '\C\V\(' . char1 . '\S\|\S' . char1 . '\) \.\S\*\s\+\(\d\{1,5\}\)'
 
     let digraph_table = []
     call substitute(digraph_str, pattern, '\=add(digraph_table, [submatch(1), str2nr(submatch(2))])', 'g')
@@ -51,7 +51,7 @@ function! DigraphMenu()
 
     echo digraph_display
 
-    let second_char = nr2char(getchar())
+    let char2 = nr2char(getchar())
 
-    return <sid>GetDigraph(digraph_table, first_char, second_char)
+    return <sid>GetDigraph(digraph_table, char1, char2)
 endfunction
