@@ -408,7 +408,8 @@ if exists('g:ctrlp_custom_ignore')
 endif
 let g:ctrlp_custom_ignore = '\v\.('.
             \ '[oa]|so|dll|lib|py[co]|class|hi|exe|'.
-            \ 'aux|bbl|blg|bst|dvi|log|nav|out|pdf|ps|snm|toc|fls|fdb_latexmk'.
+            \ 'aux|bbl|blg|bst|dvi|log|nav|out|pdf|ps|snm|toc|fls|'.
+            \ 'fdb_latexmk|synctex\.gz|'.
             \ 'odt|doc|docx)$'
 
 " Ack.vim
