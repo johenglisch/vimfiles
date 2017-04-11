@@ -8,19 +8,12 @@ setlocal linebreak
 
 " Editing Options
 
-function! s:Tex_CompileAndShow()
-    VimtexCompile
-    call vimtex#latexmk#errors_open(1)
-endfunction
-
-command! -buffer TexCompileAndShow call s:Tex_CompileAndShow()
-
 set iskeyword+=:
 
-nnoremap <buffer> <cr> :<c-u>TexCompileAndShow<cr>
+nnoremap <buffer> <cr> :<c-u>VimtexCompileSS<cr>
 
 nnoremap <buffer> <localleader>K :<c-u>TexRemoveAuxiliaryFiles<cr>
-nnoremap <buffer> <localleader>L :<c-u>TexCompileAndShow<cr>
+nnoremap <buffer> <localleader>L :<c-u>VimtexCompileSS<cr>
 nnoremap <buffer> <localleader>N A% TODO<space>
 
 
