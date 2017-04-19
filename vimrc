@@ -236,7 +236,7 @@ nnoremap <leader>s :%s/\v
 vnoremap <leader>s :s/\v
 nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 nnoremap <leader>h :<c-u>nohlsearch<cr>
-nnoremap <leader>T :<c-u>vimgrep /\v\C(TODO\|FIXME\|XXX)/j **/*<cr>:copen<cr>
+nnoremap <leader>T :<c-u>vimgrep /\v\C<%(TODO|FIXME|XXX)>/j **/*<cr>:copen<cr>
 
 nnoremap <leader>z zMzvzz
 
