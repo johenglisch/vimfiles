@@ -340,7 +340,7 @@ endfunction
 call s:AwesomeListChars()
 
 
-function! ColorschemeEnv(fallback_theme, statusline_theme)
+function! ColorschemeEnv(fallback_theme)
     let colorscheme = empty($VIM_COLOURS) ? a:fallback_theme : $VIM_COLOURS
 
     if !empty(colorscheme)
@@ -361,7 +361,7 @@ if has("gui_running")
 
     set guioptions=ci
 
-    call ColorschemeEnv('apprentice', '')
+    call ColorschemeEnv('apprentice')
     if has("gui_gtk2")
         set guifont=Hack\ 10
     elseif has("x11")
@@ -372,7 +372,7 @@ if has("gui_running")
     endif
 elseif $TERM =~? '.*256color.*'
     set t_ut=
-    call ColorschemeEnv('apprentice', '')
+    call ColorschemeEnv('apprentice')
 elseif $TERM =~? '.*rxvt.*'
     set background=dark
     silent! colorscheme seoul
