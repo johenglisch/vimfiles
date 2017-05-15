@@ -341,10 +341,10 @@ call s:AwesomeListChars()
 
 
 function! ColorschemeEnv(fallback_theme)
-    let colorscheme = empty($VIM_COLOURS) ? a:fallback_theme : $VIM_COLOURS
-
-    if !empty(colorscheme)
-        exec 'silent! colorscheme ' . colorscheme
+    if !empty($VIM_COLOURS)
+        exec 'silent! colorscheme ' . $VIM_COLOURS
+    elseif !empty(a:fallback_theme)
+        exec 'silent! colorscheme ' . a:fallback_theme
     endif
 endfunction
 
