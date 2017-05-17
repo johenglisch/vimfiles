@@ -449,8 +449,11 @@ let g:vimtex_imaps_enabled = 0
 let g:vimtex_motion_matchparen=0
 let g:vimtex_text_obj_enabled = 0
 
-let g:vimtex_latexmk_continuous = 0
-let g:vimtex_latexmk_options = '-pdfps'
+let g:vimtex_compiler_latexmk = get(g:, 'vimtex_compiler_latexmk', {})
+let g:vimtex_compiler_latexmk.continuous = 0
+let g:vimtex_compiler_latexmk.options = [
+            \ '-verbose', '-file-line-error', '-interaction=nonstopmode',
+            \ '-pdfps']
 
 " SnipMate
 
