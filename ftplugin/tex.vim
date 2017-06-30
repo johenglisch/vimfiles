@@ -17,6 +17,22 @@ nnoremap <buffer> <localleader>L :<c-u>VimtexCompileSS<cr>
 nnoremap <buffer> <localleader>N A% TODO<space>
 
 
+" Text-to-Speech
+
+function! s:ReadSelection() range abort
+    let lines = map(
+                \ getline(a:firstline, a:lastline),
+                \ 'substitute(v:val, ''\\\(sub\)*section{.\{-\}}'', "&.", "g")')
+    let plaintext = system("detex -cl -e array,figure,table,tikzpicture", lines)
+    let plaintext = join(split(plaintext), " ")
+    echo "Reading..."
+    call system("espeak -p30 -s130 -ven-uk-north", plaintext)
+    echo "Done."
+endfunction
+
+command! -buffer -range=% ReadOut <line1>,<line2>call s:ReadSelection()
+
+
 " Handling Auxiliary Files
 
 if exists('g:Tex_AuxFileExtensions')
