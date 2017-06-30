@@ -20,10 +20,10 @@ nnoremap <buffer> <localleader>N A% TODO<space>
 " Text-to-Speech
 
 function! s:ReadSelection() range abort
-    let lines = map(
+    let tex_code = map(
                 \ getline(a:firstline, a:lastline),
                 \ 'substitute(v:val, ''\\\(sub\)*section{.\{-\}}'', "&.", "g")')
-    let plaintext = system("detex -cl -e array,figure,table,tikzpicture", lines)
+    let plaintext = system("detex -cl -e array,figure,table,tikzpicture", tex_code)
     let plaintext = join(split(plaintext), " ")
     echo "Reading..."
     call system("espeak -p30 -s130 -ven-uk-north", plaintext)
