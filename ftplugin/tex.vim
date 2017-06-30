@@ -19,7 +19,7 @@ nnoremap <buffer> <localleader>N A% TODO<space>
 
 " Text-to-Speech
 
-function! s:ReadSelection() range abort
+function! s:ReadRange() range abort
     let lines = map(
                 \ getline(a:firstline, a:lastline),
                 \ 'substitute(v:val, ''%.*$'', "", "")')
@@ -37,7 +37,7 @@ function! s:ReadSelection() range abort
     echo "Done."
 endfunction
 
-command! -buffer -range=% ReadOut <line1>,<line2>call s:ReadSelection()
+command! -buffer -range=% ReadOut <line1>,<line2>call s:ReadRange()
 
 
 " Handling Auxiliary Files
