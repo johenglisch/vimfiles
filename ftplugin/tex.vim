@@ -20,10 +20,18 @@ nnoremap <buffer> <localleader>N A% TODO<space>
 " Text-to-Speech
 
 function! s:ReadSelection() range abort
-    let tex_code = join(getline(a:firstline, a:lastline), "\n")
+    let lines = map(
+                \ getline(a:firstline, a:lastline),
+                \ 'substitute(v:val, ''%.*$'', "", "")')
+
+    let tex_code = join(lines, "\n")
+    let tex_code = substitute(tex_code, '\\citep{.\{-\}}', '', 'g')
+    let tex_code = substitute(tex_code, '\\\%(Next\|Last\|NNext\|LLast\)\>', 'The Example', 'g')
     let tex_code = substitute(tex_code, '\(\\\%(sub\)*section{.\{-\}\)\(}\)', '\1.\2', 'g')
+
     let plaintext = system("detex -cl -e array,figure,table,tikzpicture", tex_code)
     let plaintext = join(split(plaintext), " ")
+
     echo "Reading..."
     call system("espeak -p30 -s130 -ven-uk-north", plaintext)
     echo "Done."
