@@ -22,16 +22,17 @@ nnoremap <buffer> <localleader>N A% TODO<space>
 function! s:PrepareTexCode(lines)
     let tex_code = join(a:lines, "\n")
 
-    " Stip comments
+    " Strip comments
     let tex_code = substitute(tex_code, '%.\{-\}\n', '', 'g')
 
-    " Collapse paragraphs into single lines
-    let tex_code = substitute(tex_code, '\(\S\)\n\(\S\)', '\1 \2', 'g')
-    let tex_code = substitute(tex_code, '\n\n\+\n', '\n\n', 'g')
-
+    " Make some commands more readable for espeak
     let tex_code = substitute(tex_code, '\\citep{.\{-\}}', '', 'g')
     let tex_code = substitute(tex_code, '\\\%(Next\|Last\|NNext\|LLast\)\>', 'The Example', 'g')
     let tex_code = substitute(tex_code, '\(\\\%(sub\)*section{.\{-\}\)\(}\)', '\1.\2', 'g')
+
+    " Collapse paragraphs into single lines
+    let tex_code = substitute(tex_code, '\n\n\+\n', '\n\n', 'g')
+    let tex_code = substitute(tex_code, '\(\S\)\n\(\S\)', '\1 \2', 'g')
 
     return tex_code
 endfunction
