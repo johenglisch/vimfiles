@@ -31,8 +31,9 @@ function! s:PrepareTexCode(lines)
     let tex_code = substitute(tex_code, '\(\\\%(sub\)*section{.\{-\}\)\(}\)', '\1.\2', 'g')
 
     " Collapse paragraphs into single lines
+    let tex_code = substitute(tex_code, '\s\+\n\s\+', '\n', 'g')
     let tex_code = substitute(tex_code, '\n\n\+\n', '\n\n', 'g')
-    let tex_code = substitute(tex_code, '\(\S\)\n\(\S\)', '\1 \2', 'g')
+    let tex_code = substitute(tex_code, '\([^\n]\)\n\([^\n]\)', '\1 \2', 'g')
 
     return tex_code
 endfunction
