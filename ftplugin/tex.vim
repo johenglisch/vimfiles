@@ -46,7 +46,7 @@ function! s:ReadRange() range abort
     let plaintext = system("detex -cl -e array,figure,table,tikzpicture", tex_code)
 
     echo "Reading..."
-    call system("espeak -p30 -s130 -ven-uk-north", plaintext)
+    call system("espeak -p30 -s140 -ven-uk-north", plaintext)
     echo "Done."
 endfunction
 
