@@ -64,16 +64,16 @@ if has_pluginmgr == 1
     call plug#begin(s:plugin_dir)
 
     "  88 colours
-    Plug 'seoul'
+    Plug 'vim-scripts/seoul'
     " 256 colours
     Plug 'romainl/Apprentice'
     " gui colours
-    Plug 'pyte'
+    Plug 'vim-scripts/pyte'
     Plug 'altercation/vim-colors-solarized'
     Plug 'molok/vim-vombato-colorscheme'
 
     Plug 'mileszs/ack.vim'
-    Plug 'Align'
+    Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
