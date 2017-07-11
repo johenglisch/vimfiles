@@ -3,3 +3,5 @@ setlocal softtabstop=2
 setlocal expandtab
 
 setlocal iskeyword+=:
+
+nnoremap <localleader><localleader> :grep ^@ %<cr>:copen<cr>
