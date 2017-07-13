@@ -4,4 +4,4 @@ setlocal expandtab
 
 setlocal iskeyword+=:
 
-nnoremap <localleader><localleader> :lgrep ^@ %<cr>:lopen<cr>
+nnoremap <localleader><localleader> :lvimgrep /^@/ %<cr>:lopen<cr>
