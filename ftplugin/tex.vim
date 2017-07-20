@@ -33,6 +33,7 @@ function! s:PrepareTexCode(lines)
     let tex_code = substitute(tex_code, '\v[^\\]%(\\\\)*\zs\%.{-}\n', '', 'g')
 
     " Make some commands more readable for espeak
+    " FIXME The backslashes could be escaped too, why not...
     let tex_code = substitute(tex_code, '\v\\citep\{.{-}\}', '', 'g')
     let tex_code = substitute(tex_code, '\v\\%(NN?ext|LL?ast)>', 'The Example', 'g')
     let tex_code = substitute(tex_code, '\v\\%(sub)*section\*?\{\zs.{-}\ze\}', '&.', 'g')
