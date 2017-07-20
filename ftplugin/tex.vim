@@ -35,7 +35,7 @@ function! s:PrepareTexCode(lines)
     " Make some commands more readable for espeak
     let tex_code = substitute(tex_code, '\\citep{.\{-\}}', '', 'g')
     let tex_code = substitute(tex_code, '\v\\%(NN?ext|LL?ast)>', 'The Example', 'g')
-    let tex_code = substitute(tex_code, '\v(\\%(sub)*section\*?\{.{-})(\})', '\1.\2', 'g')
+    let tex_code = substitute(tex_code, '\v\\%(sub)*section\*?\{\zs.{-}\ze\}', '&.', 'g')
 
     " Collapse paragraphs into single lines
     let tex_code = substitute(tex_code, '\s\+\n\s\+', '\n', 'g')
@@ -47,7 +47,6 @@ endfunction
 
 function! s:ReadRange() range abort
     let tex_code = s:PrepareTexCode(getline(a:firstline, a:lastline))
-    echo tex_code | return
     let plaintext = system("detex -cl -e array,figure,table,tikzpicture", tex_code)
 
     let voice = get(b:, 'voice', 'en-uk-north')
