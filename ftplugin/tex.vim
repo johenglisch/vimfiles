@@ -23,10 +23,14 @@ vnoremap <buffer> <localleader>Ö :ReadOut<cr>
 " Text-to-Speech
 
 function! s:PrepareTexCode(lines)
-    let tex_code = join(a:lines, "\n")
-
     " Strip comments
-    let tex_code = substitute(tex_code, '%.\{-\}\n', '', 'g')
+    "
+    " Checking for escaped %-signs leads to overlapping regex matches, if there
+    " are two comments *right* after one another.  This can be avoided by
+    " removing all lines starting with a comment beforehand.
+    call filter(a:lines, 'v:val !~ ''^%''')
+    let tex_code = join(a:lines, "\n")
+    let tex_code = substitute(tex_code, '\v[^\\]%(\\\\)*\zs\%.{-}\n', '', 'g')
 
     " Make some commands more readable for espeak
     let tex_code = substitute(tex_code, '\\citep{.\{-\}}', '', 'g')
