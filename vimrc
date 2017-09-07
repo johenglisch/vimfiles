@@ -191,11 +191,10 @@ noremap QQ gqq
 
 noremap Y y$
 
+noremap , :
+
 noremap / /\v
 noremap ? ?\v
-
-nnoremap , :
-vnoremap , :
 
 noremap ' #
 noremap # `
