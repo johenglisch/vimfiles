@@ -214,6 +214,8 @@ nnoremap <silent> <backspace> :<c-u>Neomake<cr>
 
 noremap! <silent> <c-k> <c-r>=DigraphMenu()<cr>
 
+inoremap <c-x><c-t> <c-x><c-]>
+
 " Leader Key Bindings
 
 let mapleader = ' '
@@ -274,8 +276,6 @@ nnoremap <leader>ö <c-]>
 nnoremap <leader>Ö :!ctags -R .<cr>
 
 nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-
-inoremap <c-x><c-t> <c-x><c-]>
 
 " Muscle Memory Training Facilities
 
