@@ -207,7 +207,7 @@ nnoremap <silent> + :<C-u>MoveLineDown v:count1<cr>
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 
-nnoremap <silent> <cr> :<c-u>make<cr>
+nnoremap <silent> <cr> :<c-u>make!<cr>
 nnoremap <silent> <backspace> :<c-u>Neomake<cr>
 
 " Terminal Mode Bindings
