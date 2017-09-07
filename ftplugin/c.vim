@@ -27,5 +27,4 @@ function! s:ToggleHeader()
 endfunction
 
 
-nnoremap <buffer> <cr> :<c-u>make!<cr>
 nnoremap <leader><tab> :<c-u>exec 'edit ' . <sid>ToggleHeader()<cr>
