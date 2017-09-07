@@ -104,7 +104,7 @@ command! ToggleSyntax call s:ToggleSyntax()
 " Create a line below or above the current line which is filled with
 " `filler_string`.
 
-function! g:Underline(filler_string)
+function! s:Underline(filler_string)
     " abort on <esc>
     if char2nr(a:filler_string) == 27
         return
@@ -116,7 +116,7 @@ function! g:Underline(filler_string)
     endif
 endfunction
 
-function! g:Overline(filler_string)
+function! s:Overline(filler_string)
     " abort on <esc>
     if char2nr(a:filler_string) == 27
         return
@@ -127,3 +127,6 @@ function! g:Overline(filler_string)
         call append(line('.') - 1, underlining)
     endif
 endfunction
+
+command! -nargs=1 Underline call s:Underline(<args>)
+command! -nargs=1 Overline call s:Overline(<args>)
