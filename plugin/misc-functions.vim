@@ -1,4 +1,4 @@
-function! s:Clamp(value, min, max)
+function! Clamp(value, min, max)
     return min([a:max, max([a:min, a:value])])
 endfunction
 
@@ -67,7 +67,7 @@ endfunction
 
 
 function! g:MoveLine(distance)
-    exec 'move ' . s:Clamp(line('.') + a:distance, 0, line('$'))
+    exec 'move ' . Clamp(line('.') + a:distance, 0, line('$'))
 endfunction
 
 
