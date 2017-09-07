@@ -16,8 +16,8 @@ nnoremap <buffer> <localleader>K :<c-u>TexRemoveAuxiliaryFiles<cr>
 nnoremap <buffer> <localleader>L :<c-u>VimtexCompileSS<cr>
 nnoremap <buffer> <localleader>N A% TODO<space>
 
-nnoremap <buffer> <localleader>Ö :<c-u>ReadOut<cr>
-vnoremap <buffer> <localleader>Ö :ReadOut<cr>
+nnoremap <buffer> <localleader><localleader> :<c-u>ReadOut<cr>
+vnoremap <buffer> <localleader><localleader> :ReadOut<cr>
 
 
 " Text-to-Speech
