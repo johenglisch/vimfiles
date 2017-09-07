@@ -257,8 +257,8 @@ nnoremap <leader>H :<c-u>call ToggleHighlighting()<cr>
 
 nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 
-nnoremap <leader>r :<c-u>Underline nr2char(getchar())<cr>
-nnoremap <leader>R :<c-u>Overline nr2char(getchar())<cr>
+nnoremap <leader>r :<c-u>call Underline(nr2char(getchar()))<cr>
+nnoremap <leader>R :<c-u>call Overline(nr2char(getchar()))<cr>
 
 nnoremap <leader>s :%s/\v
 vnoremap <leader>s :s/\v
