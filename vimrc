@@ -219,54 +219,62 @@ noremap! <silent> <c-k> <c-r>=DigraphMenu()<cr>
 let mapleader = ' '
 let maplocalleader = 'Ö'
 
-nnoremap <leader>d :<c-u>cd %:h<cr>
+nnoremap <leader>a :<c-u>Ack!<space>
+nnoremap <leader>A :<c-u>Ack! "<cword>"<cr>
 
-nnoremap <silent> <leader>ee :<c-u>Vexec 'edit'<cr>
-nnoremap <silent> <leader>ed :<c-u>Vexec 'edit ++enc=cp437'<cr>
-nnoremap <silent> <leader>ec :<c-u>edit ~/.when/calendar<cr>
-nnoremap <silent> <leader>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
-nnoremap <silent> <leader>ef :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
-nnoremap <silent> <leader>ev :<c-u>edit $MYVIMRC<cr>
-nnoremap <leader>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
-
-nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
-nnoremap <leader>vh :<c-u>split $MYVIMRC<cr>
-nnoremap <leader>vv :<c-u>vsplit $MYVIMRC<cr>
-nnoremap <leader>vs :<c-u>Vexec "source $MYVIMRC"<cr>
-
-nnoremap <leader>s :%s/\v
-vnoremap <leader>s :s/\v
-nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-nnoremap <leader>h :<c-u>nohlsearch<cr>
-nnoremap <leader>T :<c-u>vimgrep /\v\C<%(TODO|FIXME|XXX)>/j **/*<cr>:copen<cr>
-
-nnoremap <leader>z zMzvzz
+nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
+nnoremap <leader>B :<c-u>ToggleBackground<cr>
 
 nnoremap <leader>c "+
 vnoremap <leader>c "+
 
-nnoremap <leader>n :<c-u>set invrelativenumber<cr>
-nnoremap <leader>B :<c-u>ToggleBackground<cr>
+nnoremap <leader>d :<c-u>cd %:h<cr>
+
+nnoremap <leader>ec :<c-u>edit ~/.when/calendar<cr>
+nnoremap <leader>ed :<c-u>Vexec 'edit ++enc=cp437'<cr>
+nnoremap <leader>ee :<c-u>Vexec 'edit'<cr>
+nnoremap <leader>ef :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
+nnoremap <leader>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
+nnoremap <leader>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
+nnoremap <leader>ev :<c-u>edit $MYVIMRC<cr>
+
+nnoremap <leader>f :<c-u>CtrlP<cr>
+
+nnoremap <leader>g :<c-u>Gstatus<cr>
+
+nnoremap <leader>h :<c-u>nohlsearch<cr>
+
 nnoremap <leader>H :<c-u>ToggleHighlighting<cr>
-nnoremap <leader>S :<c-u>sign unplace *<cr>
+
+nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 
 nnoremap <leader>r :<c-u>Underline nr2char(getchar())<cr>
 nnoremap <leader>R :<c-u>Overline nr2char(getchar())<cr>
 
+nnoremap <leader>s :%s/\v
+vnoremap <leader>s :s/\v
+
+nnoremap <leader>S :<c-u>sign unplace *<cr>
+
+nnoremap <leader>t :<c-u>CtrlPTag<cr>
+
+nnoremap <leader>T :<c-u>vimgrep /\v\C<%(TODO|FIXME|XXX)>/j **/*<cr>:copen<cr>
+
+nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
+nnoremap <leader>vh :<c-u>split $MYVIMRC<cr>
+nnoremap <leader>vs :<c-u>Vexec "source $MYVIMRC"<cr>
+nnoremap <leader>vv :<c-u>vsplit $MYVIMRC<cr>
+
 nnoremap <leader>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
 vnoremap <leader>w :CleanWhiteSpace<cr>
 
-nnoremap <leader>a :<c-u>Ack!<space>
-nnoremap <leader>A :<c-u>Ack! "<cword>"<cr>
-
-nnoremap <leader>f :<c-u>CtrlP<cr>
-nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
-nnoremap <leader>t :<c-u>CtrlPTag<cr>
-
-nnoremap <leader>g :<c-u>Gstatus<cr>
+nnoremap <leader>z zMzvzz
 
 nnoremap <leader>ö <c-]>
 nnoremap <leader>Ö :!ctags -R .<cr>
+
+nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+
 inoremap <c-x><c-t> <c-x><c-]>
 
 " Muscle Memory Training Facilities
