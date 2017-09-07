@@ -253,7 +253,7 @@ nnoremap <leader>g :<c-u>Gstatus<cr>
 
 nnoremap <leader>h :<c-u>nohlsearch<cr>
 
-nnoremap <leader>H :<c-u>ToggleHighlighting<cr>
+nnoremap <leader>H :<c-u>call ToggleHighlighting()<cr>
 
 nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 

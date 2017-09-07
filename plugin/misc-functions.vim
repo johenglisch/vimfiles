@@ -16,3 +16,11 @@ function! g:ToggleBackground()
     endif
     echo 'set background=' &background
 endfunction
+
+function! g:ToggleHighlighting()
+    if empty(&syntax) || &syntax ==# 'OFF'
+        exec 'setlocal syntax=' . &filetype
+    else
+        setlocal syntax=OFF
+    endif
+endfunction
