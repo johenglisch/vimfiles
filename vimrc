@@ -201,8 +201,8 @@ noremap # `
 
 noremap ´ @
 
-nnoremap <silent> - :<C-u>MoveLine (-(v:count1 + 1))<cr>
-nnoremap <silent> + :<C-u>MoveLine v:count1<cr>
+nnoremap <silent> - :<C-u>call MoveLine((-(v:count1 + 1)))<cr>
+nnoremap <silent> + :<C-u>call MoveLine(v:count1)<cr>
 
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
