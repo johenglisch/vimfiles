@@ -68,9 +68,12 @@ command! EchoSyntaxStackAtPoint echo GetSyntaxStack(line('.'), col('.'))
 
 " Move a line down by `distance` lines (negative distances move the line up).
 
-function! g:MoveLine(distance)
+function! s:MoveLine(distance)
     exec 'move ' . Clamp(line('.') + a:distance, 0, line('$'))
 endfunction
+
+command! -nargs=1 MoveLineUp call s:MoveLine(-(<args> + 1))
+command! -nargs=1 MoveLineDown call s:MoveLine(<args>)
 
 
 " Toggle between values of some options that are not just binary choices
