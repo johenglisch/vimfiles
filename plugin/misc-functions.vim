@@ -79,7 +79,7 @@ command! -nargs=1 MoveLineDown call s:MoveLine(<args>)
 " Toggle between values of some options that are not just binary choices
 " (i.e. where `set invoption` is not possible).
 
-function! g:ToggleBackground()
+function! s:ToggleBackground()
     if &background ==# 'light'
         set background=dark
     else
@@ -88,13 +88,17 @@ function! g:ToggleBackground()
     echo 'set background=' &background
 endfunction
 
-function! g:ToggleHighlighting()
+function! s:ToggleSyntax()
     if empty(&syntax) || &syntax ==# 'OFF'
         exec 'setlocal syntax=' . &filetype
     else
         setlocal syntax=OFF
     endif
+    echo 'set syntax=' &syntax
 endfunction
+
+command! ToggleBackground call s:ToggleBackground()
+command! ToggleSyntax call s:ToggleSyntax()
 
 
 " Create a line below or above the current line which is filled with

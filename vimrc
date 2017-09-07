@@ -232,7 +232,7 @@ nnoremap <leader>A :<c-u>Ack! "<cword>"<cr>
 
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
-nnoremap <leader>B :<c-u>call ToggleBackground()<cr>
+nnoremap <leader>B :<c-u>ToggleBackground<cr>
 
 nnoremap <leader>c "+
 vnoremap <leader>c "+
@@ -253,7 +253,7 @@ nnoremap <leader>g :<c-u>Gstatus<cr>
 
 nnoremap <leader>h :<c-u>nohlsearch<cr>
 
-nnoremap <leader>H :<c-u>call ToggleHighlighting()<cr>
+nnoremap <leader>H :<c-u>ToggleSyntax<cr>
 
 nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 
