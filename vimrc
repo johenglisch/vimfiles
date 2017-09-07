@@ -231,7 +231,8 @@ nnoremap <leader>a :<c-u>Ack!<space>
 nnoremap <leader>A :<c-u>Ack! "<cword>"<cr>
 
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
-nnoremap <leader>B :<c-u>ToggleBackground<cr>
+
+nnoremap <leader>B :<c-u>call ToggleBackground()<cr>
 
 nnoremap <leader>c "+
 vnoremap <leader>c "+
