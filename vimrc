@@ -278,8 +278,8 @@ nnoremap <leader>vv :<c-u>vsplit $MYVIMRC<cr>
 nnoremap <leader>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
 vnoremap <leader>w :CleanWhiteSpace<cr>
 
-nnoremap <leader>xx :normal! mm[s1z=`m<cr>
-nnoremap <leader>xg :normal! mm[s1zg`m<cr>
+nnoremap <leader>xx :<c-u>FixSpelling<cr>
+nnoremap <leader>xg :<c-u>ErrorToDict<cr>
 
 nnoremap <leader>z zMzvzz
 

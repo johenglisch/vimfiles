@@ -53,6 +53,21 @@ command! -bang -nargs=1 Cgrep call s:FilterQuickfixList(<bang>0, <q-args>)
 command! -bang -nargs=1 Lgrep call s:FilterLocationList(<bang>0, <q-args>)
 
 
+" Look backwards from the cursor for a spelling error and either guess
+" a correction or add the error to the dictionary.
+
+function! s:FixSpelling()
+    normal! mm[s1z=`m
+endfunction
+
+function! s:ErrorToDict()
+    normal! mm[s1zg`m
+endfunction
+
+command! FixSpelling call s:FixSpelling()
+command! ErrorToDict call s:ErrorToDict()
+
+
 " Get the names of all elements in the syntax stack below the curser.
 
 function! GetSyntaxStack(line, col)
