@@ -369,32 +369,32 @@ if has('termguicolors')
     set termguicolors
 endif
 
-if has("gui_running")
-    if !exists("loaded_vimrc")
+if !exists("loaded_vimrc")
+    if has("gui_running")
         set lines=35 columns=85
-    endif
 
-    set mousehide
+        set mousehide
 
-    set guioptions=ci
+        set guioptions=ci
 
-    call ColorschemeEnv('apprentice')
-    if has("gui_gtk2")
-        set guifont=Hack\ 10
-    elseif has("x11")
-        set guifont=-*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-*
+        call ColorschemeEnv('apprentice')
+        if has("gui_gtk2")
+            set guifont=Hack\ 10
+        elseif has("x11")
+            set guifont=-*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-*
+            call s:BoringListChars()
+        elseif has("gui_win32")
+            set guifont=Consolas:h10:cANSI
+        endif
+    elseif $TERM =~? '.*256color.*'
+        set t_ut=
+        call ColorschemeEnv('apprentice')
+    elseif $TERM =~? '.*rxvt.*'
+        set background=dark
+        silent! colorscheme seoul
+
         call s:BoringListChars()
-    elseif has("gui_win32")
-        set guifont=Consolas:h10:cANSI
     endif
-elseif $TERM =~? '.*256color.*'
-    set t_ut=
-    call ColorschemeEnv('apprentice')
-elseif $TERM =~? '.*rxvt.*'
-    set background=dark
-    silent! colorscheme seoul
-
-    call s:BoringListChars()
 endif
 
 
