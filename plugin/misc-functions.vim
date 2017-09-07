@@ -3,6 +3,8 @@ function! s:ArchiveRange(filename) range abort
     exec a:firstline . ',' . a:lastline . 'delete'
 endfunction
 
+command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRange(<args>)
+
 
 function! s:CleanWhiteSpace() range
     let search_register = @/
@@ -10,12 +12,16 @@ function! s:CleanWhiteSpace() range
     let @/ = search_register
 endfunction
 
+command! -range=% CleanWhiteSpace <line1>,<line2>call s:CleanWhiteSpace()
+
 
 function! s:ExecuteWithSavedView(command)
     let view = winsaveview()
     exec a:command
     call winrestview(view)
 endfunction
+
+command! -nargs=1 Vexec call s:ExecuteWithSavedView(<args>)
 
 
 function! s:FilterQuickfixList(bang, pattern)
@@ -33,6 +39,9 @@ function! s:FilterLocationList(bang, pattern)
         \ "v:val['text']" . cmp . " a:pattern"))
 endfunction
 
+command! -bang -nargs=1 Cgrep call s:FilterQuickfixList(<bang>0, <q-args>)
+command! -bang -nargs=1 Lgrep call s:FilterLocationList(<bang>0, <q-args>)
+
 
 function! GetSyntaxStack(line, col)
     let names = []
@@ -41,6 +50,8 @@ function! GetSyntaxStack(line, col)
     endfor
     return names
 endfunction
+
+command! EchoSyntaxStackAtPoint echo GetSyntaxStack(line('.'), col('.'))
 
 
 function! g:MoveLine(distance)
@@ -89,17 +100,3 @@ function! g:Overline(filler_string)
         call append(line('.') - 1, underlining)
     endif
 endfunction
-
-
-" XXX Maybe paddle back and actually create commands for the global functions above
-
-command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRange(<args>)
-
-command! EchoSyntaxStackAtPoint echo GetSyntaxStack(line('.'), col('.'))
-
-command! -bang -nargs=1 Cgrep call s:FilterQuickfixList(<bang>0, <q-args>)
-command! -bang -nargs=1 Lgrep call s:FilterLocationList(<bang>0, <q-args>)
-
-command! -range=% CleanWhiteSpace <line1>,<line2>call s:CleanWhiteSpace()
-
-command! -nargs=1 Vexec call s:ExecuteWithSavedView(<args>)
