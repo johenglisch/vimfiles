@@ -210,6 +210,8 @@ noremap Y y$
 
 nnoremap <silent> <backspace> :<c-u>Neomake<cr>
 
+noremap! <silent> <c-k> <c-r>=DigraphMenu()<cr>
+
 " Leader Key Bindings
 
 let mapleader = ' '
@@ -229,8 +231,6 @@ nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
 nnoremap <leader>vh :<c-u>split $MYVIMRC<cr>
 nnoremap <leader>vv :<c-u>vsplit $MYVIMRC<cr>
 nnoremap <leader>vs :<c-u>Vexec "source $MYVIMRC"<cr>
-
-noremap! <silent> <c-k> <c-r>=DigraphMenu()<cr>
 
 nnoremap <leader>s :%s/\v
 vnoremap <leader>s :s/\v
