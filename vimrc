@@ -165,10 +165,7 @@ onoremap <C-g> <Esc>
 inoremap <C-g> <Esc>
 cnoremap <C-g> <C-c>
 
-if has('nvim')
-    tnoremap <C-c><C-g> <C-\><C-n>
-    tnoremap <C-c><C-c> <C-c>
-endif
+" Normal/Visual Mode Bindings
 
 noremap j gj
 noremap k gk
@@ -176,41 +173,51 @@ noremap k gk
 noremap H ^
 noremap L $
 
-nnoremap <silent> - :<C-u>MoveLine (-(v:count1 + 1))<cr>
-nnoremap <silent> + :<C-u>MoveLine v:count1<cr>
-
-noremap Q gq
-noremap QQ gqq
+noremap ä }
+noremap Ä <C-d>
+noremap ü {
+noremap Ü <C-u>
 
 nnoremap ö <C-w>
 nnoremap öö <C-w><C-w>
 nnoremap öä :<c-u>cclose<cr>
 nnoremap <c-w>ä :<c-u>cclose<cr>
 
-nnoremap , :
-vnoremap , :
-
-noremap ä }
-noremap Ä <C-d>
-noremap ü {
-noremap Ü <C-u>
-noremap ´ @
-
-noremap ' #
-noremap # `
-
-nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
-nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
-
 noremap n nzzzv
 noremap N Nzzzv
+
+noremap Q gq
+noremap QQ gqq
+
+noremap Y y$
 
 noremap / /\v
 noremap ? ?\v
 
-noremap Y y$
+nnoremap , :
+vnoremap , :
+
+noremap ' #
+noremap # `
+
+noremap ´ @
+
+nnoremap <silent> - :<C-u>MoveLine (-(v:count1 + 1))<cr>
+nnoremap <silent> + :<C-u>MoveLine v:count1<cr>
+
+nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
+nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 
 nnoremap <silent> <backspace> :<c-u>Neomake<cr>
+
+" Terminal Mode Bindings
+
+if has('nvim')
+    tnoremap <C-c><C-g> <C-\><C-n>
+    tnoremap <C-c><C-c> <C-c>
+endif
+
+" Insert Mode Bindings
 
 noremap! <silent> <c-k> <c-r>=DigraphMenu()<cr>
 
