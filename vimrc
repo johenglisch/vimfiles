@@ -290,13 +290,13 @@ nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 for s:prefix in ['i', 'n', 'v']
     for s:key in ['<up>', '<down>', '<left>', '<right>']
-        exe s:prefix . 'noremap ' . s:key . ' <nop>'
+        exec s:prefix . 'noremap ' . s:key . ' <nop>'
     endfor
 endfor
 
 for s:prefix in ['n', 'v']
     for s:key in ['{', '}', '<C-u>', '<C-d>']
-        exe s:prefix . 'noremap ' . s:key . ' <nop>'
+        exec s:prefix . 'noremap ' . s:key . ' <nop>'
     endfor
 endfor
 
