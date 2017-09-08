@@ -42,9 +42,9 @@ endif
 
 " PACKAGE MANAGEMENT
 
-let has_pluginmgr = 0
+let s:has_pluginmgr = 0
 if filereadable(g:vimfiles_dir . 'autoload/plug.vim')
-    let has_pluginmgr = 1
+    let s:has_pluginmgr = 1
 elseif confirm("Plugin manager not found.  Install it?", "&yes\n&no") == 1
     " ^^^ FIXME this confirm() isn't working on windows...
 
@@ -53,14 +53,14 @@ elseif confirm("Plugin manager not found.  Install it?", "&yes\n&no") == 1
 
     if v:shell_error == 0
         echomsg "Plugin manager was installed successfully"
-        let has_pluginmgr = 1
+        let s:has_pluginmgr = 1
     else
         echoerr "Plugin manager could not be installed:"
         echoerr s:msg
     endif
 endif
 
-if has_pluginmgr == 1
+if s:has_pluginmgr == 1
     call plug#begin(s:plugin_dir)
 
     "  88 colours
@@ -207,7 +207,6 @@ nnoremap <silent> + :<C-u>MoveLineDown v:count1<cr>
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 
-nnoremap <silent> <cr> :<c-u>make!<cr>
 nnoremap <silent> <backspace> :<c-u>Neomake<cr>
 
 " Terminal Mode Bindings
