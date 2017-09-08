@@ -103,7 +103,7 @@ if has('win32')
     set encoding=utf-8
 endif
 
-if !exists('loaded_vimrc')
+if !exists('g:loaded_vimrc')
     set tabstop=8
     set softtabstop=4
     set shiftwidth=4
@@ -224,8 +224,8 @@ inoremap <c-x><c-t> <c-x><c-]>
 
 " Leader Key Bindings
 
-let mapleader = ' '
-let maplocalleader = 'Ö'
+let g:mapleader = ' '
+let g:maplocalleader = 'Ö'
 
 nnoremap <leader>a :<c-u>Ack!<space>
 nnoremap <leader>A :<c-u>Ack! "<cword>"<cr>
@@ -289,15 +289,15 @@ nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 " Muscle Memory Training Facilities
 
-for prefix in ['i', 'n', 'v']
-    for key in ['<up>', '<down>', '<left>', '<right>']
-        exe prefix . 'noremap ' . key . ' <nop>'
+for s:prefix in ['i', 'n', 'v']
+    for s:key in ['<up>', '<down>', '<left>', '<right>']
+        exe s:prefix . 'noremap ' . s:key . ' <nop>'
     endfor
 endfor
 
-for prefix in ['n', 'v']
-    for key in ['{', '}', '<C-u>', '<C-d>']
-        exe prefix . 'noremap ' . key . ' <nop>'
+for s:prefix in ['n', 'v']
+    for s:key in ['{', '}', '<C-u>', '<C-d>']
+        exe s:prefix . 'noremap ' . s:key . ' <nop>'
     endfor
 endfor
 
@@ -328,8 +328,8 @@ function! g:GitBranch()
     if !exists('*fugitive#head')
         return ''
     endif
-    let branch = fugitive#head()
-    return branch !=# '' ? '{'.branch.'} ' : ''
+    let l:branch = fugitive#head()
+    return l:branch !=# '' ? '{'.l:branch.'} ' : ''
 endfunction
 
 set laststatus=2
@@ -368,7 +368,7 @@ if has('termguicolors')
     set termguicolors
 endif
 
-if !exists('loaded_vimrc')
+if !exists('g:loaded_vimrc')
     if has('gui_running')
         set lines=35 columns=85
 
@@ -444,8 +444,8 @@ let g:haskell_indent_if = 0
 
 " Python
 
-let python_no_number_highlight = 1
-let python_space_error_highlight = 1
+let g:python_no_number_highlight = 1
+let g:python_space_error_highlight = 1
 
 let g:neomake_python_enabled_makers = ['pyflakes3', 'pylint3']
 
@@ -503,4 +503,4 @@ augroup END
 highlight clear Conceal
 
 
-let loaded_vimrc=1
+let g:loaded_vimrc=1
