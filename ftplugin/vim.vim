@@ -1,4 +1,4 @@
-function! s:VimLExecuteLine()
+function! s:VimLExecuteLine() abort
     let l:line = Strip(getline('.'))
     if !empty(l:line)
         echo ':' . l:line
@@ -6,13 +6,13 @@ function! s:VimLExecuteLine()
     endif
 endfunction
 
-function! s:VimLSourceFile()
+function! s:VimLSourceFile() abort
     let l:filename = bufname('%')
     exec 'source ' . l:filename
     echo 'Sourced' l:filename
 endfunction
 
-function! s:VimLContextHelp()
+function! s:VimLContextHelp() abort
     for l:syntax_id in synstack(line('.'), col('.'))
         let l:syntax_item = synIDattr(l:syntax_id, 'name')
 

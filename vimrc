@@ -319,11 +319,11 @@ set wildmenu
 set scrolloff=1
 
 
-function! g:Modified()
+function! g:Modified() abort
     return !&modifiable ? '-' : (&modified ? '*' : '')
 endfunction
 
-function! g:GitBranch()
+function! g:GitBranch() abort
     if !exists('*fugitive#head')
         return ''
     endif
@@ -342,12 +342,12 @@ augroup DontShowListCharsInInsertMode
     autocmd InsertLeave * set list
 augroup END
 
-function! s:AwesomeListChars()
+function! s:AwesomeListChars() abort
     let &listchars = "tab:\u25b8 ,nbsp:~,eol: ,precedes:\u2190,extends:\u2192,trail:\u2592"
     let &showbreak = "\u2190"
 endfunction
 
-function! s:BoringListChars()
+function! s:BoringListChars() abort
     let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
     let &showbreak = '-'
 endfunction
@@ -355,7 +355,7 @@ endfunction
 call s:AwesomeListChars()
 
 
-function! ColorschemeEnv(fallback_theme)
+function! ColorschemeEnv(fallback_theme) abort
     if !empty($VIM_COLOURS)
         exec 'silent! colorscheme ' . $VIM_COLOURS
     elseif !empty(a:fallback_theme)

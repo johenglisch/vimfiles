@@ -10,7 +10,7 @@ command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRan
 
 " Remove trailing white space in a range.
 
-function! s:CleanWhiteSpace() range
+function! s:CleanWhiteSpace() range abort
     let l:search_register = @/
     exec a:firstline . ',' . a:lastline . 'substitute/\s\+$//e'
     let @/ = l:search_register
@@ -21,7 +21,7 @@ command! -range=% CleanWhiteSpace <line1>,<line2>call s:CleanWhiteSpace()
 
 " Execute a command and then restore viewport to previous state.
 
-function! s:ExecuteWithSavedView(command)
+function! s:ExecuteWithSavedView(command) abort
     let l:view = winsaveview()
     exec a:command
     call winrestview(l:view)
@@ -34,7 +34,7 @@ command! -nargs=1 Vexec call s:ExecuteWithSavedView(<args>)
 " pattern.  If bang is not zero remove all elements *but* matching ones from the
 " list.
 
-function! s:FilterQuickfixList(bang, pattern)
+function! s:FilterQuickfixList(bang, pattern) abort
     " Adapted from http://snippetrepo.com/snippets/filter-quickfix-list-in-vim
     let l:cmp = a:bang ? '!~?' : '=~?'
     call setqflist(filter(
@@ -42,7 +42,7 @@ function! s:FilterQuickfixList(bang, pattern)
         \ "v:val['text']" . l:cmp . ' a:pattern'))
 endfunction
 
-function! s:FilterLocationList(bang, pattern)
+function! s:FilterLocationList(bang, pattern) abort
     let l:cmp = a:bang ? '!~?' : '=~?'
     call setloclist(0, filter(
         \ getloclist(0),
@@ -56,11 +56,11 @@ command! -bang -nargs=1 Lgrep call s:FilterLocationList(<bang>0, <q-args>)
 " Look backwards from the cursor for a spelling error and either guess
 " a correction or add the error to the dictionary.
 
-function! s:FixSpelling()
+function! s:FixSpelling() abort
     normal! mm[s1z=`m
 endfunction
 
-function! s:ErrorToDict()
+function! s:ErrorToDict() abort
     normal! mm[s1zg`m
 endfunction
 
@@ -70,7 +70,7 @@ command! ErrorToDict call s:ErrorToDict()
 
 " Get the names of all elements in the syntax stack below the curser.
 
-function! GetSyntaxStack(line, col)
+function! GetSyntaxStack(line, col) abort
     let l:names = []
     for l:syntax_id in synstack(a:line, a:col)
         let l:names += [synIDattr(l:syntax_id, 'name')]
@@ -83,7 +83,7 @@ command! EchoSyntaxStackAtPoint echo GetSyntaxStack(line('.'), col('.'))
 
 " Move a line down by `distance` lines (negative distances move the line up).
 
-function! s:MoveLine(distance)
+function! s:MoveLine(distance) abort
     exec 'move ' . Clamp(line('.') + a:distance, 0, line('$'))
 endfunction
 
@@ -94,7 +94,7 @@ command! -nargs=1 MoveLineDown call s:MoveLine(<args>)
 " Toggle between values of some options that are not just binary choices
 " (i.e. where `set invoption` is not possible).
 
-function! s:ToggleBackground()
+function! s:ToggleBackground() abort
     if &background ==# 'light'
         set background=dark
     else
@@ -103,7 +103,7 @@ function! s:ToggleBackground()
     echo 'set background=' &background
 endfunction
 
-function! s:ToggleSyntax()
+function! s:ToggleSyntax() abort
     if empty(&syntax) || &syntax ==# 'OFF'
         exec 'setlocal syntax=' . &filetype
     else
@@ -119,7 +119,7 @@ command! ToggleSyntax call s:ToggleSyntax()
 " Create a line below or above the current line which is filled with
 " `filler_string`.
 
-function! s:Underline(filler_string)
+function! s:Underline(filler_string) abort
     " abort on <esc>
     if char2nr(a:filler_string) == 27
         return
@@ -131,7 +131,7 @@ function! s:Underline(filler_string)
     endif
 endfunction
 
-function! s:Overline(filler_string)
+function! s:Overline(filler_string) abort
     " abort on <esc>
     if char2nr(a:filler_string) == 27
         return

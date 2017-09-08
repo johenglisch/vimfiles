@@ -22,7 +22,7 @@ vnoremap <buffer> <localleader><localleader> :ReadOut<cr>
 
 " Text-to-Speech
 
-function! s:PrepareTexCode(lines)
+function! s:PrepareTexCode(lines) abort
     " Strip comments
     "
     " Checking for escaped %-signs leads to overlapping regex matches, if there
@@ -71,7 +71,7 @@ else
                 \ 'fdb_latexmk', 'fls']
 endif
 
-function! s:Tex_RemoveAuxiliaryFiles()
+function! s:Tex_RemoveAuxiliaryFiles() abort
     let l:file_root = expand('%:r')
 
     for l:extension in s:Tex_AuxFileExtensions

@@ -5,7 +5,7 @@ else
 endif
 
 
-function! s:DlangCompile()
+function! s:DlangCompile() abort
     if filereadable('./dub.json')
         echo 'Running dub'
         !dub build

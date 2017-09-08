@@ -1,4 +1,4 @@
-function! s:GetExactDigraph(digraph_table, char1, char2)
+function! s:GetExactDigraph(digraph_table, char1, char2) abort
     let l:digraph = a:char1 . a:char2
 
     for l:mapping in a:digraph_table
@@ -11,7 +11,7 @@ function! s:GetExactDigraph(digraph_table, char1, char2)
 endfunction
 
 
-function! s:GetDigraph(digraph_table, char1, char2)
+function! s:GetDigraph(digraph_table, char1, char2) abort
     let l:result = <sid>GetExactDigraph(a:digraph_table, a:char1, a:char2)
     if l:result !=# a:char2
         return l:result
@@ -26,7 +26,7 @@ function! s:GetDigraph(digraph_table, char1, char2)
 endfunction
 
 
-function! DigraphMenu()
+function! DigraphMenu() abort
     let l:char1 = nr2char(getchar())
 
     " abort on <esc>

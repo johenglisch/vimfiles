@@ -1,7 +1,7 @@
 set foldmethod=syntax
 set foldnestmax=1
 
-function! s:FindByExt(root, exts)
+function! s:FindByExt(root, exts) abort
     for l:e in a:exts
         let l:fname = findfile(a:root.l:e)
         if !empty(l:fname)
@@ -11,7 +11,7 @@ function! s:FindByExt(root, exts)
     return ''
 endfunction
 
-function! s:ToggleHeader()
+function! s:ToggleHeader() abort
     let l:root = expand('%:t:r')
     let l:ext = expand('%:e')
 
