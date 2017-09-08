@@ -28,33 +28,33 @@ function! s:PrepareTexCode(lines)
     " Checking for escaped %-signs leads to overlapping regex matches, if there
     " are two comments *right* after one another.  This can be avoided by
     " removing all lines starting with a comment beforehand.
-    call filter(a:lines, 'v:val !~ ''^%''')
-    let tex_code = join(a:lines, "\n")
-    let tex_code = substitute(tex_code, '\v[^\\]%(\\\\)*\zs\%.{-}\n', '', 'g')
+    call filter(a:lines, "v:val !~# '^%'")
+    let l:tex_code = join(a:lines, "\n")
+    let l:tex_code = substitute(l:tex_code, '\v[^\\]%(\\\\)*\zs\%.{-}\n', '', 'g')
 
     " Make some commands more readable for espeak
     " FIXME The backslashes could be escaped too, why not...
-    let tex_code = substitute(tex_code, '\v\\citep\{.{-}\}', '', 'g')
-    let tex_code = substitute(tex_code, '\v\\%(NN?ext|LL?ast)>', 'The Example', 'g')
-    let tex_code = substitute(tex_code, '\v\\%(sub)*section\*?\{\zs.{-}\ze\}', '&.', 'g')
+    let l:tex_code = substitute(l:tex_code, '\v\\citep\{.{-}\}', '', 'g')
+    let l:tex_code = substitute(l:tex_code, '\v\\%(NN?ext|LL?ast)>', 'The Example', 'g')
+    let l:tex_code = substitute(l:tex_code, '\v\\%(sub)*section\*?\{\zs.{-}\ze\}', '&.', 'g')
 
     " Collapse paragraphs into single lines
-    let tex_code = substitute(tex_code, '\s\+\n\s\+', '\n', 'g')
-    let tex_code = substitute(tex_code, '\n\n\+\n', '\n\n', 'g')
-    let tex_code = substitute(tex_code, '[^\n]\zs\n\ze[^\n]', ' ', 'g')
+    let l:tex_code = substitute(l:tex_code, '\s\+\n\s\+', '\n', 'g')
+    let l:tex_code = substitute(l:tex_code, '\n\n\+\n', '\n\n', 'g')
+    let l:tex_code = substitute(l:tex_code, '[^\n]\zs\n\ze[^\n]', ' ', 'g')
 
-    return tex_code
+    return l:tex_code
 endfunction
 
 function! s:ReadRange() range abort
-    let tex_code = s:PrepareTexCode(getline(a:firstline, a:lastline))
-    let plaintext = system("detex -cl -e array,figure,table,tikzpicture", tex_code)
+    let l:tex_code = s:PrepareTexCode(getline(a:firstline, a:lastline))
+    let l:plaintext = system('detex -cl -e array,figure,table,tikzpicture', l:tex_code)
 
-    let voice = get(b:, 'voice', 'en-uk-north')
+    let l:voice = get(b:, 'voice', 'en-uk-north')
 
-    echo "Reading..."
-    call system("espeak -p30 -s140 -v".voice, plaintext)
-    echo "Done."
+    echo 'Reading...'
+    call system('espeak -p30 -s140 -v'.l:voice, l:plaintext)
+    echo 'Done.'
 endfunction
 
 command! -buffer -range=% ReadOut <line1>,<line2>call s:ReadRange()
@@ -72,16 +72,16 @@ else
 endif
 
 function! s:Tex_RemoveAuxiliaryFiles()
-    let file_root = expand('%:r')
+    let l:file_root = expand('%:r')
 
-    for extension in s:Tex_AuxFileExtensions
-        let auxiliary_file = file_root . '.' . extension
+    for l:extension in s:Tex_AuxFileExtensions
+        let l:auxiliary_file = l:file_root . '.' . l:extension
 
-        if filewritable(auxiliary_file)
-            if delete(auxiliary_file) == 0
-                echomsg "Removed '" . auxiliary_file . "'"
+        if filewritable(l:auxiliary_file)
+            if delete(l:auxiliary_file) == 0
+                echomsg "Removed '" . l:auxiliary_file . "'"
             else
-                echoerr "Could not remove '" . auxiliary_file . "'"
+                echoerr "Could not remove '" . l:auxiliary_file . "'"
             endif
         endif
     endfor
