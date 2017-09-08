@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 " FOLDERS
 
 if has('unix')
@@ -98,10 +101,6 @@ endif
 
 
 " EDITING
-
-if has('win32')
-    set encoding=utf-8
-endif
 
 if !exists('g:loaded_vimrc')
     set tabstop=8
