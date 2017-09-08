@@ -10,12 +10,12 @@ function! FilledString(length, filler)
         return ''
     endif
 
-    let new_string = repeat(a:filler, a:length / strlen(a:filler))
-    if strlen(new_string) < a:length
-        let new_string .= a:filler[:a:length - strlen(new_string) - 1]
+    let l:new_string = repeat(a:filler, a:length / strlen(a:filler))
+    if strlen(l:new_string) < a:length
+        let l:new_string .= a:filler[:a:length - strlen(l:new_string) - 1]
     endif
 
-    return new_string
+    return l:new_string
 endfunction
 
 " Remove whitespace at the beginning and end of a `string`.
