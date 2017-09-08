@@ -1,28 +1,28 @@
 function! s:VimLExecuteLine()
-    let line = Strip(getline('.'))
-    if !empty(line)
-        echo ':' . line
-        exec line
+    let l:line = Strip(getline('.'))
+    if !empty(l:line)
+        echo ':' . l:line
+        exec l:line
     endif
 endfunction
 
 function! s:VimLSourceFile()
-    let filename = bufname('%')
-    exec 'source ' . filename
-    echo 'Sourced' filename
+    let l:filename = bufname('%')
+    exec 'source ' . l:filename
+    echo 'Sourced' l:filename
 endfunction
 
 function! s:VimLContextHelp()
-    for syntax_id in synstack(line('.'), col('.'))
-        let syntax_item = synIDattr(syntax_id, 'name')
+    for l:syntax_id in synstack(line('.'), col('.'))
+        let l:syntax_item = synIDattr(l:syntax_id, 'name')
 
         " TODO: Detect variables or commands
-        if syntax_item ==# 'vimFunc'
+        if l:syntax_item ==# 'vimFunc'
             exec 'help ' . expand('<cword>') . '()'
             return
         endif
 
-        if syntax_item ==# 'vimOption'
+        if l:syntax_item ==# 'vimOption'
             exec "help '" . expand('<cword>') . "'"
             return
         endif
