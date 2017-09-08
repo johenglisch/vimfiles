@@ -45,17 +45,17 @@ endif
 let s:has_pluginmgr = 0
 if filereadable(g:vimfiles_dir . 'autoload/plug.vim')
     let s:has_pluginmgr = 1
-elseif confirm("Plugin manager not found.  Install it?", "&yes\n&no") == 1
+elseif confirm('Plugin manager not found.  Install it?', "&yes\n&no") == 1
     " ^^^ FIXME this confirm() isn't working on windows...
 
     " XXX Make Vim-plug auto-installation less platform-specific.
     let s:msg = system('curl -fLo ' . fnameescape(g:vimfiles_dir . 'autoload/plug.vim') . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 
     if v:shell_error == 0
-        echomsg "Plugin manager was installed successfully"
+        echomsg 'Plugin manager was installed successfully'
         let s:has_pluginmgr = 1
     else
-        echoerr "Plugin manager could not be installed:"
+        echoerr 'Plugin manager could not be installed:'
         echoerr s:msg
     endif
 endif
@@ -103,7 +103,7 @@ if has('win32')
     set encoding=utf-8
 endif
 
-if !exists("loaded_vimrc")
+if !exists('loaded_vimrc')
     set tabstop=8
     set softtabstop=4
     set shiftwidth=4
@@ -291,13 +291,13 @@ nnoremap <leader>/ :<c-u>exec 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 for prefix in ['i', 'n', 'v']
     for key in ['<up>', '<down>', '<left>', '<right>']
-        exe prefix . "noremap " . key . " <nop>"
+        exe prefix . 'noremap ' . key . ' <nop>'
     endfor
 endfor
 
 for prefix in ['n', 'v']
     for key in ['{', '}', '<C-u>', '<C-d>']
-        exe prefix . "noremap " . key . " <nop>"
+        exe prefix . 'noremap ' . key . ' <nop>'
     endfor
 endfor
 
@@ -325,7 +325,7 @@ function! g:Modified()
 endfunction
 
 function! g:GitBranch()
-    if !exists("*fugitive#head")
+    if !exists('*fugitive#head')
         return ''
     endif
     let branch = fugitive#head()
@@ -349,8 +349,8 @@ function! s:AwesomeListChars()
 endfunction
 
 function! s:BoringListChars()
-    let &listchars = "tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_"
-    let &showbreak = "-"
+    let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
+    let &showbreak = '-'
 endfunction
 
 call s:AwesomeListChars()
@@ -368,8 +368,8 @@ if has('termguicolors')
     set termguicolors
 endif
 
-if !exists("loaded_vimrc")
-    if has("gui_running")
+if !exists('loaded_vimrc')
+    if has('gui_running')
         set lines=35 columns=85
 
         set mousehide
@@ -377,12 +377,12 @@ if !exists("loaded_vimrc")
         set guioptions=ci
 
         call ColorschemeEnv('apprentice')
-        if has("gui_gtk2")
+        if has('gui_gtk2')
             set guifont=Hack\ 10
-        elseif has("x11")
+        elseif has('x11')
             set guifont=-*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-*
             call s:BoringListChars()
-        elseif has("gui_win32")
+        elseif has('gui_win32')
             set guifont=Consolas:h10:cANSI
         endif
     elseif $TERM =~? '.*256color.*'
@@ -451,7 +451,7 @@ let g:neomake_python_enabled_makers = ['pyflakes3', 'pylint3']
 
 " LaTeX
 
-if has("win32")
+if has('win32')
     set shellslash
     set grepprg=findstr\ /N\ $*
 else
