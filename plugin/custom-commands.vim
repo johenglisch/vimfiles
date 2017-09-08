@@ -11,9 +11,9 @@ command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRan
 " Remove trailing white space in a range.
 
 function! s:CleanWhiteSpace() range
-    let search_register = @/
+    let l:search_register = @/
     exec a:firstline . ',' . a:lastline . 'substitute/\s\+$//e'
-    let @/ = search_register
+    let @/ = l:search_register
 endfunction
 
 command! -range=% CleanWhiteSpace <line1>,<line2>call s:CleanWhiteSpace()
@@ -22,9 +22,9 @@ command! -range=% CleanWhiteSpace <line1>,<line2>call s:CleanWhiteSpace()
 " Execute a command and then restore viewport to previous state.
 
 function! s:ExecuteWithSavedView(command)
-    let view = winsaveview()
+    let l:view = winsaveview()
     exec a:command
-    call winrestview(view)
+    call winrestview(l:view)
 endfunction
 
 command! -nargs=1 Vexec call s:ExecuteWithSavedView(<args>)
@@ -36,17 +36,17 @@ command! -nargs=1 Vexec call s:ExecuteWithSavedView(<args>)
 
 function! s:FilterQuickfixList(bang, pattern)
     " Adapted from http://snippetrepo.com/snippets/filter-quickfix-list-in-vim
-    let cmp = a:bang ? '!~?' : '=~?'
+    let l:cmp = a:bang ? '!~?' : '=~?'
     call setqflist(filter(
         \ getqflist(),
-        \ "v:val['text']" . cmp . " a:pattern"))
+        \ "v:val['text']" . l:cmp . ' a:pattern'))
 endfunction
 
 function! s:FilterLocationList(bang, pattern)
-    let cmp = a:bang ? '!~?' : '=~?'
+    let l:cmp = a:bang ? '!~?' : '=~?'
     call setloclist(0, filter(
         \ getloclist(0),
-        \ "v:val['text']" . cmp . " a:pattern"))
+        \ "v:val['text']" . l:cmp . ' a:pattern'))
 endfunction
 
 command! -bang -nargs=1 Cgrep call s:FilterQuickfixList(<bang>0, <q-args>)
@@ -71,11 +71,11 @@ command! ErrorToDict call s:ErrorToDict()
 " Get the names of all elements in the syntax stack below the curser.
 
 function! GetSyntaxStack(line, col)
-    let names = []
-    for syntax_id in synstack(a:line, a:col)
-        let names += [synIDattr(syntax_id, 'name')]
+    let l:names = []
+    for l:syntax_id in synstack(a:line, a:col)
+        let l:names += [synIDattr(l:syntax_id, 'name')]
     endfor
-    return names
+    return l:names
 endfunction
 
 command! EchoSyntaxStackAtPoint echo GetSyntaxStack(line('.'), col('.'))
@@ -125,9 +125,9 @@ function! s:Underline(filler_string)
         return
     endif
 
-    let underlining = FilledString(strdisplaywidth(getline('.')), a:filler_string)
-    if !empty(underlining)
-        call append('.', underlining)
+    let l:underlining = FilledString(strdisplaywidth(getline('.')), a:filler_string)
+    if !empty(l:underlining)
+        call append('.', l:underlining)
     endif
 endfunction
 
@@ -137,9 +137,9 @@ function! s:Overline(filler_string)
         return
     endif
 
-    let underlining = FilledString(strdisplaywidth(getline('.')), a:filler_string)
-    if !empty(underlining)
-        call append(line('.') - 1, underlining)
+    let l:underlining = FilledString(strdisplaywidth(getline('.')), a:filler_string)
+    if !empty(l:underlining)
+        call append(line('.') - 1, l:underlining)
     endif
 endfunction
 
