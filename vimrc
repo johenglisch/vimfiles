@@ -152,7 +152,7 @@ augroup CursorToLastKnownPosition
     autocmd!
     autocmd BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exec "normal g'\"zvzz" |
+                \   exec "normal! g'\"zvzz" |
                 \ endif
 augroup END
 
