@@ -367,6 +367,11 @@ if has('termguicolors')
     set termguicolors
 endif
 
+augroup DontColourConceals
+    autocmd!
+    autocmd ColorScheme * highlight clear Conceal
+augroup END
+
 if !exists('g:loaded_vimrc')
     if has('gui_running')
         set lines=35 columns=85
@@ -500,8 +505,6 @@ augroup OpenPDFsInBuffer
     autocmd BufReadPre *.pdf silent set ro
     autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" -
 augroup END
-
-highlight clear Conceal
 
 
 let g:loaded_vimrc=1
