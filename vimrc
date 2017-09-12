@@ -482,6 +482,8 @@ set autoindent
 set smartindent
 filetype plugin indent on
 
+runtime macros/matchit.vim
+
 syntax manual
 augroup SyntaxOnlyForCertainFiletypes
     autocmd!
