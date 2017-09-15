@@ -227,8 +227,8 @@ inoremap <c-x><c-t> <c-x><c-]>
 let g:mapleader = ' '
 let g:maplocalleader = 'Ö'
 
-nnoremap <leader>a :<c-u>Ack!<space>
-nnoremap <leader>A :<c-u>Ack! "<cword>"<cr>
+nnoremap <leader>a :<c-u>Ag '
+nnoremap <leader>A :<c-u>Ag '\V\C' . escape(expand('<cword>'), '\/')<cr>
 
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
@@ -432,10 +432,6 @@ let g:ctrlp_custom_ignore = '\v\.('.
             \ 'aux|bbl|blg|bst|dvi|log|nav|out|pdf|ps|snm|toc|fls|'.
             \ 'fdb_latexmk|synctex\.gz|'.
             \ 'odt|doc|docx)$'
-
-" Ack.vim
-
-let g:ackprg='ag --ignore tags --vimgrep'
 
 " Clojure
 

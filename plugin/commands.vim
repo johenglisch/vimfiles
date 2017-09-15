@@ -8,6 +8,19 @@ endfunction
 command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRange(<args>)
 
 
+" Search current directory.
+
+function! s:Ag(pattern) abort
+    let l:output = split(system("ag --ignore tags --vimgrep '" . a:pattern . "'"), '\n')
+    if len(l:output) > 0
+        call setqflist([], 'r', {'lines': l:output})
+        copen
+    endif
+endfunction
+
+command! -nargs=1 Ag call s:Ag(<args>)
+
+
 " Remove trailing white space in a range.
 
 function! s:CleanWhiteSpace() range abort
