@@ -267,7 +267,11 @@ nnoremap <leader>S :<c-u>sign unplace *<cr>
 
 nnoremap <leader>t :<c-u>CtrlPTag<cr>
 
-nnoremap <leader>T :<c-u>vimgrep /\v\C<%(TODO|FIXME|XXX)>/j **/*<cr>:copen<cr>
+if executable('ag')
+    nnoremap <leader>T :<c-u>Ag '\V\C\b(TODO|FIXME|XXX)\b'
+else
+    nnoremap <leader>T :<c-u>vimgrep /\v\C<%(TODO|FIXME|XXX)>/j **/*<cr>:copen<cr>
+endif
 
 nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
 nnoremap <leader>vh :<c-u>split $MYVIMRC<cr>
