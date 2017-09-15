@@ -227,7 +227,13 @@ let g:mapleader = ' '
 let g:maplocalleader = 'Ö'
 
 nnoremap <leader>a :<c-u>Ag '
-nnoremap <leader>A :<c-u>Ag '\V\C' . escape(expand('<cword>'), '\/')<cr>
+
+if executable('ag')
+    " `ag --vimgrep` does not support \<...\>
+    nnoremap <leader>A :<c-u>Ag '\V\C\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
+else
+    nnoremap <leader>A :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
+endif
 
 nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
 
@@ -268,9 +274,10 @@ nnoremap <leader>S :<c-u>sign unplace *<cr>
 nnoremap <leader>t :<c-u>CtrlPTag<cr>
 
 if executable('ag')
-    nnoremap <leader>T :<c-u>Ag '\V\C\b(TODO|FIXME|XXX)\b'
+    " `ag --vimgrep` does not support \<...\>
+    nnoremap <leader>T :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
 else
-    nnoremap <leader>T :<c-u>vimgrep /\v\C<%(TODO|FIXME|XXX)>/j **/*<cr>:copen<cr>
+    nnoremap <leader>T :<c-u>Ag '\v\C\<(TODO|FIXME|XXX)\>'<cr>
 endif
 
 nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
