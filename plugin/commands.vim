@@ -11,9 +11,14 @@ command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRan
 " Search for `pattern` in all files in the current directory.
 
 function! s:Ag(pattern) abort
-    let l:output = split(system("ag --ignore tags --vimgrep '" . a:pattern . "'"), '\n')
-    if len(l:output) > 0
-        call setqflist([], 'r', {'lines': l:output})
+    if executable('ag')
+        let l:output = split(system("ag --ignore tags --vimgrep '" . a:pattern . "'"), '\n')
+        if len(l:output) > 0
+            call setqflist([], 'r', {'lines': l:output})
+            copen
+        endif
+    else
+        exec 'vimgrep /' . a:pattern . '/j **/*'
         copen
     endif
 endfunction
