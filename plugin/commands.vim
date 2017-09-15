@@ -8,7 +8,7 @@ endfunction
 command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRange(<args>)
 
 
-" Search current directory.
+" Search for `pattern` in all files in the current directory.
 
 function! s:Ag(pattern) abort
     let l:output = split(system("ag --ignore tags --vimgrep '" . a:pattern . "'"), '\n')
