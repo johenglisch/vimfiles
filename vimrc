@@ -76,7 +76,6 @@ if s:has_pluginmgr == 1
     Plug 'altercation/vim-colors-solarized'
     Plug 'molok/vim-vombato-colorscheme'
 
-    Plug 'mileszs/ack.vim'
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
     Plug 'ctrlpvim/ctrlp.vim'
