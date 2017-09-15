@@ -247,6 +247,7 @@ nnoremap <leader>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/
 nnoremap <leader>ev :<c-u>edit $MYVIMRC<cr>
 
 nnoremap <leader>f :<c-u>CtrlP<cr>
+nnoremap <leader>F :<c-u>CtrlPMixed<cr>
 
 nnoremap <leader>g :<c-u>Gstatus<cr>
 
