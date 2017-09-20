@@ -296,7 +296,7 @@ nnoremap <leader>z zMzvzz
 nnoremap <leader>ö <c-]>
 nnoremap <leader>Ö :!ctags -R .<cr>
 
-nnoremap <leader>/ :<c-u>CtrlPLine<cr>
+nnoremap <leader>/ :<c-u>CtrlPLine %<cr>
 
 " Muscle Memory Training Facilities
 
