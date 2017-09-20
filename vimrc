@@ -266,7 +266,7 @@ nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 nnoremap <leader>r :<c-u>Underline nr2char(getchar())<cr>
 nnoremap <leader>R :<c-u>Overline nr2char(getchar())<cr>
 
-nnoremap <leader>s :%s/\v
+nnoremap <leader>s :<c-u>%s/\v
 vnoremap <leader>s :s/\v
 
 nnoremap <leader>S :<c-u>sign unplace *<cr>
