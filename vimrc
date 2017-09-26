@@ -290,6 +290,7 @@ vnoremap <leader>w :CleanWhiteSpace<cr>
 
 nnoremap <leader>xx :<c-u>FixSpelling<cr>
 nnoremap <leader>xg :<c-u>ErrorToDict<cr>
+inoremap <c-x><c-x> <c-o>:FixSpelling<cr>
 
 nnoremap <leader>z zMzvzz
 
