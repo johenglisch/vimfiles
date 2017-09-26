@@ -13,5 +13,5 @@ endfunction
 command! TimeStampToPar call s:AddTimeStampToPar()
 command! InsertDate call s:InsertDate()
 
-nnoremap <buffer> <localleader>t :<c-u>TimeStampToPar<cr>
+nnoremap <buffer> <localleader><localleader> :<c-u>TimeStampToPar<cr>
 nnoremap <buffer> <localleader>d :<c-u>InsertDate<cr>
