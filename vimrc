@@ -277,7 +277,7 @@ if executable('ag')
     " `ag --vimgrep` does not support \<...\>
     nnoremap <leader>T :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
 else
-    nnoremap <leader>T :<c-u>Ag '\v\C\<(TODO|FIXME|XXX)\>'<cr>
+    nnoremap <leader>T :<c-u>Ag '\v\C<(TODO|FIXME|XXX)>'<cr>
 endif
 
 nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
