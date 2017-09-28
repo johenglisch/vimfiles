@@ -93,6 +93,7 @@ if s:has_pluginmgr == 1
     Plug 'tpope/vim-fugitive'
     Plug 'neovimhaskell/haskell-vim'
     Plug 'bitc/vim-hdevtools'
+    Plug 'jceb/vim-orgmode'
     Plug 'lervag/vimtex'
     Plug 'rust-lang/rust.vim'
 
@@ -454,6 +455,11 @@ let g:clojure_align_multiline_strings = 1
 
 let g:haskell_indent_in = 0
 let g:haskell_indent_if = 0
+
+" Org-mode
+
+let g:org_heading_shade_leading_stars = 0
+let g:org_indent = 1
 
 " Python
 
