@@ -261,6 +261,8 @@ nnoremap <leader>h :<c-u>nohlsearch<cr>
 
 nnoremap <leader>H :<c-u>ToggleSyntax<cr>
 
+nnoremap <leader>l :<c-u>CtrlPLine %<cr>
+
 nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 
 nnoremap <leader>r :<c-u>Underline nr2char(getchar())<cr>
@@ -296,8 +298,6 @@ nnoremap <leader>z zMzvzz
 
 nnoremap <leader>ö <c-]>
 nnoremap <leader>Ö :!ctags -R .<cr>
-
-nnoremap <leader>/ :<c-u>CtrlPLine %<cr>
 
 " Muscle Memory Training Facilities
 
