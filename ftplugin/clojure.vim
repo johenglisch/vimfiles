@@ -1,4 +1,4 @@
-nnoremap <silent> <buffer> <cr> :<C-u>%Eval<cr>
+nnoremap <silent> <buffer> <cr> :<c-u>Require<cr>
 vnoremap <silent> <buffer> <cr> :Eval<cr>
 
 nnoremap <silent> <buffer> <localleader>K :<C-u>%Eval<cr>
