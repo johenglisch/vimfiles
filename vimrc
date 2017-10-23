@@ -468,6 +468,10 @@ let g:python_space_error_highlight = 1
 
 let g:neomake_python_enabled_makers = ['pyflakes3', 'pylint3']
 
+" Rust
+
+let g:rust_recommended_style = 0
+
 " LaTeX
 
 if has('win32')
