@@ -472,7 +472,6 @@ let g:neomake_python_enabled_makers = ['pyflakes3', 'pylint3']
 " LaTeX
 
 if has('win32')
-    set shellslash
     set grepprg=findstr\ /N\ $*
 else
     set grepprg=grep\ -nH\ $*
