@@ -460,7 +460,6 @@ let g:haskell_indent_if = 0
 " Org-mode
 
 let g:org_heading_shade_leading_stars = 0
-let g:org_indent = 1
 
 " Python
 
