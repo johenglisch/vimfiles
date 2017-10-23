@@ -187,8 +187,8 @@ nnoremap <c-w>ä :<c-u>cclose<cr>
 noremap n nzzzv
 noremap N Nzzzv
 
-noremap Q gq
-noremap QQ gqq
+nnoremap Q @
+nnoremap QQ @@
 
 noremap Y y$
 
