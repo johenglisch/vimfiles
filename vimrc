@@ -71,6 +71,7 @@ if s:has_pluginmgr == 1
     " 256 colours
     Plug 'romainl/Apprentice'
     Plug 'nanotech/jellybeans.vim'
+    Plug 'vim-scripts/xoria256.vim'
     " gui colours
     Plug 'vim-scripts/pyte'
     Plug 'altercation/vim-colors-solarized'
