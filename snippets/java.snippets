@@ -1,5 +1,13 @@
+snippet br
+	{
+		$0
+	}
 snippet cls
 	class `expand('%:t:r')`$1
 	{
 		$0
 	}
+snippet print
+	System.${1:out}.print${2:ln}($3);$0
+snippet main
+	public static void main(String[] args)$0
