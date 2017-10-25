@@ -484,7 +484,7 @@ let g:tex_flavor = 'latex'
 let g:tex_conceal = 'abdmg'
 
 let g:vimtex_imaps_enabled = 0
-let g:vimtex_motion_matchparen=0
+let g:vimtex_matchparen_enabled = 0
 let g:vimtex_text_obj_enabled = 0
 
 let g:vimtex_compiler_latexmk = get(g:, 'vimtex_compiler_latexmk', {})
