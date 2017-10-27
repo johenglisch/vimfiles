@@ -200,7 +200,7 @@ noremap ? ?\v
 noremap ' #
 noremap # `
 
-noremap ´ @
+noremap ´ Q
 
 nnoremap <silent> - :<C-u>MoveLineUp v:count1<cr>
 nnoremap <silent> + :<C-u>MoveLineDown v:count1<cr>
