@@ -1,4 +1,4 @@
-augroup DetectTxtFiles
+augroup UseMarkdownForTxt
     autocmd!
     autocmd BufNewFile,BufRead *.txt,*.text,README
                 \ if &filetype == "text" || empty(&filetype) |
