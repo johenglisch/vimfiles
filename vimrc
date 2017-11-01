@@ -78,7 +78,7 @@ if s:has_pluginmgr == 1
     Plug 'vim-scripts/xoria256.vim'
     " gui colours
     Plug 'vim-scripts/pyte'
-    Plug 'altercation/vim-colors-solarized'
+    Plug 'romainl/flattened'
     Plug 'molok/vim-vombato-colorscheme'
 
     Plug 'vim-scripts/Align'
