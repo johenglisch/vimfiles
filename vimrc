@@ -42,6 +42,10 @@ if has('nvim') && has('unix')
     let g:python3_host_prog = '/usr/bin/python3'
 endif
 
+if isdirectory($CYGWIN_BIN)
+    let $PATH = $CYGWIN_BIN . ';' . $PATH
+endif
+
 
 " PACKAGE MANAGEMENT
 
