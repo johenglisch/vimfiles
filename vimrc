@@ -371,8 +371,6 @@ function! s:BoringListChars() abort
     let &showbreak = '-'
 endfunction
 
-call s:AwesomeListChars()
-
 
 function! ColorschemeEnv(fallback_theme) abort
     if !empty($VIM_COLOURS)
@@ -400,6 +398,8 @@ augroup TermSpelling
 augroup END
 
 if !exists('g:loaded_vimrc')
+    call s:BoringListChars()
+
     if has('gui_running')
         set lines=35 columns=85
 
@@ -408,6 +408,7 @@ if !exists('g:loaded_vimrc')
         set guioptions=ci
 
         call ColorschemeEnv('apprentice')
+        call s:AwesomeListChars()
         if has('gui_gtk2')
             set guifont=Hack\ 10
         elseif has('gui_win32')
@@ -416,6 +417,7 @@ if !exists('g:loaded_vimrc')
     elseif $TERM =~? '.*256color.*'
         set t_ut=
         call ColorschemeEnv('apprentice')
+        call s:AwesomeListChars()
     endif
 endif
 
