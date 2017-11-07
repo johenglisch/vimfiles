@@ -384,6 +384,7 @@ augroup TermSpelling
     autocmd ColorScheme * highlight SpellLocal cterm=underline
 augroup END
 
+
 if !exists('g:loaded_vimrc')
     let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
     let &showbreak = '-'
