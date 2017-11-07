@@ -417,6 +417,8 @@ if !exists('g:loaded_vimrc')
         endif
     endif
 
+    " :colorscheme needs to be executed at least once -- even for the default
+    " scheme.  Otherwise the autocmd's from above won't fire.
     exec 'silent! colorscheme ' . s:colourscheme
 endif
 
