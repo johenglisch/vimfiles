@@ -366,11 +366,6 @@ function! s:AwesomeListChars() abort
     let &showbreak = "\u2190"
 endfunction
 
-function! s:BoringListChars() abort
-    let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
-    let &showbreak = '-'
-endfunction
-
 
 function! ColorschemeEnv(fallback_theme) abort
     if !empty($VIM_COLOURS)
@@ -398,7 +393,8 @@ augroup TermSpelling
 augroup END
 
 if !exists('g:loaded_vimrc')
-    call s:BoringListChars()
+    let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
+    let &showbreak = '-'
 
     if has('gui_running')
         set lines=35 columns=85
