@@ -367,14 +367,6 @@ function! s:AwesomeListChars() abort
 endfunction
 
 
-function! ColorschemeEnv(fallback_theme) abort
-    if !empty($VIM_COLOURS)
-        exec 'silent! colorscheme ' . $VIM_COLOURS
-    elseif !empty(a:fallback_theme)
-        exec 'silent! colorscheme ' . a:fallback_theme
-    endif
-endfunction
-
 if has('termguicolors')
     set termguicolors
 endif
@@ -403,8 +395,14 @@ if !exists('g:loaded_vimrc')
 
         set guioptions=ci
 
-        call ColorschemeEnv('apprentice')
         call s:AwesomeListChars()
+
+        if !empty($VIM_COLOURS)
+            exec 'silent! colorscheme ' . $VIM_COLOURS
+        elseif !empty(a:fallback_theme)
+            exec 'silent! colorscheme ' . a:fallback_theme
+        endif
+
         if has('gui_gtk2')
             set guifont=Hack\ 10
         elseif has('gui_win32')
@@ -412,8 +410,14 @@ if !exists('g:loaded_vimrc')
         endif
     elseif $TERM =~? '.*256color.*'
         set t_ut=
-        call ColorschemeEnv('apprentice')
+
         call s:AwesomeListChars()
+
+        if !empty($VIM_COLOURS)
+            exec 'silent! colorscheme ' . $VIM_COLOURS
+        elseif !empty(a:fallback_theme)
+            exec 'silent! colorscheme ' . a:fallback_theme
+        endif
     endif
 endif
 
