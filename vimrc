@@ -535,5 +535,10 @@ augroup OpenPDFsInBuffer
     autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" -
 augroup END
 
+augroup GitCommitSpelling
+    autocmd!
+    autocmd Filetype gitcommit setlocal spell spelllang=en_gb
+augroup END
+
 
 let g:loaded_vimrc=1
