@@ -416,11 +416,6 @@ if !exists('g:loaded_vimrc')
     elseif $TERM =~? '.*256color.*'
         set t_ut=
         call ColorschemeEnv('apprentice')
-    elseif $TERM =~? '.*rxvt.*'
-        set background=dark
-        silent! colorscheme seoul
-
-        call s:BoringListChars()
     endif
 endif
 
