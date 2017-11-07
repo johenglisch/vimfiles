@@ -388,12 +388,14 @@ if !exists('g:loaded_vimrc')
     let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
     let &showbreak = '-'
     let s:colourscheme = 'default'
+    let s:background = 'dark'
 
     if has('gui_running')
         set lines=35 columns=85
         set mousehide
         set guioptions=ci
 
+        let s:background = 'light'
         call s:AwesomeListChars()
         if !empty($VIM_COLOURS)
             let s:colourscheme = $VIM_COLOURS
@@ -416,6 +418,11 @@ if !exists('g:loaded_vimrc')
     " :colorscheme needs to be executed at least once -- even for the default
     " scheme.  Otherwise the autocmd's from above won't fire.
     exec 'silent! colorscheme ' . s:colourscheme
+
+    " :colorscheme keeps resetting 'background'.
+    if s:colourscheme == 'default'
+        let &background = s:background
+    endif
 endif
 
 
