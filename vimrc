@@ -391,6 +391,14 @@ augroup DontColourConceals
     autocmd ColorScheme * highlight clear Conceal
 augroup END
 
+augroup TermSpelling
+    autocmd!
+    autocmd ColorScheme * highlight SpellBad cterm=underline
+    autocmd ColorScheme * highlight SpellCap cterm=underline
+    autocmd ColorScheme * highlight SpellRare cterm=underline
+    autocmd ColorScheme * highlight SpellLocal cterm=underline
+augroup END
+
 if !exists('g:loaded_vimrc')
     if has('gui_running')
         set lines=35 columns=85
