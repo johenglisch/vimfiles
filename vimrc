@@ -446,7 +446,7 @@ augroup END
 augroup ShowCursorLineInNormalMode
     autocmd!
     autocmd WinLeave,InsertEnter * set nocursorline
-    autocmd WinEnter,InsertLeave * set cursorline
+    autocmd VimEnter,WinEnter,InsertLeave * set cursorline
 augroup END
 
 
