@@ -410,9 +410,6 @@ if !exists('g:loaded_vimrc')
         call ColorschemeEnv('apprentice')
         if has('gui_gtk2')
             set guifont=Hack\ 10
-        elseif has('x11')
-            set guifont=-*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-*
-            call s:BoringListChars()
         elseif has('gui_win32')
             set guifont=Consolas:h10:cANSI
         endif
