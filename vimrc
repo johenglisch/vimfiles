@@ -387,6 +387,7 @@ augroup END
 if !exists('g:loaded_vimrc')
     let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
     let &showbreak = '-'
+    let s:colourscheme = 'default'
 
     if has('gui_running')
         set lines=35 columns=85
@@ -398,9 +399,7 @@ if !exists('g:loaded_vimrc')
         call s:AwesomeListChars()
 
         if !empty($VIM_COLOURS)
-            exec 'silent! colorscheme ' . $VIM_COLOURS
-        elseif !empty(a:fallback_theme)
-            exec 'silent! colorscheme ' . a:fallback_theme
+            let s:colourscheme = $VIM_COLOURS
         endif
 
         if has('gui_gtk2')
@@ -414,11 +413,11 @@ if !exists('g:loaded_vimrc')
         call s:AwesomeListChars()
 
         if !empty($VIM_COLOURS)
-            exec 'silent! colorscheme ' . $VIM_COLOURS
-        elseif !empty(a:fallback_theme)
-            exec 'silent! colorscheme ' . a:fallback_theme
+            let s:colourscheme = $VIM_COLOURS
         endif
     endif
+
+    exec 'silent! colorscheme ' . s:colourscheme
 endif
 
 
