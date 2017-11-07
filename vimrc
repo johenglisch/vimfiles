@@ -391,13 +391,10 @@ if !exists('g:loaded_vimrc')
 
     if has('gui_running')
         set lines=35 columns=85
-
         set mousehide
-
         set guioptions=ci
 
         call s:AwesomeListChars()
-
         if !empty($VIM_COLOURS)
             let s:colourscheme = $VIM_COLOURS
         endif
@@ -411,7 +408,6 @@ if !exists('g:loaded_vimrc')
         set t_ut=
 
         call s:AwesomeListChars()
-
         if !empty($VIM_COLOURS)
             let s:colourscheme = $VIM_COLOURS
         endif
