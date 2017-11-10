@@ -12,7 +12,6 @@ endif
 let s:backup_dir      = s:cache_dir . 'backup/'
 let s:swap_dir        = s:cache_dir . 'swap/'
 let s:undo_dir        = s:cache_dir . 'undo/'
-let g:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
 let g:classpath_cache = s:cache_dir . 'classpath/'
 let s:plugin_dir      = s:cache_dir . 'plugged/'
 let g:netrw_home      = s:cache_dir
@@ -83,7 +82,6 @@ if s:has_pluginmgr == 1
 
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
-    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'benekastah/neomake'
     Plug 'tomtom/tlib_vim'
@@ -241,8 +239,6 @@ else
     nnoremap <leader>A :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
 endif
 
-nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
-
 nnoremap <leader>B :<c-u>ToggleBackground<cr>
 
 nnoremap <leader>c "+
@@ -258,16 +254,13 @@ nnoremap <leader>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
 nnoremap <leader>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
 nnoremap <leader>ev :<c-u>edit $MYVIMRC<cr>
 
-nnoremap <leader>f :<c-u>CtrlP<cr>
-nnoremap <leader>F :<c-u>CtrlPMixed<cr>
+nnoremap <leader>f :<c-u>edit **/*
 
 nnoremap <leader>g :<c-u>Gstatus<cr>
 
 nnoremap <leader>h :<c-u>nohlsearch<cr>
 
 nnoremap <leader>H :<c-u>ToggleSyntax<cr>
-
-nnoremap <leader>l :<c-u>CtrlPLine %<cr>
 
 nnoremap <leader>n :<c-u>set invrelativenumber<cr>
 
@@ -279,7 +272,7 @@ vnoremap <leader>s :s/\v
 
 nnoremap <leader>S :<c-u>sign unplace *<cr>
 
-nnoremap <leader>t :<c-u>CtrlPTag<cr>
+nnoremap <leader>t :<c-u>tag *
 
 if executable('ag')
     " `ag --vimgrep` does not support \<...\>
@@ -450,17 +443,6 @@ augroup END
 
 
 " PLUGIN STUFF
-
-" CtrlP
-
-if exists('g:ctrlp_custom_ignore')
-    unlet g:ctrlp_custom_ignore
-endif
-let g:ctrlp_custom_ignore = '\v\.('.
-            \ '[oa]|so|dll|lib|py[co]|class|hi|exe|'.
-            \ 'aux|bbl|blg|bst|dvi|log|nav|out|pdf|ps|snm|toc|fls|'.
-            \ 'fdb_latexmk|synctex\.gz|'.
-            \ 'odt|doc|docx)$'
 
 " Clojure
 
