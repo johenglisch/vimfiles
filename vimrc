@@ -367,10 +367,6 @@ function! s:AwesomeListChars() abort
 endfunction
 
 
-if has('termguicolors')
-    set termguicolors
-endif
-
 augroup DontColourConceals
     autocmd!
     autocmd ColorScheme * highlight clear Conceal
@@ -417,6 +413,9 @@ if !exists('g:loaded_vimrc')
 
         call s:AwesomeListChars()
         if !empty($VIM_COLOURS)
+            if has('termguicolors')
+                set termguicolors
+            endif
             let s:colourscheme = $VIM_COLOURS
         endif
     endif
