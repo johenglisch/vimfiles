@@ -205,13 +205,6 @@ nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview
 
 nnoremap <silent> <backspace> :<c-u>Neomake<cr>
 
-" Terminal Mode Bindings
-
-if has('nvim')
-    tnoremap <C-c><C-g> <C-\><C-n>
-    tnoremap <C-c><C-c> <C-c>
-endif
-
 " Insert Mode Bindings
 
 noremap! <silent> <c-k> <c-r>=DigraphMenu()<cr>

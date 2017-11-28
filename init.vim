@@ -11,4 +11,8 @@ if has('unix')
 endif
 
 
+tnoremap <C-c><C-g> <C-\><C-n>
+tnoremap <C-c><C-c> <C-c>
+
+
 exec 'source ' . g:vimfiles_dir . 'vimrc'
