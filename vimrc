@@ -406,7 +406,7 @@ if !exists('g:loaded_vimrc')
     exec 'silent! colorscheme ' . s:colourscheme
 
     " :colorscheme keeps resetting 'background'.
-    if s:colourscheme == 'default'
+    if s:colourscheme ==# 'default'
         let &background = s:background
     endif
 endif
