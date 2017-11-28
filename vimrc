@@ -25,16 +25,12 @@ exec 'set backupdir=' . fnameescape(s:backup_dir) . '/'
 exec 'set directory=' . fnameescape(s:swap_dir)   . '/'
 exec 'set undodir='   . fnameescape(s:undo_dir)   . '/'
 
-if has('nvim')
-    if empty($XDG_CONFIG_HOME)
-        let g:vimfiles_dir = expand('~/.config/nvim/')
-    else
-        let g:vimfiles_dir = expand($XDG_CONFIG_HOME . '/nvim/')
+if empty(g:vimfiles_dir)
+    if has('win32')
+        let g:vimfiles_dir = expand('~/vimfiles/')
+    elseif has('unix')
+        let g:vimfiles_dir = expand('~/.vim/')
     endif
-elseif has('win32')
-    let g:vimfiles_dir = expand('~/vimfiles/')
-elseif has('unix')
-    let g:vimfiles_dir = expand('~/.vim/')
 endif
 
 if has('nvim') && has('unix')
