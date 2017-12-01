@@ -394,9 +394,6 @@ if !exists('g:loaded_vimrc')
 
         call s:AwesomeListChars()
         if !empty($VIM_COLOURS)
-            if has('termguicolors')
-                set termguicolors
-            endif
             let s:colourscheme = $VIM_COLOURS
         endif
     endif
