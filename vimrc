@@ -90,6 +90,9 @@ if s:has_pluginmgr == 1
     Plug 'neovimhaskell/haskell-vim'
     Plug 'bitc/vim-hdevtools'
     Plug 'jceb/vim-orgmode'
+    Plug 'fsharp/vim-fsharp', {
+                \ 'for': 'fsharp',
+                \ 'do': 'make fsautocomplete' }
     Plug 'lervag/vimtex'
     Plug 'rust-lang/rust.vim'
 
@@ -121,6 +124,7 @@ endif
 set undofile
 
 set complete+=kspell
+set spellcapcheck=
 
 set ignorecase
 set smartcase
