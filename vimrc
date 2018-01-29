@@ -206,7 +206,7 @@ nnoremap <silent> - :<C-u>MoveLineUp v:count1<cr>
 nnoremap <silent> + :<C-u>MoveLineDown v:count1<cr>
 
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
-nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
+vnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>gv
 
 nnoremap <silent> <backspace> :<c-u>Neomake<cr>
 
