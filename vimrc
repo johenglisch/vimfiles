@@ -71,6 +71,7 @@ if s:has_pluginmgr == 1
     Plug 'vim-scripts/pyte'
     Plug 'romainl/flattened'
     Plug 'molok/vim-vombato-colorscheme'
+    Plug 'w0ng/vim-hybrid'
 
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
