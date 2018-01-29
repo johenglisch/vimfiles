@@ -1,3 +1,6 @@
+scriptencoding utf-8
+
+
 function! s:GetExactDigraph(digraph_table, char1, char2) abort
     let l:digraph = a:char1 . a:char2
 
