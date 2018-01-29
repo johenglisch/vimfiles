@@ -1,21 +1,14 @@
 scriptencoding utf-8
 
 
-function! DigraphMenu() abort
-    let l:char1 = nr2char(getchar())
-
-    " abort on <esc>
-    if char2nr(l:char1) == 27
-        return ''
-    endif
-
+function! s:MakeDisplay(first_char) abort
     " FIXME Digraph pattern is still suboptimal
     "
     " Example: '>H ☞  9758  0u ☺  9786'
     "  - >H gets parsed to ['>H', 97580]
     "  - 0u doesn't show up at all
 
-    let l:pattern = '\C\V\(' . l:char1 . '\S\|\S' . l:char1 . '\) \.\S\*\s\+\(\d\{1,5\}\)'
+    let l:pattern = '\C\V\(' . a:first_char . '\S\|\S' . a:first_char . '\) \.\S\*\s\+\(\d\{1,5\}\)'
 
     " XXX Is there a way to get access to the actual digraph table in vimscript?
     "
@@ -40,6 +33,19 @@ function! DigraphMenu() abort
         let l:digraph_display .= l:item
     endfor
 
+    return l:digraph_display
+endfunction
+
+
+function! DigraphMenu() abort
+    let l:char1 = nr2char(getchar())
+
+    " abort on <esc>
+    if char2nr(l:char1) == 27
+        return ''
+    endif
+
+    let l:digraph_display = s:MakeDisplay(l:char1)
     echo l:digraph_display
 
     let l:char2 = nr2char(getchar())
