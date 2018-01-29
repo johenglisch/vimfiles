@@ -1,34 +1,6 @@
 scriptencoding utf-8
 
 
-function! s:GetExactDigraph(digraph_table, char1, char2) abort
-    let l:digraph = a:char1 . a:char2
-
-    for l:mapping in a:digraph_table
-        if l:mapping[0] ==# l:digraph
-            return nr2char(l:mapping[1])
-        endif
-    endfor
-
-    return a:char2
-endfunction
-
-
-function! s:GetDigraph(digraph_table, char1, char2) abort
-    let l:result = <sid>GetExactDigraph(a:digraph_table, a:char1, a:char2)
-    if l:result !=# a:char2
-        return l:result
-    endif
-
-    let l:result = <sid>GetExactDigraph(a:digraph_table, a:char2, a:char1)
-    if l:result !=# a:char1
-        return l:result
-    endif
-
-    return a:char2
-endfunction
-
-
 function! DigraphMenu() abort
     let l:char1 = nr2char(getchar())
 
@@ -77,5 +49,5 @@ function! DigraphMenu() abort
         return ''
     endif
 
-    return <sid>GetDigraph(l:digraph_table, l:char1, l:char2)
+    return '' . l:char1 . l:char2
 endfunction
