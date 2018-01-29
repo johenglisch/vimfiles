@@ -44,10 +44,5 @@ function! DigraphMenu() abort
 
     let l:char2 = nr2char(getchar())
 
-    " abort on <esc>
-    if char2nr(l:char2) == 27
-        return ''
-    endif
-
     return '' . l:char1 . l:char2
 endfunction
