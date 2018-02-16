@@ -497,7 +497,6 @@ let g:snipMate.snippet_version = 1
 
 set modeline
 set autoindent
-set smartindent
 filetype plugin indent on
 
 runtime macros/matchit.vim
