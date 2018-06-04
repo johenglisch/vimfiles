@@ -78,13 +78,18 @@ if s:has_pluginmgr == 1
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'benekastah/neomake'
-    Plug 'tomtom/tlib_vim'
-                \ | Plug 'marcweber/vim-addon-mw-utils'
-                \ | Plug 'garbas/vim-snipmate'
     Plug 'tpope/vim-surround'
                 \ | Plug 'tpope/vim-repeat'
                 \ | Plug 'guns/vim-sexp'
                 \ | Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
+    if has('python') || has('python3')
+        Plug 'sirver/ultisnips'
+    else
+        Plug 'tomtom/tlib_vim'
+                    \ | Plug 'marcweber/vim-addon-mw-utils'
+                    \ | Plug 'garbas/vim-snipmate'
+    endif
 
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
@@ -491,6 +496,18 @@ let g:vimtex_compiler_latexmk.options = [
 
 let g:snipMate = get(g:, 'snipMate', {})
 let g:snipMate.snippet_version = 1
+
+
+" UltiSnips
+
+if has('python3')
+    let g:UltiSnipsUsePythonVersion = 3
+elseif has('python')
+    let g:UltiSnipsUsePythonVersion = 2
+endif
+
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
 
 
 " General Plugin Settings
