@@ -93,6 +93,7 @@ if s:has_pluginmgr == 1
 
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
+    Plug 'quabug/vim-gdscript'
     Plug 'neovimhaskell/haskell-vim'
     Plug 'bitc/vim-hdevtools'
     Plug 'jceb/vim-orgmode'
