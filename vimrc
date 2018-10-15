@@ -490,8 +490,20 @@ let g:vimtex_text_obj_enabled = 0
 
 let g:vimtex_compiler_latexmk = get(g:, 'vimtex_compiler_latexmk', {})
 let g:vimtex_compiler_latexmk.options = [
-            \ '-verbose', '-file-line-error', '-interaction=nonstopmode',
-            \ '-pdfps']
+            \ '-verbose',
+            \ '-file-line-error',
+            \ '-interaction=nonstopmode']
+
+if has('job')
+    let g:vimtex_compiler_latexmk.backend = 'jobs'
+elseif has('nvim')
+    let g:vimtex_compiler_latexmk.backend = 'nvim'
+endif
+
+let g:vimtex_compiler_latexmk_engines = get(g:, 'vimtex_compiler_latexmk_engines', {})
+let g:vimtex_compiler_latexmk_engines['dvips'] = '-pdfps'
+let g:vimtex_compiler_latexmk_engines['_'] = '-pdfps'
+
 
 " SnipMate
 
