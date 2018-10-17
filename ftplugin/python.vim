@@ -1,7 +1,7 @@
 setlocal commentstring=#%s
 setlocal define=^\s*\\(def\\\\|class\\)
 
-function s:RunTests() abort
+function! s:RunTests() abort
     if exists('b:git_dir')
         exec 'silent lchdir ' . fnamemodify(b:git_dir, ':h')
         !python3 -m unittest
