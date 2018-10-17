@@ -227,6 +227,8 @@ inoremap <c-x><c-t> <c-x><c-]>
 let g:mapleader = ' '
 let g:maplocalleader = 'Ö'
 
+nnoremap <leader><leader> :<c-u>buffer #<cr>
+
 nnoremap <leader>a :<c-u>Ag '
 
 if executable('ag')
