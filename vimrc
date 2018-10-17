@@ -77,7 +77,6 @@ if s:has_pluginmgr == 1
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
     Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'easymotion/vim-easymotion'
     Plug 'tpope/vim-surround'
                 \ | Plug 'tpope/vim-repeat'
                 \ | Plug 'guns/vim-sexp'
