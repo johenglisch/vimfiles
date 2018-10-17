@@ -73,11 +73,11 @@ if s:has_pluginmgr == 1
     Plug 'molok/vim-vombato-colorscheme'
     Plug 'w0ng/vim-hybrid'
 
+    Plug 'w0rp/ale'
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
-    Plug 'benekastah/neomake'
     Plug 'tpope/vim-surround'
                 \ | Plug 'tpope/vim-repeat'
                 \ | Plug 'guns/vim-sexp'
@@ -214,7 +214,7 @@ nnoremap <silent> + :<C-u>MoveLineDown v:count1<cr>
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 vnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>gv
 
-nnoremap <silent> <backspace> :<c-u>Neomake<cr>
+nnoremap <silent> <backspace> :<c-u>ALELint<cr>
 
 " Insert Mode Bindings
 
@@ -466,8 +466,6 @@ let g:org_heading_shade_leading_stars = 0
 
 let g:python_no_number_highlight = 1
 let g:python_space_error_highlight = 1
-
-let g:neomake_python_enabled_makers = ['pyflakes3', 'pylint3']
 
 " Rust
 
