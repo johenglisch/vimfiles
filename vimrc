@@ -441,6 +441,8 @@ augroup END
 
 " PLUGIN STUFF
 
+let g:ale_lint_on_text_changed = 0
+
 " CtrlP
 
 let g:ctrlp_custom_ignore = '\v\.('.
