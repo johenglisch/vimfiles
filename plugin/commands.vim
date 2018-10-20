@@ -26,6 +26,23 @@ endfunction
 command! -nargs=1 Ag call s:Ag(<args>)
 
 
+" Change directory to root of current git repo
+
+function! s:CdToGitRoot() abort
+    if !exists('b:git_dir')
+        echo 'No git repo found'
+        return
+    endif
+
+    let git_root = fnamemodify(b:git_dir, ':h')
+    let cmd = 'cd ' . git_root
+    exec cmd
+    echo cmd
+endfunction
+
+command! CdToGitRoot call s:CdToGitRoot()
+
+
 " Remove trailing white space in a range.
 
 function! s:CleanWhiteSpace() range abort
