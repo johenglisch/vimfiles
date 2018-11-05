@@ -223,9 +223,6 @@ inoremap <c-x><c-t> <c-x><c-]>
 
 " Leader Key Bindings
 
-let g:mapleader = ' '
-let g:maplocalleader = 'Ö'
-
 nnoremap <space><space> :<c-u>buffer #<cr>
 
 nnoremap <space>a :<c-u>Ag '
