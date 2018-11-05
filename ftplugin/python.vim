@@ -11,5 +11,5 @@ function! s:RunTests() abort
     endif
 endfunction
 
-nnoremap <buffer> <LocalLeader>J Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
+nnoremap <buffer> ÖJ Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
 nnoremap <buffer> <cr> :<c-u>call <sid>RunTests()<cr>

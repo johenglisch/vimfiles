@@ -12,12 +12,12 @@ set iskeyword+=:
 
 nnoremap <buffer> <cr> :<c-u>VimtexCompileSS<cr>
 
-nnoremap <buffer> <localleader>K :<c-u>TexRemoveAuxiliaryFiles<cr>
-nnoremap <buffer> <localleader>L :<c-u>VimtexCompileSS<cr>
-nnoremap <buffer> <localleader>N A% TODO<space>
+nnoremap <buffer> ÖK :<c-u>TexRemoveAuxiliaryFiles<cr>
+nnoremap <buffer> ÖL :<c-u>VimtexCompileSS<cr>
+nnoremap <buffer> ÖN A% TODO<space>
 
-nnoremap <buffer> <localleader><localleader> :<c-u>ReadOut<cr>
-vnoremap <buffer> <localleader><localleader> :ReadOut<cr>
+nnoremap <buffer> ÖÖ :<c-u>ReadOut<cr>
+vnoremap <buffer> ÖÖ :ReadOut<cr>
 
 
 " Text-to-Speech

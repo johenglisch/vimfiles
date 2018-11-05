@@ -24,7 +24,7 @@ endfunction
 nnoremap <silent> <buffer> <cr> :<c-u>Require!<cr>
 vnoremap <silent> <buffer> <cr> :Eval<cr>
 
-nnoremap <silent> <buffer> <localleader>K :<C-u>%Eval<cr>
-vnoremap <silent> <buffer> <localleader>K :Eval<cr>
+nnoremap <silent> <buffer> ÖK :<C-u>%Eval<cr>
+vnoremap <silent> <buffer> ÖK :Eval<cr>
 
-nnoremap <silent> <buffer> <localleader>L :exec "RunTests " . <sid>NameSpace()<cr>
+nnoremap <silent> <buffer> ÖL :exec "RunTests " . <sid>NameSpace()<cr>

@@ -1,2 +1,2 @@
-nnoremap <localleader>a :Archive '~/.org-mode/calendar.archive'<cr>
-vnoremap <localleader>a :Archive '~/.org-mode/calendar.archive'<cr>
+nnoremap Öa :Archive '~/.org-mode/calendar.archive'<cr>
+vnoremap Öa :Archive '~/.org-mode/calendar.archive'<cr>
