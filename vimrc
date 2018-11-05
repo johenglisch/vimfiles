@@ -226,77 +226,77 @@ inoremap <c-x><c-t> <c-x><c-]>
 let g:mapleader = ' '
 let g:maplocalleader = 'Ö'
 
-nnoremap <leader><leader> :<c-u>buffer #<cr>
+nnoremap <space><space> :<c-u>buffer #<cr>
 
-nnoremap <leader>a :<c-u>Ag '
-
-if executable('ag')
-    " `ag --vimgrep` does not support \<...\>
-    nnoremap <leader>A :<c-u>Ag '\V\C\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
-else
-    nnoremap <leader>A :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
-endif
-
-nnoremap <leader>b :<c-u>CtrlPBuffer<cr>
-
-nnoremap <leader>B :<c-u>ToggleBackground<cr>
-
-nnoremap <leader>c "+
-vnoremap <leader>c "+
-
-nnoremap <leader>d :<c-u>cd %:h<cr>
-
-nnoremap <leader>ec :<c-u>edit ~/.when/calendar<cr>
-nnoremap <leader>ed :<c-u>Vexec 'edit ++enc=cp437'<cr>
-nnoremap <leader>ee :<c-u>Vexec 'edit'<cr>
-nnoremap <leader>ef :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
-nnoremap <leader>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
-nnoremap <leader>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
-nnoremap <leader>ev :<c-u>edit $MYVIMRC<cr>
-
-nnoremap <leader>f :<c-u>CtrlP<cr>
-
-nnoremap <leader>g :<c-u>Gstatus<cr>
-
-nnoremap <leader>h :<c-u>nohlsearch<cr>
-
-nnoremap <leader>H :<c-u>ToggleSyntax<cr>
-
-nnoremap <leader>n :<c-u>set invrelativenumber<cr>
-
-nnoremap <leader>r :<c-u>Underline nr2char(getchar())<cr>
-nnoremap <leader>R :<c-u>Overline nr2char(getchar())<cr>
-
-nnoremap <leader>s :<c-u>%s/\v
-vnoremap <leader>s :s/\v
-
-nnoremap <leader>S :<c-u>sign unplace *<cr>
-
-nnoremap <leader>t :<c-u>CtrlPTag<cr>
+nnoremap <space>a :<c-u>Ag '
 
 if executable('ag')
     " `ag --vimgrep` does not support \<...\>
-    nnoremap <leader>T :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
+    nnoremap <space>A :<c-u>Ag '\V\C\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
 else
-    nnoremap <leader>T :<c-u>Ag '\v\C<(TODO|FIXME|XXX)>'<cr>
+    nnoremap <space>A :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
 endif
 
-nnoremap <leader>ve :<c-u>edit $MYVIMRC<cr>
-nnoremap <leader>vh :<c-u>split $MYVIMRC<cr>
-nnoremap <leader>vs :<c-u>Vexec "source $MYVIMRC"<cr>
-nnoremap <leader>vv :<c-u>vsplit $MYVIMRC<cr>
+nnoremap <space>b :<c-u>CtrlPBuffer<cr>
 
-nnoremap <leader>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
-vnoremap <leader>w :CleanWhiteSpace<cr>
+nnoremap <space>B :<c-u>ToggleBackground<cr>
 
-nnoremap <leader>xx :<c-u>FixSpelling<cr>
-nnoremap <leader>xg :<c-u>ErrorToDict<cr>
+nnoremap <space>c "+
+vnoremap <space>c "+
+
+nnoremap <space>d :<c-u>cd %:h<cr>
+
+nnoremap <space>ec :<c-u>edit ~/.when/calendar<cr>
+nnoremap <space>ed :<c-u>Vexec 'edit ++enc=cp437'<cr>
+nnoremap <space>ee :<c-u>Vexec 'edit'<cr>
+nnoremap <space>ef :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
+nnoremap <space>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
+nnoremap <space>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
+nnoremap <space>ev :<c-u>edit $MYVIMRC<cr>
+
+nnoremap <space>f :<c-u>CtrlP<cr>
+
+nnoremap <space>g :<c-u>Gstatus<cr>
+
+nnoremap <space>h :<c-u>nohlsearch<cr>
+
+nnoremap <space>H :<c-u>ToggleSyntax<cr>
+
+nnoremap <space>n :<c-u>set invrelativenumber<cr>
+
+nnoremap <space>r :<c-u>Underline nr2char(getchar())<cr>
+nnoremap <space>R :<c-u>Overline nr2char(getchar())<cr>
+
+nnoremap <space>s :<c-u>%s/\v
+vnoremap <space>s :s/\v
+
+nnoremap <space>S :<c-u>sign unplace *<cr>
+
+nnoremap <space>t :<c-u>CtrlPTag<cr>
+
+if executable('ag')
+    " `ag --vimgrep` does not support \<...\>
+    nnoremap <space>T :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
+else
+    nnoremap <space>T :<c-u>Ag '\v\C<(TODO|FIXME|XXX)>'<cr>
+endif
+
+nnoremap <space>ve :<c-u>edit $MYVIMRC<cr>
+nnoremap <space>vh :<c-u>split $MYVIMRC<cr>
+nnoremap <space>vs :<c-u>Vexec "source $MYVIMRC"<cr>
+nnoremap <space>vv :<c-u>vsplit $MYVIMRC<cr>
+
+nnoremap <space>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
+vnoremap <space>w :CleanWhiteSpace<cr>
+
+nnoremap <space>xx :<c-u>FixSpelling<cr>
+nnoremap <space>xg :<c-u>ErrorToDict<cr>
 inoremap <c-x><c-x> <c-o>:FixSpelling<cr>
 
-nnoremap <leader>z zMzvzz
+nnoremap <space>z zMzvzz
 
-nnoremap <leader>ö <c-]>
-nnoremap <leader>Ö :!ctags -R .<cr>
+nnoremap <space>ö <c-]>
+nnoremap <space>Ö :!ctags -R .<cr>
 
 " Muscle Memory Training Facilities
 

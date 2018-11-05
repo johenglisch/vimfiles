@@ -27,5 +27,5 @@ function! s:ToggleHeader() abort
 endfunction
 
 
-nnoremap <buffer> <leader><tab> :<c-u>exec 'edit ' . <sid>ToggleHeader()<cr>
+nnoremap <buffer> <space><tab> :<c-u>exec 'edit ' . <sid>ToggleHeader()<cr>
 nnoremap <buffer> <cr> :<c-u>make!<cr>
