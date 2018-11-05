@@ -229,9 +229,9 @@ nnoremap <space>a :<c-u>Ag '
 
 if executable('ag')
     " `ag --vimgrep` does not support \<...\>
-    nnoremap <space>A :<c-u>Ag '\V\C\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
+    nnoremap <space>ga :<c-u>Ag '\V\C\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
 else
-    nnoremap <space>A :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
+    nnoremap <space>ga :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
 endif
 
 nnoremap <space>b :<c-u>CtrlPBuffer<cr>
@@ -253,16 +253,15 @@ nnoremap <space>ev :<c-u>edit $MYVIMRC<cr>
 
 nnoremap <space>f :<c-u>CtrlP<cr>
 
-nnoremap <space>g :<c-u>Gstatus<cr>
+nnoremap <space>gg :<c-u>Gstatus<cr>
 
 nnoremap <space>h :<c-u>nohlsearch<cr>
-
-nnoremap <space>H :<c-u>ToggleSyntax<cr>
+nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
 nnoremap <space>n :<c-u>set invrelativenumber<cr>
 
 nnoremap <space>r :<c-u>Underline nr2char(getchar())<cr>
-nnoremap <space>R :<c-u>Overline nr2char(getchar())<cr>
+nnoremap <space>gr :<c-u>Overline nr2char(getchar())<cr>
 
 nnoremap <space>s :<c-u>%s/\v
 vnoremap <space>s :s/\v
@@ -273,9 +272,9 @@ nnoremap <space>t :<c-u>CtrlPTag<cr>
 
 if executable('ag')
     " `ag --vimgrep` does not support \<...\>
-    nnoremap <space>T :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
+    nnoremap <space>gt :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
 else
-    nnoremap <space>T :<c-u>Ag '\v\C<(TODO|FIXME|XXX)>'<cr>
+    nnoremap <space>gt :<c-u>Ag '\v\C<(TODO|FIXME|XXX)>'<cr>
 endif
 
 nnoremap <space>ve :<c-u>edit $MYVIMRC<cr>
@@ -286,13 +285,14 @@ nnoremap <space>vv :<c-u>vsplit $MYVIMRC<cr>
 nnoremap <space>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
 vnoremap <space>w :CleanWhiteSpace<cr>
 
-nnoremap <space>xx :<c-u>FixSpelling<cr>
-nnoremap <space>xg :<c-u>ErrorToDict<cr>
+nnoremap <space>x :<c-u>FixSpelling<cr>
+nnoremap <space>gx :<c-u>ErrorToDict<cr>
 inoremap <c-x><c-x> <c-o>:FixSpelling<cr>
 
 nnoremap <space>z zMzvzz
 
 nnoremap <space>ö <c-]>
+nnoremap <space>gö g<c-]>
 nnoremap <space>Ö :!ctags -R .<cr>
 
 " Muscle Memory Training Facilities
