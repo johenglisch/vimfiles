@@ -255,7 +255,7 @@ nnoremap <space>f :<c-u>CtrlP<cr>
 
 nnoremap <space>gg :<c-u>Gstatus<cr>
 nnoremap <space>gw :<c-u>Gw<cr>
-nnoremap <space>gc :<c-u>Gco<cr>
+nnoremap <space>gc :<c-u>Gco -m '
 
 nnoremap <space>h :<c-u>nohlsearch<cr>
 nnoremap <space>gh :<c-u>ToggleSyntax<cr>
