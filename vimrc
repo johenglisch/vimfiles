@@ -489,6 +489,8 @@ let g:vimtex_imaps_enabled = 0
 let g:vimtex_matchparen_enabled = 0
 let g:vimtex_text_obj_enabled = 0
 
+let g:vimtex_quickfix_mode = 0
+
 let g:vimtex_compiler_latexmk = get(g:, 'vimtex_compiler_latexmk', {})
 let g:vimtex_compiler_latexmk.options = [
             \ '-verbose',
