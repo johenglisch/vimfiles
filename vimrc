@@ -260,7 +260,8 @@ nnoremap <space>gc :<c-u>Gco -m '
 nnoremap <space>h :<c-u>nohlsearch<cr>
 nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
-nnoremap <space>n :<c-u>set invrelativenumber<cr>
+nnoremap <space>n :<c-u>set invnumber<cr>
+nnoremap <space>gn :<c-u>set invrelativenumber<cr>
 
 nnoremap <space>r :<c-u>Underline nr2char(getchar())<cr>
 nnoremap <space>gr :<c-u>Overline nr2char(getchar())<cr>
