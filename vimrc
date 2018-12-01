@@ -343,7 +343,6 @@ function! g:GitBranch() abort
     return l:branch !=# '' ? '{'.l:branch.'} ' : ''
 endfunction
 
-set laststatus=2
 set statusline=%{Modified()}%t%R\ %y%=%{GitBranch()}%l:%c\ %P
 
 
