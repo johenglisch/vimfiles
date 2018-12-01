@@ -1,6 +1,7 @@
 setlocal commentstring=#%s
 setlocal define=^\s*\\(def\\\\|class\\)
 
+
 function! s:RunTests() abort
     if exists('b:git_dir')
         exec 'silent lchdir ' . fnamemodify(b:git_dir, ':h')
