@@ -12,5 +12,11 @@ function! s:RunTests() abort
     endif
 endfunction
 
+
+let &l:makeprg = 'python3 -m pylint -sn'
+
+
 nnoremap <buffer> ÖJ Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
+
 nnoremap <buffer> <cr> :<c-u>call <sid>RunTests()<cr>
+nnoremap <buffer> <backspace> :<c-u>lmake! %<cr>
