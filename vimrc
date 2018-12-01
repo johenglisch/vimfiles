@@ -374,11 +374,6 @@ augroup TermSpelling
     autocmd ColorScheme * highlight SpellLocal cterm=underline
 augroup END
 
-augroup DontUnderlineCursorline
-    autocmd!
-    autocmd ColorScheme * highlight CursorLine term=NONE cterm=NONE
-augroup END
-
 
 if !exists('g:loaded_vimrc')
     let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
