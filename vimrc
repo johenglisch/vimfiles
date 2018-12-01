@@ -431,12 +431,6 @@ augroup ColourColumnInInsertMode
     autocmd InsertLeave * set colorcolumn=0
 augroup END
 
-augroup ShowCursorLineInNormalMode
-    autocmd!
-    autocmd WinLeave,InsertEnter * set nocursorline
-    autocmd VimEnter,WinEnter,InsertLeave * set cursorline
-augroup END
-
 
 " PLUGIN STUFF
 
