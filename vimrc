@@ -261,6 +261,7 @@ nnoremap <space>h :<c-u>nohlsearch<cr>
 nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
 nnoremap <space>l :<c-u>FindCursor<cr>
+nnoremap <space>gl :<c-u>Status<cr>
 nnoremap <space>n :<c-u>set invnumber<cr>
 nnoremap <space>gn :<c-u>set invrelativenumber<cr>
 

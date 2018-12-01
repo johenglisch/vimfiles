@@ -151,6 +151,24 @@ command! -nargs=1 MoveLineUp call s:MoveLine(-(<args> + 1))
 command! -nargs=1 MoveLineDown call s:MoveLine(<args>)
 
 
+" Echo statusline-like message
+
+function! s:Status() abort
+    let l:current_file = expand('%:t')
+    let l:filename = empty(l:current_file) ? '(no file)' : l:current_file
+    let l:readonly = &readonly ? ',RO' : ''
+    let l:filetype = empty(&filetype) ? '' : ' ['.&filetype.']'
+
+    let l:status =
+                \ Modified() . l:filename . l:readonly
+                \ . l:filetype
+                \ . ' ' . GitBranch()
+    echo l:status
+endfunction
+
+command! Status call s:Status()
+
+
 " Toggle between values of some options that are not just binary choices
 " (i.e. where `set invoption` is not possible).
 
