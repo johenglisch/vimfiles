@@ -102,6 +102,9 @@ if s:has_pluginmgr == 1
     Plug 'lervag/vimtex'
     Plug 'rust-lang/rust.vim'
 
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
+
     call plug#end()
 endif
 
@@ -262,6 +265,9 @@ nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
 nnoremap <space>l :<c-u>FindCursor<cr>
 nnoremap <space>gl :<c-u>Status<cr>
+
+nnoremap <space>m :<c-u>Goyo<cr>
+
 nnoremap <space>n :<c-u>set invnumber<cr>
 nnoremap <space>gn :<c-u>set invrelativenumber<cr>
 
@@ -448,6 +454,23 @@ let g:ctrlp_custom_ignore = '\v\.('.
 
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
+
+" Goyo
+
+function! s:goyo_enter()
+    set noshowmode
+    set noshowcmd
+    Limelight
+endfunction
+
+function! s:goyo_leave()
+    set showmode
+    set showcmd
+    Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Haskell
 
