@@ -260,6 +260,7 @@ nnoremap <space>gc :<c-u>Gco -m '
 nnoremap <space>h :<c-u>nohlsearch<cr>
 nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
+nnoremap <space>l :<c-u>FindCursor<cr>
 nnoremap <space>n :<c-u>set invnumber<cr>
 nnoremap <space>gn :<c-u>set invrelativenumber<cr>
 

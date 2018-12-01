@@ -88,6 +88,31 @@ command! -bang -nargs=1 Cgrep call s:FilterQuickfixList(<bang>0, <q-args>)
 command! -bang -nargs=1 Lgrep call s:FilterLocationList(<bang>0, <q-args>)
 
 
+" Make the current line blink for a bit.
+
+function! s:FindCursor() abort
+    set invcursorline
+    redraw
+    sleep 100m
+    set invcursorline
+    redraw
+    sleep 100m
+    set invcursorline
+    redraw
+    sleep 100m
+    set invcursorline
+    redraw
+    sleep 100m
+    set invcursorline
+    redraw
+    sleep 100m
+    set invcursorline
+    redraw
+endfunction
+
+command! FindCursor call s:FindCursor()
+
+
 " Look backwards from the cursor for a spelling error and either guess
 " a correction or add the error to the dictionary.
 
