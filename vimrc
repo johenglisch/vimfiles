@@ -336,6 +336,8 @@ let g:loaded_matchparen=1
 set showmatch
 
 set wildmenu
+set wildignorecase
+set suffixes+=.pyc
 
 set scrolloff=1
 
