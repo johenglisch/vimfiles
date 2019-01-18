@@ -61,19 +61,13 @@ endif
 if s:has_pluginmgr == 1
     call plug#begin(s:plugin_dir)
 
-    "  88 colours
-    Plug 'vim-scripts/seoul'
     " 256 colours
-    Plug 'romainl/Apprentice'
     Plug 'nanotech/jellybeans.vim'
-    Plug 'vim-scripts/xoria256.vim'
     " gui colours
-    Plug 'vim-scripts/pyte'
     Plug 'romainl/flattened'
     Plug 'molok/vim-vombato-colorscheme'
     Plug 'w0ng/vim-hybrid'
 
-    Plug 'w0rp/ale'
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
     Plug 'ctrlpvim/ctrlp.vim'
@@ -96,14 +90,10 @@ if s:has_pluginmgr == 1
     Plug 'neovimhaskell/haskell-vim'
     Plug 'bitc/vim-hdevtools'
     Plug 'jceb/vim-orgmode'
-    Plug 'fsharp/vim-fsharp', {
-                \ 'for': 'fsharp',
-                \ 'do': 'make fsautocomplete' }
     Plug 'lervag/vimtex'
     Plug 'rust-lang/rust.vim'
 
     Plug 'junegunn/goyo.vim'
-    Plug 'junegunn/limelight.vim'
 
     call plug#end()
 endif
@@ -215,8 +205,6 @@ nnoremap <silent> + :<C-u>MoveLineDown v:count1<cr>
 
 nnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>
 vnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview(b:saved_view)<cr>gv
-
-nnoremap <silent> <backspace> :<c-u>ALELint<cr>
 
 " Insert Mode Bindings
 
@@ -440,11 +428,6 @@ augroup END
 
 " PLUGIN STUFF
 
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_enter = 0
-
 " CtrlP
 
 let g:ctrlp_custom_ignore = '\v\.('.
@@ -463,13 +446,11 @@ let g:clojure_align_multiline_strings = 1
 function! s:goyo_enter()
     set noshowmode
     set noshowcmd
-    Limelight
 endfunction
 
 function! s:goyo_leave()
     set showmode
     set showcmd
-    Limelight!
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
