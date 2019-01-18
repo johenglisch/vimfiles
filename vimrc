@@ -292,6 +292,7 @@ nnoremap <space>ve :<c-u>edit $MYVIMRC<cr>
 nnoremap <space>vh :<c-u>split $MYVIMRC<cr>
 nnoremap <space>vs :<c-u>Vexec "source $MYVIMRC"<cr>
 nnoremap <space>vv :<c-u>vsplit $MYVIMRC<cr>
+nnoremap <space>vl :<c-u>source ./.vimrc<cr>
 
 nnoremap <space>w :<c-u>let b:saved_view = winsaveview()<cr>:CleanWhiteSpace<cr>:call winrestview(b:saved_view)<cr>
 vnoremap <space>w :CleanWhiteSpace<cr>
