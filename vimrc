@@ -66,7 +66,6 @@ if s:has_pluginmgr == 1
     " gui colours
     Plug 'romainl/flattened'
     Plug 'molok/vim-vombato-colorscheme'
-    Plug 'w0ng/vim-hybrid'
 
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
@@ -87,13 +86,8 @@ if s:has_pluginmgr == 1
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
     Plug 'quabug/vim-gdscript'
-    Plug 'neovimhaskell/haskell-vim'
-    Plug 'bitc/vim-hdevtools'
-    Plug 'jceb/vim-orgmode'
     Plug 'lervag/vimtex'
     Plug 'rust-lang/rust.vim'
-
-    Plug 'junegunn/goyo.vim'
 
     call plug#end()
 endif
