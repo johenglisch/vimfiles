@@ -418,21 +418,6 @@ augroup END
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
 
-" Goyo
-
-function! s:goyo_enter()
-    set noshowmode
-    set noshowcmd
-endfunction
-
-function! s:goyo_leave()
-    set showmode
-    set showcmd
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
 " Haskell
 
 let g:haskell_indent_in = 0
