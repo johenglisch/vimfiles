@@ -239,6 +239,7 @@ nnoremap <space>ev :<c-u>edit $MYVIMRC<cr>
 nnoremap <space>f :<c-u>CtrlP<cr>
 
 nnoremap <space>gg :<c-u>Gstatus<cr>
+nnoremap <space>gs :<c-u>Gstatus<cr>
 nnoremap <space>gw :<c-u>Gw<cr>
 nnoremap <space>gc :<c-u>Gco -m '
 
