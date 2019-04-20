@@ -12,7 +12,6 @@ endif
 let s:backup_dir      = s:cache_dir . 'backup/'
 let s:swap_dir        = s:cache_dir . 'swap/'
 let s:undo_dir        = s:cache_dir . 'undo/'
-let g:ctrlp_cache_dir = s:cache_dir . 'ctrlp/'
 let g:classpath_cache = s:cache_dir . 'classpath/'
 let s:plugin_dir      = s:cache_dir . 'plugged/'
 let g:netrw_home      = s:cache_dir
@@ -65,7 +64,8 @@ if s:has_pluginmgr == 1
 
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
-    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-surround'
                 \ | Plug 'tpope/vim-repeat'
                 \ | Plug 'guns/vim-sexp'
@@ -211,7 +211,7 @@ else
     nnoremap <space>ga :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
 endif
 
-nnoremap <space>b :<c-u>CtrlPBuffer<cr>
+nnoremap <space>b :<c-u>Buffers<cr>
 
 nnoremap <space>B :<c-u>ToggleBackground<cr>
 
@@ -228,7 +228,7 @@ nnoremap <space>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
 nnoremap <space>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
 nnoremap <space>ev :<c-u>edit $MYVIMRC<cr>
 
-nnoremap <space>f :<c-u>CtrlP<cr>
+nnoremap <space>f :<c-u>Files<cr>
 
 nnoremap <space>gg :<c-u>Gstatus<cr>
 nnoremap <space>gs :<c-u>Gstatus<cr>
@@ -252,7 +252,7 @@ vnoremap <space>s :s/\v
 
 nnoremap <space>S :<c-u>sign unplace *<cr>
 
-nnoremap <space>t :<c-u>CtrlPTag<cr>
+nnoremap <space>t :<c-u>Tags<cr>
 
 if executable('ag')
     " `ag --vimgrep` does not support \<...\>
@@ -412,14 +412,6 @@ augroup END
 
 
 " PLUGIN STUFF
-
-" CtrlP
-
-let g:ctrlp_custom_ignore = '\v\.('.
-            \ '[oa]|so|dll|lib|py[co]|class|hi|exe|'.
-            \ 'aux|bbl|blg|bst|dvi|log|nav|out|ps|snm|toc|fls|'.
-            \ 'fdb_latexmk|synctex\.gz|'.
-            \ 'odt|doc|docx)$'
 
 " Clojure
 
