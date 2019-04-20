@@ -33,10 +33,6 @@ if empty(get(g:, 'vimfiles_dir', ''))
     endif
 endif
 
-if isdirectory($CYGWIN_BIN)
-    let $PATH = $CYGWIN_BIN . ';' . $PATH
-endif
-
 
 " PACKAGE MANAGEMENT
 
@@ -241,15 +237,13 @@ nnoremap <space>f :<c-u>CtrlP<cr>
 nnoremap <space>gg :<c-u>Gstatus<cr>
 nnoremap <space>gs :<c-u>Gstatus<cr>
 nnoremap <space>gw :<c-u>Gw<cr>
-nnoremap <space>gc :<c-u>Gco -m '
+nnoremap <space>gc :<c-u>Gco<cr>
 
 nnoremap <space>h :<c-u>nohlsearch<cr>
 nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
 nnoremap <space>l :<c-u>FindCursor<cr>
 nnoremap <space>gl :<c-u>Status<cr>
-
-nnoremap <space>m :<c-u>Goyo<cr>
 
 nnoremap <space>n :<c-u>set invnumber<cr>
 nnoremap <space>gn :<c-u>set invrelativenumber<cr>
