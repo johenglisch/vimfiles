@@ -531,6 +531,7 @@ runtime macros/matchit.vim
 syntax manual
 augroup SyntaxOnlyForCertainFiletypes
     autocmd!
+    autocmd Filetype fugitive  setlocal syntax=fugitive
     autocmd Filetype gitcommit setlocal syntax=gitcommit
     autocmd Filetype help      setlocal syntax=help
     autocmd Filetype mail      setlocal syntax=mail
