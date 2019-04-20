@@ -71,13 +71,9 @@ if s:has_pluginmgr == 1
                 \ | Plug 'guns/vim-sexp'
                 \ | Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
-    if has('python') || has('python3')
-        Plug 'sirver/ultisnips'
-    else
-        Plug 'tomtom/tlib_vim'
-                    \ | Plug 'marcweber/vim-addon-mw-utils'
-                    \ | Plug 'garbas/vim-snipmate'
-    endif
+    Plug 'tomtom/tlib_vim'
+                \ | Plug 'marcweber/vim-addon-mw-utils'
+                \ | Plug 'garbas/vim-snipmate'
 
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
