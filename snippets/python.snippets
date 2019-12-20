@@ -3,3 +3,9 @@ snippet bang
 snippet main
 	if __name__ == '__main__':
 		${1:main()}
+snippet deftest
+	class $1(unittest.TestCase):$0
+snippet testing
+	def test_$1(self):$0
+snippet asseq
+	self.assertEqual(${1:result}, ${2:expected})$0

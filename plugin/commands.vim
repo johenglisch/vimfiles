@@ -154,7 +154,7 @@ command! -nargs=1 MoveLineDown call s:MoveLine(<args>)
 " Echo statusline-like message
 
 function! s:Status() abort
-    let l:current_file = expand('%:t')
+    let l:current_file = expand('%:p')
     let l:filename = empty(l:current_file) ? '(no file)' : l:current_file
     let l:readonly = &readonly ? ',RO' : ''
     let l:filetype = empty(&filetype) ? '' : ' ['.&filetype.']'
