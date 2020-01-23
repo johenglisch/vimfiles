@@ -152,8 +152,8 @@ cnoremap <C-g> <C-c>
 
 " Normal/Visual Mode Bindings
 
-noremap j gj
-noremap k gk
+nnoremap j gj
+nnoremap k gk
 
 noremap H ^
 noremap L $
