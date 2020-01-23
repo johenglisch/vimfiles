@@ -64,8 +64,12 @@ if s:has_pluginmgr == 1
 
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
-    Plug 'junegunn/fzf'
-    Plug 'junegunn/fzf.vim'
+    if has('win32')
+        Plug 'ctrlpvim/ctrlp.vim'
+    else
+        Plug 'junegunn/fzf'
+        Plug 'junegunn/fzf.vim'
+    endif
     Plug 'tpope/vim-surround'
                 \ | Plug 'tpope/vim-repeat'
                 \ | Plug 'guns/vim-sexp'
@@ -211,7 +215,11 @@ else
     nnoremap <space>ga :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
 endif
 
-nnoremap <space>b :<c-u>Buffers<cr>
+if exists(':Buffers')
+    nnoremap <space>b :<c-u>Buffers<cr>
+elseif exists(':CtrlPBuffer')
+    nnoremap <space>b :<c-u>CtrlPBuffer<cr>
+endif
 
 nnoremap <space>B :<c-u>ToggleBackground<cr>
 
@@ -228,7 +236,11 @@ nnoremap <space>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
 nnoremap <space>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
 nnoremap <space>ev :<c-u>edit $MYVIMRC<cr>
 
-nnoremap <space>f :<c-u>Files<cr>
+if exists(':Files')
+    nnoremap <space>f :<c-u>Files<cr>
+elseif exists(':CtrlP')
+    nnoremap <space>f :<c-u>CtrlP<cr>
+endif
 
 nnoremap <space>gg :<c-u>Gstatus<cr>
 nnoremap <space>gs :<c-u>Gstatus<cr>
@@ -252,7 +264,11 @@ vnoremap <space>s :s/\v
 
 nnoremap <space>S :<c-u>sign unplace *<cr>
 
-nnoremap <space>t :<c-u>Tags<cr>
+if exists(':Tags')
+    nnoremap <space>t :<c-u>Tags<cr>
+elseif exists(':CtrlPTag')
+    nnoremap <space>t :<c-u>CtrlPTag<cr>
+endif
 
 if executable('ag')
     " `ag --vimgrep` does not support \<...\>
@@ -377,7 +393,7 @@ if !exists('g:loaded_vimrc')
         if has('gui_gtk2')
             set guifont=Hack\ 10
         elseif has('gui_win32')
-            set guifont=Consolas:h10:cANSI
+            set guifont=Consolas:h12:cANSI
         endif
     elseif $TERM =~? '.*256color.*'
         set t_ut=
@@ -417,6 +433,10 @@ augroup END
 
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
+
+" CtrlP
+
+let g:ctrlp_extensions = ['tag']
 
 " Haskell
 
