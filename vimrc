@@ -215,10 +215,10 @@ else
     nnoremap <space>ga :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
 endif
 
-if exists(':Buffers')
-    nnoremap <space>b :<c-u>Buffers<cr>
-elseif exists(':CtrlPBuffer')
+if exists('win32')
     nnoremap <space>b :<c-u>CtrlPBuffer<cr>
+else
+    nnoremap <space>b :<c-u>Buffers<cr>
 endif
 
 nnoremap <space>B :<c-u>ToggleBackground<cr>
@@ -236,10 +236,10 @@ nnoremap <space>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
 nnoremap <space>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
 nnoremap <space>ev :<c-u>edit $MYVIMRC<cr>
 
-if exists(':Files')
-    nnoremap <space>f :<c-u>Files<cr>
-elseif exists(':CtrlP')
+if exists('win32')
     nnoremap <space>f :<c-u>CtrlP<cr>
+else
+    nnoremap <space>f :<c-u>Files<cr>
 endif
 
 nnoremap <space>gg :<c-u>Gstatus<cr>
@@ -264,10 +264,10 @@ vnoremap <space>s :s/\v
 
 nnoremap <space>S :<c-u>sign unplace *<cr>
 
-if exists(':Tags')
-    nnoremap <space>t :<c-u>Tags<cr>
-elseif exists(':CtrlPTag')
+if exists('win32')
     nnoremap <space>t :<c-u>CtrlPTag<cr>
+else
+    nnoremap <space>t :<c-u>Tags<cr>
 endif
 
 if executable('ag')
@@ -376,19 +376,13 @@ augroup END
 if !exists('g:loaded_vimrc')
     let &listchars = 'tab:> ,nbsp:~,eol: ,precedes:-,extends:-,trail:_'
     let &showbreak = '-'
-    let s:colourscheme = 'default'
-    let s:background = 'dark'
 
     if has('gui_running')
         set lines=35 columns=85
         set mousehide
         set guioptions=ci
 
-        let s:background = 'light'
         call s:AwesomeListChars()
-        if !empty($VIM_COLOURS)
-            let s:colourscheme = $VIM_COLOURS
-        endif
 
         if has('gui_gtk2')
             set guifont=Hack\ 10
@@ -397,20 +391,7 @@ if !exists('g:loaded_vimrc')
         endif
     elseif $TERM =~? '.*256color.*'
         set t_ut=
-
         call s:AwesomeListChars()
-        if !empty($VIM_COLOURS)
-            let s:colourscheme = $VIM_COLOURS
-        endif
-    endif
-
-    " :colorscheme needs to be executed at least once -- even for the default
-    " scheme.  Otherwise the autocmd's from above won't fire.
-    exec 'silent! colorscheme ' . s:colourscheme
-
-    " :colorscheme keeps resetting 'background'.
-    if s:colourscheme ==# 'default'
-        let &background = s:background
     endif
 endif
 
@@ -521,6 +502,7 @@ augroup SyntaxOnlyForCertainFiletypes
     autocmd!
     autocmd Filetype fugitive  setlocal syntax=fugitive
     autocmd Filetype gitcommit setlocal syntax=gitcommit
+    autocmd Filetype git       setlocal syntax=git
     autocmd Filetype help      setlocal syntax=help
     autocmd Filetype mail      setlocal syntax=mail
     autocmd Filetype markdown  setlocal syntax=markdown
