@@ -230,6 +230,7 @@ nnoremap <space>d :<c-u>cd %:h<cr>
 
 nnoremap <space>ec :<c-u>edit ~/.when/calendar<cr>
 nnoremap <space>ed :<c-u>Vexec 'edit ++enc=cp437'<cr>
+nnoremap <space>ej :<c-u>Vexec 'edit ++enc=sjis'<cr>
 nnoremap <space>ee :<c-u>Vexec 'edit'<cr>
 nnoremap <space>ef :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'ftplugin/' . &filetype . '.vim')<cr>
 nnoremap <space>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
