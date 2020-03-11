@@ -215,7 +215,7 @@ else
     nnoremap <space>ga :<c-u>Ag '\V\C\<' . escape(expand('<cword>'), '\/') . '\>'<cr>
 endif
 
-if exists('win32')
+if has('win32')
     nnoremap <space>b :<c-u>CtrlPBuffer<cr>
 else
     nnoremap <space>b :<c-u>Buffers<cr>
@@ -236,7 +236,7 @@ nnoremap <space>eh :<c-u>edit <c-r>=expand('%:p:h')<cr>/
 nnoremap <space>es :<c-u>exec 'edit ' . fnameescape(g:vimfiles_dir . 'snippets/' . &filetype . '.snippets')<cr>
 nnoremap <space>ev :<c-u>edit $MYVIMRC<cr>
 
-if exists('win32')
+if has('win32')
     nnoremap <space>f :<c-u>CtrlP<cr>
 else
     nnoremap <space>f :<c-u>Files<cr>
@@ -264,7 +264,7 @@ vnoremap <space>s :s/\v
 
 nnoremap <space>S :<c-u>sign unplace *<cr>
 
-if exists('win32')
+if has('win32')
     nnoremap <space>t :<c-u>CtrlPTag<cr>
 else
     nnoremap <space>t :<c-u>Tags<cr>
