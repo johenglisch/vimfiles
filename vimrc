@@ -383,6 +383,7 @@ if !exists('g:loaded_vimrc')
         set mousehide
         set guioptions=ci
 
+        silent! colorscheme jellybeans
         call s:AwesomeListChars()
 
         if has('gui_gtk2')
@@ -392,6 +393,7 @@ if !exists('g:loaded_vimrc')
         endif
     elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty'
         set t_ut=
+        silent! colorscheme jellybeans
         call s:AwesomeListChars()
     endif
 endif
@@ -419,6 +421,10 @@ let g:clojure_align_multiline_strings = 1
 " CtrlP
 
 let g:ctrlp_extensions = ['tag']
+
+" FZF
+
+let g:fzf_preview_window = ''
 
 " Haskell
 
