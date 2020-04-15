@@ -390,7 +390,7 @@ if !exists('g:loaded_vimrc')
         elseif has('gui_win32')
             set guifont=Consolas:h12:cANSI
         endif
-    elseif $TERM =~? '.*256color.*'
+    elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty'
         set t_ut=
         call s:AwesomeListChars()
     endif
