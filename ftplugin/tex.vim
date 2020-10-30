@@ -5,12 +5,15 @@ setlocal softtabstop=2
 setlocal expandtab
 setlocal linebreak
 
+setlocal makeprg=chktex\ -v0\ %
+
 
 " Editing Options
 
 set iskeyword+=:
 
 nnoremap <buffer> <cr> :<c-u>VimtexCompileSS<cr>
+nnoremap <buffer> <backspace> :<c-u>lmake!<cr>
 
 nnoremap <buffer> ÖK :<c-u>TexRemoveAuxiliaryFiles<cr>
 nnoremap <buffer> ÖL :<c-u>VimtexCompileSS<cr>
