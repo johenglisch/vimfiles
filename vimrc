@@ -70,6 +70,7 @@ if s:has_pluginmgr == 1
         Plug 'junegunn/fzf'
         Plug 'junegunn/fzf.vim'
     endif
+    Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-surround'
                 \ | Plug 'tpope/vim-repeat'
                 \ | Plug 'guns/vim-sexp'
@@ -170,7 +171,8 @@ noremap Ü <C-u>
 
 nnoremap ö <C-w>
 nnoremap öö <C-w><C-w>
-nnoremap öä :<c-u>cclose<cr>
+nnoremap öä :<c-u>cclose|lclose<cr>
+"nnoremap öÄ :<c-u>lclose<cr>
 nnoremap <c-w>ä :<c-u>cclose<cr>
 
 noremap n nzzzv
@@ -219,7 +221,9 @@ endif
 if has('win32')
     nnoremap <space>b :<c-u>CtrlPBuffer<cr>
 else
-    nnoremap <space>b :<c-u>Buffers<cr>
+    " fzf plugin update broke something...
+    "nnoremap <space>b :<c-u>Buffers<cr>
+    nnoremap <space>b :<c-u>b<space>
 endif
 
 nnoremap <space>B :<c-u>ToggleBackground<cr>
@@ -294,9 +298,8 @@ inoremap <c-x><c-x> <c-o>:FixSpelling<cr>
 
 nnoremap <space>z zMzvzz
 
-nnoremap <space>ö <c-]>
-nnoremap <space>gö g<c-]>
-nnoremap <space>Ö :!ctags -R .<cr>
+nnoremap <space>ö g<c-]>
+nnoremap <space>gö :<c-u>!ctags -R .<cr>
 
 " Muscle Memory Training Facilities
 
@@ -394,7 +397,9 @@ if !exists('g:loaded_vimrc')
         endif
     elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty'
         set t_ut=
+        set termguicolors
         silent! colorscheme jellybeans
+
         call s:AwesomeListChars()
     endif
 endif
@@ -422,6 +427,10 @@ let g:clojure_align_multiline_strings = 1
 " CtrlP
 
 let g:ctrlp_extensions = ['tag']
+
+" Emmet
+
+let g:user_emmet_leader_key='<c-h>'
 
 " FZF
 
