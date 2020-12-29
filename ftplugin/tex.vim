@@ -8,15 +8,24 @@ setlocal linebreak
 setlocal makeprg=chktex\ -v0\ %
 
 
+function! s:ListDefinitions() abort
+    lvimgrep /\v\\(sub)*section\*?\{/j %
+    lopen
+endfunction
+
+
 " Editing Options
 
 set iskeyword+=:
 
+set makeprg=chktex\ -qv0\ %
+
+nnoremap <buffer> <backspace> :<c-u>make!<cr>
 nnoremap <buffer> <cr> :<c-u>VimtexCompileSS<cr>
 nnoremap <buffer> <backspace> :<c-u>lmake!<cr>
 
 nnoremap <buffer> ÖK :<c-u>TexRemoveAuxiliaryFiles<cr>
-nnoremap <buffer> ÖL :<c-u>VimtexCompileSS<cr>
+nnoremap <buffer> ÖL :<c-u>call <sid>ListDefinitions()<cr>
 nnoremap <buffer> ÖN A% TODO<space>
 
 nnoremap <buffer> ÖÖ :<c-u>ReadOut<cr>
@@ -70,7 +79,7 @@ if exists('g:Tex_AuxFileExtensions')
 else
     let s:Tex_AuxFileExtensions = [
                 \ 'aux', 'bbl', 'blg', 'dbj', 'dvi', 'log',
-                \ 'nav', 'out', 'ps', 'snm', 'toc',
+                \ 'nav', 'out', 'ps', 'snm', 'toc', 'vrb',
                 \ 'fdb_latexmk', 'fls']
 endif
 
