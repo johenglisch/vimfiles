@@ -68,7 +68,8 @@ if s:has_pluginmgr == 1
         Plug 'ctrlpvim/ctrlp.vim'
     else
         Plug 'junegunn/fzf'
-        Plug 'junegunn/fzf.vim'
+        " fzf plugin breaks if you're not a rolling-release meme
+        Plug 'junegunn/fzf.vim', { 'commit': '23dda8602f138a9d75dd03803a79733ee783e356' }
     endif
     Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-surround'
@@ -80,10 +81,12 @@ if s:has_pluginmgr == 1
                 \ | Plug 'marcweber/vim-addon-mw-utils'
                 \ | Plug 'garbas/vim-snipmate'
 
+    Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
     Plug 'tikhomirov/vim-glsl'
     Plug 'quabug/vim-gdscript'
+    Plug 'jceb/vim-orgmode'
     Plug 'lervag/vimtex'
     Plug 'rust-lang/rust.vim'
 
@@ -221,9 +224,7 @@ endif
 if has('win32')
     nnoremap <space>b :<c-u>CtrlPBuffer<cr>
 else
-    " fzf plugin update broke something...
-    "nnoremap <space>b :<c-u>Buffers<cr>
-    nnoremap <space>b :<c-u>b<space>
+    nnoremap <space>b :<c-u>Buffers<cr>
 endif
 
 nnoremap <space>B :<c-u>ToggleBackground<cr>
@@ -431,6 +432,12 @@ let g:ctrlp_extensions = ['tag']
 " Emmet
 
 let g:user_emmet_leader_key='<c-h>'
+let g:user_emmet_install_global = 0
+
+augroup EnableEmmet
+    autocmd!
+    autocmd FileType html,css,markdown EmmetInstall
+augroup END
 
 " FZF
 
@@ -484,8 +491,9 @@ elseif has('nvim')
 endif
 
 let g:vimtex_compiler_latexmk_engines = get(g:, 'vimtex_compiler_latexmk_engines', {})
-let g:vimtex_compiler_latexmk_engines['dvips'] = '-pdfps'
 let g:vimtex_compiler_latexmk_engines['_'] = '-pdfps'
+let g:vimtex_compiler_latexmk_engines['dvips'] = '-pdfps'
+let g:vimtex_compiler_latexmk_engines['pdflatex'] = '-pdf'
 
 
 " SnipMate
