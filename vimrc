@@ -249,8 +249,8 @@ else
     nnoremap <space>f :<c-u>Files<cr>
 endif
 
-nnoremap <space>gg :<c-u>Gstatus<cr>
-nnoremap <space>gs :<c-u>Gstatus<cr>
+nnoremap <space>gg :<c-u>Git<cr>
+nnoremap <space>gs :<c-u>Git<cr>
 nnoremap <space>gw :<c-u>Gw<cr>
 nnoremap <space>gc :<c-u>Git commit<cr>
 
