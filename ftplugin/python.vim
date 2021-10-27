@@ -20,7 +20,7 @@ function! s:RunTests() abort
 endfunction
 
 
-let &l:makeprg = 'python -m flake8'
+let &l:makeprg = 'python3 -m flake8'
 
 
 nnoremap <buffer> ÖJ Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
