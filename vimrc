@@ -60,6 +60,7 @@ if s:has_pluginmgr == 1
     Plug 'nanotech/jellybeans.vim'
     " gui colours
     Plug 'romainl/flattened'
+    Plug 'yasukotelin/shirotelin'
     Plug 'molok/vim-vombato-colorscheme'
 
     Plug 'vim-scripts/Align'
@@ -81,14 +82,14 @@ if s:has_pluginmgr == 1
                 \ | Plug 'marcweber/vim-addon-mw-utils'
                 \ | Plug 'garbas/vim-snipmate'
 
-    Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
     Plug 'tikhomirov/vim-glsl'
     Plug 'quabug/vim-gdscript'
+    Plug 'sophacles/vim-bundle-mako'
     Plug 'jceb/vim-orgmode'
-    Plug 'lervag/vimtex'
     Plug 'rust-lang/rust.vim'
+    Plug 'lervag/vimtex'
 
     call plug#end()
 endif
