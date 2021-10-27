@@ -437,7 +437,7 @@ let g:user_emmet_install_global = 0
 
 augroup EnableEmmet
     autocmd!
-    autocmd FileType html,css,markdown EmmetInstall
+    autocmd FileType html,css,mako,markdown EmmetInstall
 augroup END
 
 " FZF
