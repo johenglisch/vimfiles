@@ -1,5 +1,14 @@
 snippet bang
 	#!/bin/${1:sh}
+snippet usrbang
+	#!/usr/bin/env ${1:bash}
 snippet strict
 	set -euo pipefail
 	IFS=$'\\n\\t'
+snippet dirname
+	${1:dirname}="\${${2:fname}%/*}"
+	[ "\$$1" = "\$$2" ] && $1=.
+	$0
+snippet basename
+	${1:basename}="\${${2:fname}##*/}"
+	$0

@@ -84,10 +84,13 @@ if s:has_pluginmgr == 1
 
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
+    Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
     Plug 'tikhomirov/vim-glsl'
     Plug 'quabug/vim-gdscript'
     Plug 'sophacles/vim-bundle-mako'
     Plug 'jceb/vim-orgmode'
+    Plug 'terickson001/vim-odin'
+    Plug 'peterhoeg/vim-qml'
     Plug 'rust-lang/rust.vim'
     Plug 'lervag/vimtex'
 
@@ -177,7 +180,7 @@ nnoremap ö <C-w>
 nnoremap öö <C-w><C-w>
 nnoremap öä :<c-u>cclose|lclose<cr>
 "nnoremap öÄ :<c-u>lclose<cr>
-nnoremap <c-w>ä :<c-u>cclose<cr>
+nnoremap <c-w>ä :<c-u>cclose|lclose<cr>
 
 noremap n nzzzv
 noremap N Nzzzv
@@ -444,6 +447,13 @@ augroup END
 
 let g:fzf_preview_window = ''
 
+" Hare
+
+augroup WhyAreYouOverwritingMySettingsHare
+    autocmd!
+    autocmd FileType hare setlocal makeprg=hare
+augroup END
+
 " Haskell
 
 let g:haskell_indent_in = 0
@@ -524,6 +534,7 @@ filetype plugin indent on
 runtime macros/matchit.vim
 
 syntax manual
+set syntax=
 augroup SyntaxOnlyForCertainFiletypes
     autocmd!
     autocmd Filetype fugitive  setlocal syntax=fugitive
