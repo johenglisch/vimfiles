@@ -9,3 +9,10 @@ snippet testing
 	def test_$1(self):$0
 snippet asseq
 	self.assertEqual(${1:result}, ${2:expected})$0
+snippet exectime
+	import time  # TODO REMOVE
+	start_time = time.time()  # TODO REMOVE
+	$0
+	end_time = time.time()  # TODO REMOVE
+	passed_time = end_time - start_time  # TODO REMOVE
+	print(passed_time, 'secs')  # TODO REMOVE

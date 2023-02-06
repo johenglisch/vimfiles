@@ -20,9 +20,9 @@ silent! call mkdir(s:backup_dir, 'p')
 silent! call mkdir(s:swap_dir, 'p')
 silent! call mkdir(s:undo_dir, 'p')
 
-exec 'set backupdir=' . fnameescape(s:backup_dir) . '/'
-exec 'set directory=' . fnameescape(s:swap_dir)   . '/'
-exec 'set undodir='   . fnameescape(s:undo_dir)   . '/'
+let &backupdir = fnameescape(s:backup_dir) . '/'
+let &directory = fnameescape(s:swap_dir)   . '/'
+let &undodir   = fnameescape(s:undo_dir)   . '/'
 
 if empty(get(g:, 'vimfiles_dir', ''))
     if has('win32')
@@ -123,6 +123,8 @@ set undofile
 
 set complete+=kspell
 set spellcapcheck=
+
+set cpoptions+=J
 
 set ignorecase
 set smartcase
@@ -417,7 +419,7 @@ augroup END
 
 augroup ColourColumnInInsertMode
     autocmd!
-    autocmd InsertEnter * exec 'set colorcolumn='.&textwidth
+    autocmd InsertEnter * let &colorcolumn = &textwidth
     autocmd InsertLeave * set colorcolumn=0
 augroup END
 
@@ -557,6 +559,5 @@ augroup GitCommitSpelling
     autocmd!
     autocmd Filetype gitcommit setlocal spell spelllang=en_gb
 augroup END
-
 
 let g:loaded_vimrc=1
