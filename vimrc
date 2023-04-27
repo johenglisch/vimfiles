@@ -69,14 +69,15 @@ if s:has_pluginmgr == 1
         Plug 'ctrlpvim/ctrlp.vim'
     else
         Plug 'junegunn/fzf'
-        " fzf plugin breaks if you're not a rolling-release meme
-        Plug 'junegunn/fzf.vim', { 'commit': '23dda8602f138a9d75dd03803a79733ee783e356' }
+        " " fzf plugin breaks if you're not a rolling-release meme
+        " Plug 'junegunn/fzf.vim', { 'commit': '23dda8602f138a9d75dd03803a79733ee783e356' }
+        Plug 'junegunn/fzf.vim'
     endif
     Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-surround'
-                \ | Plug 'tpope/vim-repeat'
-                \ | Plug 'guns/vim-sexp'
-                \ | Plug 'tpope/vim-sexp-mappings-for-regular-people'
+    " | Plug 'tpope/vim-repeat'
+    " | Plug 'guns/vim-sexp'
+    " | Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
     Plug 'tomtom/tlib_vim'
                 \ | Plug 'marcweber/vim-addon-mw-utils'
@@ -397,8 +398,8 @@ if !exists('g:loaded_vimrc')
         silent! colorscheme jellybeans
         call s:AwesomeListChars()
 
-        if has('gui_gtk2')
-            set guifont=Hack\ 10
+        if has('gui_gtk2') || has('gui_gtk3')
+            set guifont=Anonymous\ Pro\ 12
         elseif has('gui_win32')
             set guifont=Consolas:h12:cANSI
         endif
