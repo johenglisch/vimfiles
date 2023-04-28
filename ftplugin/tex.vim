@@ -74,19 +74,21 @@ command! -buffer -range=% ReadOut <line1>,<line2>call s:ReadRange()
 
 " Handling Auxiliary Files
 
-if exists('g:Tex_AuxFileExtensions')
-    let s:Tex_AuxFileExtensions = g:Tex_AuxFileExtensions
-else
-    let s:Tex_AuxFileExtensions = [
-                \ 'aux', 'bbl', 'blg', 'dbj', 'dvi', 'log',
-                \ 'nav', 'out', 'ps', 'snm', 'toc', 'vrb',
-                \ 'fdb_latexmk', 'fls']
-endif
+let s:default_aux_file_extensions = [
+            \ 'aux', 'bbl', 'blg', 'dbj', 'dvi', 'log',
+            \ 'nav', 'out', 'ps', 'snm', 'toc', 'vrb',
+            \ 'fdb_latexmk', 'fls']
 
 function! s:Tex_RemoveAuxiliaryFiles() abort
     let l:file_root = expand('%:r')
 
-    for l:extension in s:Tex_AuxFileExtensions
+    if exists('g:Tex_AuxFileExtensions')
+        let l:extensions = g:Tex_AuxFileExtensions
+    else
+        let l:extensions = s:default_aux_file_extensions
+    endif
+
+    for l:extension in l:extensions
         let l:auxiliary_file = l:file_root . '.' . l:extension
 
         if filewritable(l:auxiliary_file)

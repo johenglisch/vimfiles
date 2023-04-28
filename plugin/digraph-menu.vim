@@ -8,7 +8,9 @@ function! s:MakeDisplay(first_char) abort
     "  - >H gets parsed to ['>H', 97580]
     "  - 0u doesn't show up at all
 
-    let l:pattern = '\C\V\(' . a:first_char . '\S\|\S' . a:first_char . '\) \.\S\*\s\+\(\d\{1,5\}\)'
+    let l:first_char = a:first_char == '\' ? '\\' : a:first_char
+
+    let l:pattern = '\C\V\(' . l:first_char . '\S\|\S' . l:first_char . '\) \.\S\*\s\+\(\d\{1,5\}\)'
 
     " XXX Is there a way to get access to the actual digraph table in vimscript?
     "

@@ -19,7 +19,6 @@ function! s:RunTests() abort
     endif
 endfunction
 
-
 let &l:makeprg = 'python3 -m flake8'
 
 
