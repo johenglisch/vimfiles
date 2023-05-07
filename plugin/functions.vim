@@ -18,6 +18,24 @@ function! FilledString(length, filler) abort
     return l:new_string
 endfunction
 
+" Return root folder of the git repository for `file_name`.
+function! FindGitRoot(file_name) abort
+    let l:project_folder = a:file_name
+
+    while !isdirectory(l:project_folder . '/.git')
+        let l:basename = fnamemodify(l:project_folder, ':t')
+        let l:dirname = fnamemodify(l:project_folder, ':h')
+
+        " if :h doesn't change anything then we hit root
+        if l:dirname == l:project_folder
+            throw 'No git repo found.'
+        endif
+        let l:project_folder = l:dirname
+    endwhile
+
+    return l:project_folder
+endfunction
+
 " Remove whitespace at the beginning and end of a `string`.
 function! Strip(string) abort
     return substitute(a:string, '^\s*\(.\{-}\)\s*$', '\1', '')

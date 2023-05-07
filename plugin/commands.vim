@@ -141,6 +141,75 @@ endfunction
 command! EchoSyntaxStackAtPoint echo GetSyntaxStack(line('.'), col('.'))
 
 
+" Generate (permanent) github link for the current file and copy it to the
+" clipboard.
+"  * Calling GithubLink on a range will highlight the lines.
+"  * Calling GithubLink! with a bang will open the link with `xdg-open` instead.
+
+function! s:ExtractGitRemote(text_lines) abort
+    let l:is_in_origin_block = 0
+    for l:line in a:text_lines
+        if !l:is_in_origin_block && l:line ==# '[remote "origin"]'
+            let l:is_in_origin_block = 1
+        elseif l:is_in_origin_block
+            if l:line[0] == '['
+                break
+            elseif l:line =~# '^\s*url\s*='
+                return substitute(l:line, '^\s*url\s*=\s*', '', '')
+            endif
+        endif
+    endfor
+    throw 'No url found for remote origin'
+endfunction
+
+function! s:GithubLink(bang, file_name) range abort
+    try
+        let l:project_folder = FindGitRoot(a:file_name)
+    catch
+        echo v:exception
+        return
+    endtry
+
+    let l:git_folder = l:project_folder . '/.git'
+    try
+        " TODO: don't hard-code remote 'origin'
+        " (also: show little menu if there is more than one remote)
+        let l:remote_url = s:ExtractGitRemote(readfile(l:git_folder.'/config'))
+    catch
+        echo v:exception
+        return
+    endtry
+
+    let l:remote_url = substitute(
+                \ l:remote_url, '\v^git\@([^:]*):', 'https://\1/', '')
+    let l:commit_hash = system('git log -n1 --format=format:%H')
+    let l:relative_path = substitute(
+                \ a:file_name,
+                \ '\V\^'.escape(l:project_folder, '\').'/\?',
+                \ '', '')
+    if a:firstline == 1 && a:lastline == line('$')
+        let l:line_range = ''
+    elseif a:firstline == a:lastline
+        let l:line_range = '#L' . a:firstline
+    else
+        let l:line_range = '#L' . a:firstline . '-L' . a:lastline
+    endif
+
+    let l:permanent_url =
+                \ l:remote_url
+                \ . '/blob/' . l:commit_hash
+                \ . '/' . l:relative_path
+                \ . l:line_range
+    if a:bang
+        exec "!xdg-open " . shellescape(escape(l:permanent_url, '\%#'))
+    else
+        let @+ = l:permanent_url
+    endif
+endfunction
+
+command! -bang -range=% GithubLink <line1>,<line2>call s:GithubLink(<bang>0, expand('%:p'))
+
+
 " Move a line down by `distance` lines (negative distances move the line up).
 
 function! s:MoveLine(distance) abort
