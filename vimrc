@@ -83,11 +83,16 @@ if s:has_pluginmgr == 1
                 \ | Plug 'marcweber/vim-addon-mw-utils'
                 \ | Plug 'garbas/vim-snipmate'
 
+    Plug 'prabirshrestha/vim-lsp'
+    "Plug 'OmniSharp/Omnisharp-vim'
+    Plug 'dense-analysis/ale'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
     Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
     Plug 'tikhomirov/vim-glsl'
+    Plug 'fatih/vim-go'
     Plug 'quabug/vim-gdscript'
+    Plug 'juliaeditorsupport/julia-vim'
     Plug 'sophacles/vim-bundle-mako'
     Plug 'jceb/vim-orgmode'
     Plug 'terickson001/vim-odin'
@@ -221,7 +226,9 @@ nnoremap <space><space> :<c-u>buffer #<cr>
 
 nnoremap <space>a :<c-u>Ag '
 
-if executable('ag')
+if executable('rg')
+    nnoremap <space>ga :<c-u>Ag '\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
+elseif executable('ag')
     " `ag --vimgrep` does not support \<...\>
     nnoremap <space>ga :<c-u>Ag '\V\C\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
 else
@@ -264,6 +271,9 @@ nnoremap <space>gc :<c-u>Git commit<cr>
 nnoremap <space>h :<c-u>nohlsearch<cr>
 nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
+nnoremap <space>k :<c-u>ALELint<cr>
+nnoremap <space>gk :<c-u>ALEReset<cr>
+
 nnoremap <space>l :<c-u>FindCursor<cr>
 nnoremap <space>gl :<c-u>Status<cr>
 
@@ -272,6 +282,12 @@ nnoremap <space>gn :<c-u>set invrelativenumber<cr>
 
 nnoremap <space>r :<c-u>Underline nr2char(getchar())<cr>
 nnoremap <space>gr :<c-u>Overline nr2char(getchar())<cr>
+
+if $XDG_SESSION_TYPE == "wayland"
+    nnoremap <space>pc :<c-u>.w !wl-copy<cr>
+    vnoremap <space>pc :w !wl-copy<cr>
+    nnoremap <space>pp :<c-u>r !wl-paste<cr>
+endif
 
 nnoremap <space>s :<c-u>%s/\v
 vnoremap <space>s :s/\v
@@ -403,7 +419,7 @@ if !exists('g:loaded_vimrc')
         elseif has('gui_win32')
             set guifont=Consolas:h12:cANSI
         endif
-    elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty'
+    elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty' || $TERM ==# 'foot'
         set t_ut=
         set termguicolors
         silent! colorscheme jellybeans
@@ -427,10 +443,30 @@ augroup END
 
 " PLUGIN STUFF
 
+" ALE
+
+let g:ale_set_signs = 0
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_save = 0
+" let g:ale_lint_on_filetype_changed = 0
+
 " Clojure
 
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
+
+" Csharp
+
+if exists('OmniSharpTypeLookup')
+    let g:ale_linters = get(g:, 'ale_linters', {})
+    let g:ale_linters.cs = ['OmniSharp']
+    augroup OmniSharpTypeLookup
+        autocmd!
+        autocmd CursorHold *.cs OmniSharpTypeLookup
+    augroup END
+endif
 
 " CtrlP
 
@@ -450,6 +486,12 @@ augroup END
 
 let g:fzf_preview_window = ''
 
+" Go
+
+let g:go_fmt_autosave = 0
+let g:go_imports_autosave = 0
+let g:go_mod_fmt_autosave = 0
+
 " Hare
 
 augroup WhyAreYouOverwritingMySettingsHare
@@ -461,6 +503,88 @@ augroup END
 
 let g:haskell_indent_in = 0
 let g:haskell_indent_if = 0
+
+" LSP
+
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_document_code_action_signs_enabled = 0
+
+if executable('pylsp')
+    " $ pip install python-lsp-server
+    augroup RegisterPythonLSP
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+                \ 'name': 'pylsp',
+                \ 'cmd': {server_info->['pylsp']},
+                \ 'allowlist': ['python'],
+                \ })
+    augroup END
+endif
+
+if executable('gopls')
+    augroup RegisterGoLSP
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'gopls',
+                    \ 'cmd': {server_info->['gopls', '-remote=auto']},
+                    \ 'allowlist': ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl'],
+                    \ })
+        " autocmd BufWritePre *.go
+        "             \ call execute('LspDocumentFormatSync') |
+        "             \ call execute('LspCodeActionSync source.organizeImports')
+    augroup END
+endif
+
+if executable('rust-analyzer')
+    " https://github.com/rust-lang/rust-analyzer
+    " $ rustup component add rust-analyzer
+    augroup RegisterRustLSP
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+                \ 'name': 'rust-analyzer',
+                \ 'cmd': {server_info->['rust-analyzer']},
+                \ 'allowlist': ['rust'],
+                \ })
+    augroup END
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    " " the inline colouring is enough for me
+    " setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(definition)
+    nmap <buffer> gs <plug>(document-symbol-search)
+    nmap <buffer> gS <plug>(workspace-symbol-search)
+    nmap <buffer> gr <plug>(references)
+    nmap <buffer> gi <plug>(implementation)
+    nmap <buffer> gt <plug>(type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-name)
+    " " using ALE for that
+    " nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    " nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> [g <plug>(ale_previous_wrap)
+    nmap <buffer> ]g <plug>(ale_next_wrap)
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    " " No. Just no. (-_-)"
+    " let g:lsp_format_sync_timeout = 1000
+    " augroup RustAndGoFormatter
+    "     autocmd!
+    "     autocmd BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    " augroup END
+
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    autocmd!
+    " call s:on_lsp_buffer_enabled only for languages that have the server
+    " registered
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " Org-mode
 
