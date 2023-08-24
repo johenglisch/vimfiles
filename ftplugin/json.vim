@@ -9,3 +9,5 @@ command! -buffer -range FixCommas <line1>,<line2>call s:FixCommas()
 
 nnoremap <buffer> ÖÖ :<c-u>FixCommas<cr>
 vnoremap <buffer> ÖÖ :FixCommas<cr>
+
+nnoremap <buffer> ÖK :<c-u>%!json_pp<cr>
