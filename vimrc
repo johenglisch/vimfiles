@@ -151,6 +151,7 @@ set backspace=indent,eol,start
 
 set hidden
 
+" TODO: move the command defs to the place where commands are defed
 command! Deutsch setlocal spell spelllang=de_de
 command! British setlocal spell spelllang=en_gb
 
@@ -227,6 +228,7 @@ nnoremap <space><space> :<c-u>buffer #<cr>
 nnoremap <space>a :<c-u>Ag '
 
 if executable('rg')
+    " `rg --vimgrep` does not support \V\C...
     nnoremap <space>ga :<c-u>Ag '\b' . escape(expand('<cword>'), '\/') . '\b'<cr>
 elseif executable('ag')
     " `ag --vimgrep` does not support \<...\>
@@ -300,7 +302,10 @@ else
     nnoremap <space>t :<c-u>Tags<cr>
 endif
 
-if executable('ag')
+if executable('rg')
+    " `rg --vimgrep` does not support \V\C...
+    nnoremap <space>ga :<c-u>Ag '\b(TODO|FIXME|XXX)\b'<cr>
+elseif executable('ag')
     " `ag --vimgrep` does not support \<...\>
     nnoremap <space>gt :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
 else
@@ -419,7 +424,7 @@ if !exists('g:loaded_vimrc')
         elseif has('gui_win32')
             set guifont=Consolas:h12:cANSI
         endif
-    elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty' || $TERM ==# 'foot'
+    elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty' || $TERM ==# 'foot' || $TERM ==# 'alacritty'
         set t_ut=
         set termguicolors
         silent! colorscheme jellybeans
@@ -509,15 +514,37 @@ let g:haskell_indent_if = 0
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_document_code_action_signs_enabled = 0
 
+if executable('clangd')
+    augroup RegisterCLSP
+        autocmd!
+        au User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd', '-background-index']},
+                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+    augroup END
+elseif executable('ccls')
+    augroup RegisterCLSP
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'ccls',
+                    \ 'cmd': {server_info->['ccls']},
+                    \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+                    \ 'initialization_options': {'cache': {'directory': expand('~/.cache/ccls') }},
+                    \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+                    \ })
+    augroup END
+endif
+
 if executable('pylsp')
     " $ pip install python-lsp-server
     augroup RegisterPythonLSP
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-                \ 'name': 'pylsp',
-                \ 'cmd': {server_info->['pylsp']},
-                \ 'allowlist': ['python'],
-                \ })
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'pylsp',
+                    \ 'cmd': {server_info->['pylsp']},
+                    \ 'allowlist': ['python'],
+                    \ })
     augroup END
 endif
 
@@ -529,9 +556,6 @@ if executable('gopls')
                     \ 'cmd': {server_info->['gopls', '-remote=auto']},
                     \ 'allowlist': ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl'],
                     \ })
-        " autocmd BufWritePre *.go
-        "             \ call execute('LspDocumentFormatSync') |
-        "             \ call execute('LspCodeActionSync source.organizeImports')
     augroup END
 endif
 
@@ -539,12 +563,12 @@ if executable('rust-analyzer')
     " https://github.com/rust-lang/rust-analyzer
     " $ rustup component add rust-analyzer
     augroup RegisterRustLSP
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-                \ 'name': 'rust-analyzer',
-                \ 'cmd': {server_info->['rust-analyzer']},
-                \ 'allowlist': ['rust'],
-                \ })
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'rust-analyzer',
+                    \ 'cmd': {server_info->['rust-analyzer']},
+                    \ 'allowlist': ['rust'],
+                    \ })
     augroup END
 endif
 
