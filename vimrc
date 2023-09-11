@@ -330,6 +330,8 @@ nnoremap <space>z zMzvzz
 nnoremap <space>ö g<c-]>
 nnoremap <space>gö :<c-u>!ctags -R .<cr>
 
+nnoremap <space>? /�<cr>
+
 " Muscle Memory Training Facilities
 
 for s:prefix in ['i', 'n', 'v']
