@@ -1,8 +1,18 @@
 snippet bang
-	#!/usr/bin/env python${1:3}
+	#!/usr/bin/env python3
 snippet main
 	if __name__ == '__main__':
 		${1:main()}
+snippet script
+	#!/usr/bin/env python3
+
+
+	def main():
+		$0
+
+
+	if __name__ == '__main__':
+		main()
 snippet deftest
 	class $1(unittest.TestCase):$0
 snippet testing

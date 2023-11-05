@@ -304,7 +304,7 @@ endif
 
 if executable('rg')
     " `rg --vimgrep` does not support \V\C...
-    nnoremap <space>ga :<c-u>Ag '\b(TODO|FIXME|XXX)\b'<cr>
+    nnoremap <space>gt :<c-u>Ag '\b(TODO|FIXME|XXX)\b'<cr>
 elseif executable('ag')
     " `ag --vimgrep` does not support \<...\>
     nnoremap <space>gt :<c-u>Ag '\C\b(TODO|FIXME|XXX)\b'<cr>
@@ -561,6 +561,23 @@ if executable('gopls')
     augroup END
 endif
 
+if executable('haskell-language-server-wrapper')
+    augroup Haskell
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'haskell-language-server-wrapper',
+                    \ 'cmd': {server_info->['haskell-language-server-wrapper', '--lsp']},
+                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(
+                    \     lsp#utils#find_nearest_parent_file_directory(
+                    \         lsp#utils#get_buffer_path(),
+                    \         ['.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml', '.git'],
+                    \     ))},
+                    \ 'whitelist': ['haskell', 'lhaskell'],
+                    \ })
+    augroup END
+endif
+
+
 if executable('rust-analyzer')
     " https://github.com/rust-lang/rust-analyzer
     " $ rustup component add rust-analyzer
@@ -574,6 +591,20 @@ if executable('rust-analyzer')
     augroup END
 endif
 
+if executable('texlab')
+    " https://github.com/latex-lsp/texlab
+    " $ cargo install texlab
+    augroup RegisterTeXLab
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'texlab',
+                    \ 'cmd': {server_info->['texlab']},
+                    \ 'allowlist': ['tex'],
+                    \ })
+    augroup END
+endif
+
+
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     " " the inline colouring is enough for me
@@ -586,6 +617,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gi <plug>(implementation)
     nmap <buffer> gt <plug>(type-definition)
     nmap <buffer> <leader>rn <plug>(lsp-name)
+    nmap <buffer> ÖP :<c-u>LspCodeAction<cr>
     " " using ALE for that
     " nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     " nmap <buffer> ]g <plug>(lsp-next-diagnostic)
