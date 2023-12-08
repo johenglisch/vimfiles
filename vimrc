@@ -413,7 +413,7 @@ if !exists('g:loaded_vimrc')
         set mousehide
         set guioptions=ci
 
-        silent! colorscheme jellybeans
+        silent! colorscheme shirotelin
         call s:AwesomeListChars()
 
         if has('gui_gtk2') || has('gui_gtk3')
@@ -492,6 +492,9 @@ let g:lsp_diagnostics_enabled = 1
 " Move all that nonsense out of my editing window into the echo line.
 let g:lsp_diagnostics_signs_enabled = 0
 let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_document_code_action_signs_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 1
+
 if executable('clangd')
     augroup RegisterCLSP
         autocmd!
