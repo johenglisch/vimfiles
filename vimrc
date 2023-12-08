@@ -84,8 +84,6 @@ if s:has_pluginmgr == 1
                 \ | Plug 'garbas/vim-snipmate'
 
     Plug 'prabirshrestha/vim-lsp'
-    "Plug 'OmniSharp/Omnisharp-vim'
-    Plug 'dense-analysis/ale'
     Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
     Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
@@ -273,9 +271,6 @@ nnoremap <space>gc :<c-u>Git commit<cr>
 nnoremap <space>h :<c-u>nohlsearch<cr>
 nnoremap <space>gh :<c-u>ToggleSyntax<cr>
 
-nnoremap <space>k :<c-u>ALELint<cr>
-nnoremap <space>gk :<c-u>ALEReset<cr>
-
 nnoremap <space>l :<c-u>FindCursor<cr>
 nnoremap <space>gl :<c-u>Status<cr>
 
@@ -450,30 +445,10 @@ augroup END
 
 " PLUGIN STUFF
 
-" ALE
-
-let g:ale_set_signs = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 0
-" let g:ale_lint_on_enter = 0
-" let g:ale_lint_on_save = 0
-" let g:ale_lint_on_filetype_changed = 0
-
 " Clojure
 
 let g:fireplace_no_maps = 1
 let g:clojure_align_multiline_strings = 1
-
-" Csharp
-
-if exists('OmniSharpTypeLookup')
-    let g:ale_linters = get(g:, 'ale_linters', {})
-    let g:ale_linters.cs = ['OmniSharp']
-    augroup OmniSharpTypeLookup
-        autocmd!
-        autocmd CursorHold *.cs OmniSharpTypeLookup
-    augroup END
-endif
 
 " CtrlP
 
@@ -513,9 +488,10 @@ let g:haskell_indent_if = 0
 
 " LSP
 
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_document_code_action_signs_enabled = 0
-
+let g:lsp_diagnostics_enabled = 1
+" Move all that nonsense out of my editing window into the echo line.
+let g:lsp_diagnostics_signs_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
 if executable('clangd')
     augroup RegisterCLSP
         autocmd!
@@ -604,11 +580,8 @@ if executable('texlab')
     augroup END
 endif
 
-
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
-    " " the inline colouring is enough for me
-    " setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
     nmap <buffer> gd <plug>(definition)
     nmap <buffer> gs <plug>(document-symbol-search)
@@ -617,24 +590,13 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gi <plug>(implementation)
     nmap <buffer> gt <plug>(type-definition)
     nmap <buffer> <leader>rn <plug>(lsp-name)
-    nmap <buffer> ÖP :<c-u>LspCodeAction<cr>
-    " " using ALE for that
-    " nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    " nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> [g <plug>(ale_previous_wrap)
-    nmap <buffer> ]g <plug>(ale_next_wrap)
+    nmap <buffer> ÖO :<c-u>LspCodeAction<cr>
+    nmap <buffer> ÖP <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ÖN <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
     nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    " " No. Just no. (-_-)"
-    " let g:lsp_format_sync_timeout = 1000
-    " augroup RustAndGoFormatter
-    "     autocmd!
-    "     autocmd BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    " augroup END
-
-    " refer to doc to add more commands
+    nnoremap <buffer> <backspace> :<c-u>LspDocumentDiagnostics<cr>
 endfunction
 
 augroup lsp_install
