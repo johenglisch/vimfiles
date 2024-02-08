@@ -203,11 +203,24 @@ function! s:GithubLink(bang, file_name) range abort
         let l:line_range = '#L' . a:firstline . '-L' . a:lastline
     endif
 
-    let l:permanent_url =
-                \ l:remote_url
-                \ . '/blob/' . l:commit_hash
-                \ . '/' . l:relative_path
-                \ . l:line_range
+    if l:remote_url =~? '\v^(https?://)codeberg\.org/'
+        let l:permanent_url =
+                    \ l:remote_url
+                    \ . '/src/commit/' . l:commit_hash
+                    \ . '/' . l:relative_path
+                    \ . l:line_range
+    elseif l:remote_url =~? '\v^(https?://)github\.com/'
+        let l:permanent_url =
+                    \ l:remote_url
+                    \ . '/blob/' . l:commit_hash
+                    \ . '/' . l:relative_path
+                    \ . l:line_range
+    else
+        " TODO: gitlab?
+        echomsg 'unknown hosting service: ' . l:remote_url
+        return
+    endif
+
     if a:bang
         exec "!xdg-open " . shellescape(escape(l:permanent_url, '\%#'))
     else
