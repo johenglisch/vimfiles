@@ -83,20 +83,26 @@ if s:has_pluginmgr == 1
                 \ | Plug 'marcweber/vim-addon-mw-utils'
                 \ | Plug 'garbas/vim-snipmate'
 
+    " TODO: check if vim's built-in plugins are enough
+    "  * program in <language>.
+    "  * see if there's something missing in <language>.
+    "  * see if I can quickly hack my way around it.
+    "  * if so, delete plugin
+    "  * if not, reenable plugin
     Plug 'prabirshrestha/vim-lsp'
-    Plug 'tpope/vim-fireplace'
+    " Plug 'tpope/vim-fireplace'
     Plug 'tpope/vim-fugitive'
-    Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
+    " Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
     Plug 'tikhomirov/vim-glsl'
-    Plug 'fatih/vim-go'
-    Plug 'quabug/vim-gdscript'
-    Plug 'juliaeditorsupport/julia-vim'
+    " Plug 'fatih/vim-go'
+    " Plug 'quabug/vim-gdscript'
+    " Plug 'juliaeditorsupport/julia-vim'
     Plug 'sophacles/vim-bundle-mako'
     Plug 'jceb/vim-orgmode'
     Plug 'terickson001/vim-odin'
     Plug 'peterhoeg/vim-qml'
-    Plug 'rust-lang/rust.vim'
-    Plug 'lervag/vimtex'
+    " Plug 'rust-lang/rust.vim'
+    " Plug 'lervag/vimtex'
 
     call plug#end()
 endif
