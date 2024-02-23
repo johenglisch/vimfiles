@@ -493,13 +493,6 @@ let g:go_fmt_autosave = 0
 let g:go_imports_autosave = 0
 let g:go_mod_fmt_autosave = 0
 
-" Hare
-
-augroup WhyAreYouOverwritingMySettingsHare
-    autocmd!
-    autocmd FileType hare setlocal makeprg=hare
-augroup END
-
 " Haskell
 
 let g:haskell_indent_in = 0
