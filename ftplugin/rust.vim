@@ -1,4 +1,6 @@
-compiler cargo
+if !exists('current_compiler')
+    compiler cargo
+endif
 
 nnoremap <buffer> <cr> :<c-u>make! build<cr>
 
