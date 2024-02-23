@@ -445,6 +445,10 @@ augroup END
 
 " PLUGIN STUFF
 
+" Ada
+
+let g:ada_default_compiler = 'alire'
+
 " Clojure
 
 let g:fireplace_no_maps = 1
@@ -540,6 +544,18 @@ if executable('pylsp')
                     \ 'name': 'pylsp',
                     \ 'cmd': {server_info->['pylsp']},
                     \ 'allowlist': ['python'],
+                    \ })
+    augroup END
+endif
+
+if executable('ols')
+    " https://github.com/DanielGavin/ols
+    augroup RegisterPythonLSP
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'ols',
+                    \ 'cmd': {server_info->['ols']},
+                    \ 'allowlist': ['odin'],
                     \ })
     augroup END
 endif
