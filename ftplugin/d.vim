@@ -1,3 +1,4 @@
+" TODO: proper compiler plugins
 if exists('g:dlang_compiler')
     let s:dlang_compiler = g:dlang_compiler
 else
