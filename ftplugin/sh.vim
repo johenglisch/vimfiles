@@ -1,3 +1,5 @@
-setlocal makeprg=shellcheck\ -f\ gcc\ %
+nnoremap <backspace> :<c-u>lmake! %<cr>
 
-nnoremap <backspace> :<c-u>lmake!<cr>
+if !exists('current_compiler')
+    compiler shellcheck
+endif
