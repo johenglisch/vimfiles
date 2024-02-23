@@ -644,6 +644,10 @@ augroup END
 
 let g:org_heading_shade_leading_stars = 0
 
+" Perl
+
+let g:perl_compiler_force_warnings = 1
+
 " Python
 
 let g:python_no_number_highlight = 1
