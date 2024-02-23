@@ -5,8 +5,6 @@ setlocal softtabstop=2
 setlocal expandtab
 setlocal linebreak
 
-setlocal makeprg=chktex\ -v0\ %
-
 
 function! s:ListDefinitions() abort
     lvimgrep /\v\\(sub)*section\*?\{/j %
@@ -18,11 +16,12 @@ endfunction
 
 set iskeyword+=:
 
-set makeprg=chktex\ -qv0\ %
+if !exists('current_compiler')
+    compiler chktex
+endif
 
-nnoremap <buffer> <backspace> :<c-u>make!<cr>
 nnoremap <buffer> <cr> :<c-u>VimtexCompileSS<cr>
-nnoremap <buffer> <backspace> :<c-u>lmake!<cr>
+nnoremap <buffer> <backspace> :<c-u>lmake! %<cr>
 
 nnoremap <buffer> ÖK :<c-u>TexRemoveAuxiliaryFiles<cr>
 nnoremap <buffer> ÖL :<c-u>call <sid>ListDefinitions()<cr>
