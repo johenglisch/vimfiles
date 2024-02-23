@@ -19,11 +19,13 @@ function! s:RunTests() abort
     endif
 endfunction
 
-let &l:makeprg = 'python3 -m flake8'
-
 
 nnoremap <buffer> ÖJ Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
 nnoremap <buffer> ÖL :<c-u>call <sid>ListDefinitions()<cr>
 
 nnoremap <buffer> <cr> :<c-u>call <sid>RunTests()<cr>
 nnoremap <buffer> <backspace> :<c-u>make!<cr>
+
+if !exists('current_compiler')
+    compiler flake8
+endif
