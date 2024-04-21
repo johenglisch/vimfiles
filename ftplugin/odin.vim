@@ -1,3 +1,8 @@
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal softtabstop=0
+setlocal noexpandtab
+
 nnoremap <buffer> <cr> :<c-u>make!<cr>
 
 augroup AAAAAAAARRRRGGGHHHH

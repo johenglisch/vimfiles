@@ -14,7 +14,7 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 CompilerSet errorformat=%f(%l:%c)\ %m
-CompilerSet makeprg=odin\ build\ .\ -terse-errors
+CompilerSet makeprg=odin\ build\ .\ -debug\ -vet\ -vet-style\ -vet-semicolon\ -strict-style\ -terse-errors
 
 let &cpo = s:cpo_save
 unlet s:cpo_save

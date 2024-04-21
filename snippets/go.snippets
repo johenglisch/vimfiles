@@ -2,3 +2,15 @@ snippet br
 	{
 		$0
 	}
+snippet iferr
+	if err != nil {
+		$0
+	}
+snippet retnerr
+	if err != nil {
+		return nil, err
+	}
+snippet reterr
+	if err != nil {
+		return err
+	}

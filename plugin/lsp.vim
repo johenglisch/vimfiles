@@ -20,7 +20,7 @@ if executable('clangd')
                     \ })
     augroup END
 elseif executable('ccls')
-    augroup RegisterCLSP
+    augroup RegisterCCLS
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'ccls',
@@ -44,7 +44,7 @@ if executable('gopls')
 endif
 
 if executable('haskell-language-server-wrapper')
-    augroup Haskell
+    augroup RegisterHaskellLSP
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'haskell-language-server-wrapper',
@@ -61,12 +61,13 @@ endif
 
 if executable('ols')
     " https://github.com/DanielGavin/ols
-    augroup RegisterPythonLSP
+    augroup RegisterOdinLSP
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'ols',
                     \ 'cmd': {server_info->['ols']},
                     \ 'allowlist': ['odin'],
+                    \ 'workspace_config': {'param': {'enabled': v:true}},
                     \ })
     augroup END
 endif

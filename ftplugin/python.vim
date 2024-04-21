@@ -20,7 +20,8 @@ function! s:RunTests() abort
 endfunction
 
 
-nnoremap <buffer> ÖJ Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
+" nnoremap <buffer> ÖJ Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
+nnoremap <buffer> ÖJ Obreakpoint()  # TODO REMOVE<esc>
 nnoremap <buffer> ÖL :<c-u>call <sid>ListDefinitions()<cr>
 
 nnoremap <buffer> <cr> :<c-u>call <sid>RunTests()<cr>

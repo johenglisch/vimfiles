@@ -101,7 +101,7 @@ if s:has_pluginmgr == 1
     Plug 'jceb/vim-orgmode'
     Plug 'terickson001/vim-odin'
     Plug 'peterhoeg/vim-qml'
-    " Plug 'rust-lang/rust.vim'
+    Plug 'rust-lang/rust.vim'
     " Plug 'lervag/vimtex'
 
     call plug#end()
@@ -181,6 +181,8 @@ cnoremap <C-g> <C-c>
 nnoremap j gj
 nnoremap k gk
 
+nnoremap gK :<c-u>exec '!apropos ' . expand('<cword>')<cr>
+
 noremap H ^
 noremap L $
 
@@ -224,6 +226,8 @@ vnoremap <silent> * :<c-u>let b:saved_view = winsaveview()<cr>*:call winrestview
 noremap! <silent> <c-k> <c-r>=DigraphMenu()<cr>
 
 inoremap <c-x><c-t> <c-x><c-]>
+inoremap <c-z> <c-x><c-o>
+inoremap <c-t> <c-x><c-]>
 
 " Leader Key Bindings
 
@@ -510,7 +514,7 @@ let g:org_heading_shade_leading_stars = 0
 
 " Perl
 
-let g:perl_compiler_force_warnings = 1
+" let g:perl_compiler_force_warnings = 1
 
 " Python
 
@@ -560,7 +564,6 @@ let g:vimtex_compiler_latexmk_engines['pdflatex'] = '-pdf'
 let g:snipMate = get(g:, 'snipMate', {})
 let g:snipMate.snippet_version = 1
 
-
 " UltiSnips
 
 if has('python3')
@@ -571,6 +574,10 @@ endif
 
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
+
+" Zig
+
+let g:zig_fmt_autosave = 0
 
 
 " General Plugin Settings
