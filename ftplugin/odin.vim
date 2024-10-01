@@ -3,7 +3,14 @@ setlocal shiftwidth=4
 setlocal softtabstop=0
 setlocal noexpandtab
 
-nnoremap <buffer> <cr> :<c-u>make!<cr>
+if executable('odin')
+    let s:odin_root = system('odin root')
+    exec 'setlocal tags+=' . s:odin_root . '/tags'
+endif
+
+if !exists('current_compiler')
+    compiler odin
+endif
 
 augroup AAAAAAAARRRRGGGHHHH
     autocmd!
@@ -11,6 +18,4 @@ augroup AAAAAAAARRRRGGGHHHH
     autocmd BufWinEnter,Colorscheme <buffer> highlight link BloodySemicolons Error
 augroup END
 
-if !exists('current_compiler')
-    compiler odin
-endif
+nnoremap <buffer> <cr> :<c-u>make!<cr>

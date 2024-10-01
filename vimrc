@@ -99,7 +99,7 @@ if s:has_pluginmgr == 1
     " Plug 'juliaeditorsupport/julia-vim'
     Plug 'sophacles/vim-bundle-mako'
     Plug 'jceb/vim-orgmode'
-    Plug 'terickson001/vim-odin'
+    Plug 'tetralux/odin.vim'
     Plug 'peterhoeg/vim-qml'
     Plug 'rust-lang/rust.vim'
     " Plug 'lervag/vimtex'
