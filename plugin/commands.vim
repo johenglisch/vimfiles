@@ -12,7 +12,7 @@ command! -range -nargs=1 -complete=file Archive <line1>,<line2>call s:ArchiveRan
 
 function! s:Ag(pattern) abort
     if executable('rg')
-        let l:command = "rg --vimgrep -e '" . a:pattern . "'"
+        let l:command = "rg --vimgrep -S -e '" . a:pattern . "'"
         let l:output = split(system(l:command), '\n')
         if len(l:output) > 0
             call setqflist([], 'r', {'lines': l:output})
