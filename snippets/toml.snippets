@@ -1,0 +1,43 @@
+snippet buildsys
+	[build-system]
+	requires = ["setuptools"]
+	build-backend = "setuptools.build_meta"
+snippet project
+	[project]
+	name = "$1"
+	version = "${2:0.0.0}"
+	requires-python = ">= ${3:3.8}"
+	dependencies = [$4]
+	authors = [
+		{ name="${5:`trim(system('git config user.name'))`}", email="${6:`trim(system('git config user.email'))`}" },
+	]
+	description = "$7"
+	readme = "README.md"
+	keywords = [$8]
+	classifiers = [
+		"Programming Language :: Python :: 3",
+		"Programming Language :: Python :: 3.8",
+		"Programming Language :: Python :: 3.9",
+		"Programming Language :: Python :: 3.10",
+		"Programming Language :: Python :: 3.11",
+		"Programming Language :: Python :: 3.12",
+		"License :: OSI Approved :: ${9:Apache Software License}",
+	]
+
+	[project.urls]
+	Repository = "$10"
+	Issues = "$11"
+snippet optdeps
+	[project.optional-dependencies]
+	dev = [ "flake8" ]
+	test = [ "tox", "pytest>= 6.0", "pytest-cov", "coverage" ]
+snippet coverage
+	[tool.pytest.ini_options]
+	addopts = "--cov"
+
+	[tool.coverage.run]
+	source = ["${1:src}", "tests"]
+
+	[tool.coverage.report]
+	show_missing = true
+	skip_covered = true
