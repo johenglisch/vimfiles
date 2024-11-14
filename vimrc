@@ -317,6 +317,9 @@ else
     nnoremap <space>gt :<c-u>Ag '\v\C<(TODO|FIXME|XXX)>'<cr>
 endif
 
+" save specific hard-to-type unicode chars to "a
+nnoremap <space>uu :<c-u>let @a = '�'<cr>
+
 nnoremap <space>ve :<c-u>edit $MYVIMRC<cr>
 nnoremap <space>vh :<c-u>split $MYVIMRC<cr>
 nnoremap <space>vs :<c-u>Vexec "source $MYVIMRC"<cr>
