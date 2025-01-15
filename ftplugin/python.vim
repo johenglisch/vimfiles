@@ -19,6 +19,11 @@ function! s:RunTests() abort
     endif
 endfunction
 
+augroup AAAAAAAAAAAARRRRRRRGGGHHHH
+    autocmd!
+    autocmd BufWinEnter,Colorscheme <buffer> syntax match BloodyFStrings /\(^\|[^f]\)\zs["']f[^"']*{/
+    autocmd BufWinEnter,Colorscheme <buffer> highlight link BloodyFStrings Error
+augroup END
 
 " nnoremap <buffer> ÖJ Oimport pdb; pdb.set_trace()  # TODO REMOVE<esc>
 nnoremap <buffer> ÖJ Obreakpoint()  # TODO REMOVE<esc>
