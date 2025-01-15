@@ -48,6 +48,7 @@ function! s:PrepareTexCode(lines) abort
     let l:tex_code = substitute(l:tex_code, '\v\\citep\{.{-}\}', '', 'g')
     let l:tex_code = substitute(l:tex_code, '\v\\%(NN?ext|LL?ast)>', 'The Example', 'g')
     let l:tex_code = substitute(l:tex_code, '\v\\%(sub)*section\*?\{\zs.{-}\ze\}', '&.', 'g')
+    let l:tex_code = substitute(l:tex_code, '\v\\ref\{.{-}\}', 'X', 'g')
 
     " Collapse paragraphs into single lines
     let l:tex_code = substitute(l:tex_code, '\s\+\n\s\+', '\n', 'g')
@@ -61,10 +62,11 @@ function! s:ReadRange() range abort
     let l:tex_code = s:PrepareTexCode(getline(a:firstline, a:lastline))
     let l:plaintext = system('detex -cl -e array,figure,table,tikzpicture', l:tex_code)
 
-    let l:voice = get(b:, 'voice', 'en-uk-north')
+    let l:speed = shellescape(get(b:, 'readout_speed', '175'))
+    let l:voice = shellescape(get(b:, 'voice', 'en-uk-north'))
 
     echo 'Reading...'
-    call system('espeak -p30 -s140 -v'.l:voice, l:plaintext)
+    call system('espeak -p30 -s'.l:speed.' -v'.l:voice, l:plaintext)
     echo 'Done.'
 endfunction
 
