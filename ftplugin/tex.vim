@@ -47,7 +47,7 @@ function! s:PrepareTexCode(lines) abort
     " FIXME The backslashes could be escaped too, why not...
     let l:tex_code = substitute(l:tex_code, '\v\\citep\{.{-}\}', '', 'g')
     let l:tex_code = substitute(l:tex_code, '\v\\%(NN?ext|LL?ast)>', 'The Example', 'g')
-    let l:tex_code = substitute(l:tex_code, '\v\\%(sub)*section\*?\{\zs.{-}\ze\}', '&.', 'g')
+    let l:tex_code = substitute(l:tex_code, '\v\\%(sub)*section\*?\{\zs.{-}\ze\}', '&.\n\n', 'g')
     let l:tex_code = substitute(l:tex_code, '\v\\ref\{.{-}\}', 'X', 'g')
 
     " Collapse paragraphs into single lines
