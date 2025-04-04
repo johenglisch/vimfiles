@@ -333,7 +333,8 @@ nnoremap <space>x :<c-u>FixSpelling<cr>
 nnoremap <space>gx :<c-u>ErrorToDict<cr>
 inoremap <c-x><c-x> <c-o>:FixSpelling<cr>
 
-nnoremap <space>z zMzvzz
+nnoremap <space>z :<c-u>ClRun<space>
+nnoremap <space>gz :<c-u>LlRun<space>
 
 nnoremap <space>ö g<c-]>
 nnoremap <space>gö :<c-u>!ctags -R .<cr>
@@ -590,6 +591,7 @@ set autoindent
 filetype plugin indent on
 
 runtime macros/matchit.vim
+packadd cfilter
 
 syntax manual
 set syntax=

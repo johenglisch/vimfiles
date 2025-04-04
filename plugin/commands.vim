@@ -96,6 +96,26 @@ command! -bang -nargs=1 Cgrep call s:FilterQuickfixList(<bang>0, <q-args>)
 command! -bang -nargs=1 Lgrep call s:FilterLocationList(<bang>0, <q-args>)
 
 
+" Run a shell command and fill the quickfix/location list with its output.
+
+function! s:FillQuickfixListWithCommand(showlist, command) abort
+    cexpr system(a:command)
+    if a:showlist && !empty(getqflist())
+        copen
+    endif
+endfunction
+
+function! s:FillLocationListWithCommand(showlist, command) abort
+    lexpr system(a:command)
+    if a:showlist && !empty(getloclist())
+        lopen
+    endif
+endfunction
+
+command! -bang -nargs=+ ClRun call s:FillQuickfixListWithCommand(<bang>1, <q-args>)
+command! -bang -nargs=+ LlRun call s:FillLocationListWithCommand(<bang>1, <q-args>)
+
+
 " Make the current line blink for a bit.
 
 function! s:FindCursor() abort
