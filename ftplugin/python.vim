@@ -33,5 +33,5 @@ nnoremap <buffer> <cr> :<c-u>call <sid>RunTests()<cr>
 nnoremap <buffer> <backspace> :<c-u>make!<cr>
 
 if !exists('current_compiler')
-    compiler flake8
+    compiler ruff
 endif

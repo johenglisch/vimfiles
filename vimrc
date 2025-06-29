@@ -62,6 +62,7 @@ if s:has_pluginmgr == 1
     Plug 'romainl/flattened'
     Plug 'yasukotelin/shirotelin'
     Plug 'molok/vim-vombato-colorscheme'
+    Plug 'morhetz/gruvbox'
 
     Plug 'vim-scripts/Align'
     Plug 'tpope/vim-commentary'
