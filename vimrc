@@ -431,14 +431,14 @@ if !exists('g:loaded_vimrc')
         call s:AwesomeListChars()
 
         if has('gui_gtk2') || has('gui_gtk3')
-            set guifont=Anonymous\ Pro\ 12
+            set guifont=Monospace\ 12
         elseif has('gui_win32')
             set guifont=Consolas:h12:cANSI
         endif
     elseif $TERM =~? '.*256color.*' || $TERM ==# 'xterm-kitty' || $TERM ==# 'foot' || $TERM ==# 'alacritty'
         set t_ut=
         set termguicolors
-        silent! colorscheme jellybeans
+        silent! colorscheme shirotelin
 
         call s:AwesomeListChars()
     endif

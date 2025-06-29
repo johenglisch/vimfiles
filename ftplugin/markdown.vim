@@ -2,19 +2,19 @@ set linebreak
 set noautoindent
 set nosmartindent
 
-function! s:AddTimeStampToPar()
+function! s:AddTimeStampToPar() abort
     normal! mm{o### =strftime('%H:%M:%S')`m<cr>
 endfunction
 
-function! s:InsertDate()
+function! s:InsertDate() abort
     normal! mmO## =strftime('%a, %d %b %Y')`m
 endfunction
 
-function! s:AppendIsoDate()
+function! s:AppendIsoDate() abort
     normal! a=strftime('%Y-%m-%d')
 endfunction
 
-function! s:InsertIsoDate()
+function! s:InsertIsoDate() abort
     normal! i=strftime('%Y-%m-%d')
 endfunction
 

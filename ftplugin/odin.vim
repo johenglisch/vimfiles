@@ -5,7 +5,12 @@ setlocal noexpandtab
 
 if executable('odin')
     let s:odin_root = system('odin root')
-    exec 'setlocal tags+=' . s:odin_root . '/tags'
+    if v:shell_error == 0
+        exec 'setlocal tags+=' . s:odin_root . '/tags'
+    else
+        echoerr 'odin root failed:'
+        echoerr s:odin_root
+    endif
 endif
 
 if !exists('current_compiler')
@@ -14,6 +19,10 @@ if !exists('current_compiler')
     " the compiler plugin, so the quickfix list recognises odin)
     if filereadable('./Build.odin')
         setlocal makeprg=odin\ run\ Build.odin\ -file\ --
+    elseif filereadable('./Build.pl')
+        setlocal makeprg=perl\ Build.sh
+    elseif filereadable('./Build.sh')
+        setlocal makeprg=sh\ Build.sh
     elseif filereadable('./build.ninja')
         setlocal makeprg=ninja
     elseif filereadable('./Makefile')

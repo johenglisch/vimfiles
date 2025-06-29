@@ -3,6 +3,7 @@ if !exists('current_compiler')
 endif
 
 nnoremap <buffer> <cr> :<c-u>make! build<cr>
+nnoremap <buffer> <backspace> :<c-u>make! fmt<cr>
 
 nnoremap ÖÖ :<c-u>make! run<cr>
 nnoremap ÖK :<c-u>make! clean<cr>

@@ -19,6 +19,11 @@ function! s:DlangCompile() abort
     endif
 endfunction
 
+setlocal noexpandtab
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal softtabstop=4
+
 
 command! -buffer DlangCompile call s:DlangCompile()
 

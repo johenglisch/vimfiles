@@ -12,6 +12,7 @@ augroup END
 " nnoremap <buffer> ÖI :<c-u>GoImports<cr>
 " nnoremap <buffer> <cr> :<c-u>GoBuild<cr>
 nnoremap <buffer> <cr> :<c-u>make!<cr>
+nnoremap <buffer> <backspace> :<c-u>!go fmt %<cr>
 
 if !exists('current_compiler')
     compiler go

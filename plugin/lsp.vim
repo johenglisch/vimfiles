@@ -10,7 +10,8 @@ let g:lsp_diagnostics_echo_cursor = 1
 
 " Set up individual servers
 
-if executable('clangd')
+if 1
+elseif executable('clangd')
     augroup RegisterCLSP
         autocmd!
         au User lsp_setup call lsp#register_server({
